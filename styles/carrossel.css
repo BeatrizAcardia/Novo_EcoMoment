@@ -1,0 +1,25 @@
+div.scroll-container {
+  background-color: #72A0C1;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.scroll-container img {
+  padding: 10px;
+  border-radius: 9%;
+}
+
+div.scroll-container::-webkit-scrollbar {
+  width: 3px;               /* width of the entire scrollbar */
+}
+
+div.scroll-container::-webkit-scrollbar-track {
+  background: #72A0C1;        /* color of the tracking area */
+}
+
+div.scroll-container::-webkit-scrollbar-thumb {
+  background-color:#333;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+}
+

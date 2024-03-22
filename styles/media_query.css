@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+/*Todas as medias querys virão aqui*/
+
+/* Typical devices breakpoints
+Pequenas telas: até 600px
+Celular: 600px até 768px
+Tablet: 769px até 992px
+Desktop: 992px até 1200px
+Grandes telas: acima 12000px
+*/
+@media print{ /*impressão*/
+    *{
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    body{
+        background-image: url(imagens/impressora-back.jpg);
+    }
+
+    main{
+        border: 2px solid black;
+    }
+
+    main::after{
+        content: 'Essa impressão foi feita através do site www.EcoMoment.com';
+    }
+
+    main h1{
+        text-shadow: none;
+        color: black;
+    }
+
+    img#phone{display: none;} /*Esconde o icone do phone*/
+    img#monitor{display: none;}
+    img#print{display: block;}
+    img#tablet{display: none;}
+    img#tv{display: none;}
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    article#landing-page{
+        display: block;
+    }
+
+    article#landing-page-telasGrandes{
+        display: none;
+    }
+
+    *{
+        background-color: #f4f4f4;
+    }
+
+    #noticias h1{
+        color: black;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 28px;
+        margin-right: 65%;
+        font-family: 'Nunito',sans-serif;
+        background-color:  #72A0C1;
+    }
+
+    .avatar{
+        width: 30px;
+        height: auto;
+      } /* ----!!! não consigo diminuir a imagem !!!------*/
+
+    #Principais-materiais li{
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+
+      .principais-texto{
+        text-align: center;
+        font-size: 5px;
+      }
+
+      .conMapa{
+        background-color:#F4F4F4;
+        width: calc(100vw - padding);
+        flex-direction: row;
+        justify-content: center;
+        padding: 1.2em;
+        margin: 0 auto;
+        margin-top: -150px;
+      }
+
+      #mapa {
+        margin-top: 55px;
+        border-radius: 2vh;
+        height: 60vh;
+        width: 88vh;
+        flex-direction: row;
+        display: flex;
+      }
+
+      .texto1mapa{
+        font-family: 'Nunito', sans-serif;
+        flex-direction: row;
+        display: flex;
+        font-size: 1em;
+        text-align: center;
+      }
+      .texto2mapa{
+        font-family: 'Nunito', sans-serif;
+        flex-direction: row;
+        display: flex;
+        font-size: 0.5em;
+        text-align: center;
+      }
+
+      .search{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+}
+/* /\ media query da navbar*/
+
+@media screen and (min-width: 768px) and (max-width: 992px)
+{
+    #landing-page {
+        display: none;
+      }
+
+      #landing-page-telasGrandes{
+        display: block;
+      }
+
+      #langing-image{
+        height: 10px;
+        width: auto;
+        display: flex;
+        top: 30%;
+    }
+
+    #landing-page-telasGrandes h1{
+        font-family: 'Nunito', sans-serif;
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: 10%;
+        text-align: left;
+        margin-left: 100px;
+    }
+    
+    #landing-page-telasGrandes h3{
+        font-family: 'Nunito', sans-serif;
+        font-weight: bold;
+        font-size: 10px;
+        text-align: left;
+        margin-left: 100px;
+    }
+    
+    #landing-page-telasGrandes .botao{
+        margin-left: 100px;
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        font-weight: bold;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 987px) {
+    #bolota{
+        padding-top: 40px;
+        height: auto;
+        width: 100px;
+        margin-right: 300px;
+      }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+    #landing-page {
+        display: none;
+      }
+
+      #landing-page-telasGrandes{
+        display: block;
+      }
+      
+}
+
+@media screen and (min-width: 1200px){
+
+    #landing-page {
+        display: none;
+      }
+      #landing-page-telasGrandes{
+        display: block;
+      }
+      
+    }
+    
+@media screen and (min-width: 1280px){
+  #landing-page-telasGrandes .botao{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    font-size: 3vh;
+    font-weight: bold;
+    margin-left: 50%;
+    margin-top: 300%;
+    background-color: #004852;
+}
+}
