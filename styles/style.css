@@ -88,14 +88,12 @@ article button{
 }
 
 #landing-page-telasGrandes .botao{
-    display: flex;
+    display: inline-block;
     justify-content: center;
     text-decoration: none;
     text-align: center;
-    font-size: 3vh;
+    font-size: 1.3vw;
     font-weight: bold;
-    margin-left: 68%;
-    margin-top: 370%;
     background-color: #004852;
 }
 
@@ -116,14 +114,13 @@ article button{
   margin-left: -100px;
   float: left; /* Posiciona a imagem à esquerda */
   height: auto; /* Mantém a proporção da altura da imagem */
-  margin-right: 20px; 
-  position: relative;
+  margin-right: 20px;
 }
 
 .top-left {
   position: absolute;
-  top: 8px;
-  left: 16px;
+  top: 370PX;
+  left: 94px;
 }
 /*------ Fim landing page telas grandes ------*/
 
@@ -342,7 +339,8 @@ article button{
   }
 
   .card-text{
-    font-size: 25px;
+    font-size: 1.5vw;
+    font-weight: bold;
   }
 
   .holder{

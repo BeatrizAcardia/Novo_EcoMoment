@@ -7,7 +7,7 @@ Pequenas telas: até 600px
 Celular: 600px até 768px
 Tablet: 769px até 992px
 Desktop: 992px até 1200px
-Grandes telas: acima 12000px
+Grandes telas: acima 1200px
 */
 @media print{ /*impressão*/
     *{
@@ -152,23 +152,22 @@ Grandes telas: acima 12000px
         text-align: left;
         margin-left: 100px;
     }
-    
-    #landing-page-telasGrandes .botao{
-        margin-left: 100px;
-        display: flex;
-        justify-content: left;
-        align-items: left;
-        font-weight: bold;
+
+    .top-left {
+      margin-top: -20%;
+      margin-left: -33%;
     }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 987px) {
+@media screen and (min-width: 769px) and (max-width: 987px) {
     #bolota{
         padding-top: 40px;
         height: auto;
         width: 100px;
         margin-right: 300px;
       }
+
+
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px){
@@ -180,6 +179,10 @@ Grandes telas: acima 12000px
         display: block;
       }
       
+      .top-left {
+        margin-top: -10%;
+        margin-left: -17%;
+      }
 }
 
 @media screen and (min-width: 1200px){
@@ -190,19 +193,11 @@ Grandes telas: acima 12000px
       #landing-page-telasGrandes{
         display: block;
       }
+
+      .top-left {
+        margin-top: 10%;
+        left: 0;
+      }
       
     }
-    
-@media screen and (min-width: 1280px){
-  #landing-page-telasGrandes .botao{
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    text-align: center;
-    font-size: 3vh;
-    font-weight: bold;
-    margin-left: 50%;
-    margin-top: 300%;
-    background-color: #004852;
-}
-}
+  
