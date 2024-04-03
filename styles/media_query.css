@@ -195,12 +195,29 @@ Grandes telas: acima 1200px
       }
 
       .top-left {
-        margin-top: 10%;
-        left: 0;
+        margin-top: 5%;
+        padding-left: -5%;
       }
       
     }
+
+@media screen and (min-width: 1300px) and (max-width: 1400px){
+  .top-left {
+    margin-top: 7%;
+    padding-left: -7%;
+  }
+}
+
+@media screen and (min-width: 1400px) and (max-width:  1600px){
   
+  .top-left {
+    margin-top: 10%;
+    padding-left: -5%;
+  }
+  
+}
+  
+    
 @media screen and (min-width:2000px){
   
   .top-left {

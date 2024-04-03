@@ -95,6 +95,11 @@ article button{
     font-size: 1.3vw;
     font-weight: bold;
     background-color: #004852;
+
+    position: absolute;
+    margin-top: 100%;
+    left: 94px;
+    z-index: 1;
 }
 
 .bolota{
@@ -115,13 +120,9 @@ article button{
   float: left; /* Posiciona a imagem à esquerda */
   height: auto; /* Mantém a proporção da altura da imagem */
   margin-right: 20px;
+  z-index: 0;
 }
 
-.top-left {
-  position: absolute;
-  top: 370PX;
-  left: 94px;
-}
 /*------ Fim landing page telas grandes ------*/
 
 
