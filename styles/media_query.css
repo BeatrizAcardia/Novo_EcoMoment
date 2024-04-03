@@ -201,3 +201,31 @@ Grandes telas: acima 1200px
       
     }
   
+@media screen and (min-width:2000px){
+  
+  .top-left {
+    margin-top: 45%;
+    padding-left: 19%;
+  }
+
+  #landing-page-telasGrandes .botao{
+    display: inline-block;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.5vw;
+    font-weight: bold;
+    background-color: #004852;
+    width: 189px;
+    height: 55px;
+    border-radius: 50px;
+}
+  
+}
+
+@media screen and (min-width:2350px){
+  .top-left {
+    margin-top: 50%;
+    padding-left: 21%;
+  }
+}
