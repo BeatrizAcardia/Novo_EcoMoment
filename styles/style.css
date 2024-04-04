@@ -88,25 +88,25 @@ article button{
 }
 
 #landing-page-telasGrandes .botao{
-    display: inline-block;
-    justify-content: center;
-    text-decoration: none;
-    text-align: center;
-    font-size: 1.3vw;
-    font-weight: bold;
-    background-color: #004852;
-
     position: absolute;
-    margin-top: 100%;
-    left: 94px;
-    z-index: 1;
+    top: 67%; /* Ajuste este valor de acordo com suas necessidades */
+    left: 25%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    background-color: #004852; /* Cor do botão */
+    color: white; /* Cor do texto */
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
 }
 
 .bolota{
   position: relative;
-}
+  display: inline-block;}
 
 #compartilhandoimg{
+  padding-top: 5%;
   margin-top: 200px;
   height: auto;
   width: 60%;
@@ -114,13 +114,12 @@ article button{
 }
 
 #bolota{
-  margin-top: 20px;
-  width: 149%;
+  margin-top: 3%;
+  width: 155%;
   margin-left: -100px;
   float: left; /* Posiciona a imagem à esquerda */
   height: auto; /* Mantém a proporção da altura da imagem */
   margin-right: 20px;
-  z-index: 0;
 }
 
 /*------ Fim landing page telas grandes ------*/

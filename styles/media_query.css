@@ -40,16 +40,23 @@ Grandes telas: acima 1200px
 
 
 @media screen and (min-width: 0px) and (max-width: 768px) {
+
+  #titulo-rodape{
+    font-size: 25px;
+    font-weight: bold;
+    color: #F4F4F4;
+  }
+
+  .pontilhado{
+    display: none;
+  }
+
     article#landing-page{
         display: block;
     }
 
     article#landing-page-telasGrandes{
         display: none;
-    }
-
-    *{
-        background-color: #f4f4f4;
     }
 
     #noticias h1{
@@ -121,6 +128,21 @@ Grandes telas: acima 1200px
 
 @media screen and (min-width: 768px) and (max-width: 992px)
 {
+
+  #landing-page-telasGrandes .botao{
+    position: absolute;
+    top: 67%; /* Ajuste este valor de acordo com suas necessidades */
+    left: 20%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    background-color: #004852; /* Cor do botão */
+    color: white; /* Cor do texto */
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
     #landing-page {
         display: none;
       }
@@ -153,10 +175,6 @@ Grandes telas: acima 1200px
         margin-left: 100px;
     }
 
-    .top-left {
-      margin-top: -20%;
-      margin-left: -33%;
-    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 987px) {
@@ -179,10 +197,6 @@ Grandes telas: acima 1200px
         display: block;
       }
       
-      .top-left {
-        margin-top: -10%;
-        margin-left: -17%;
-      }
 }
 
 @media screen and (min-width: 1200px){
@@ -193,56 +207,7 @@ Grandes telas: acima 1200px
       #landing-page-telasGrandes{
         display: block;
       }
-
-      .top-left {
-        margin-top: 5%;
-        padding-left: -5%;
-      }
-      
     }
 
-@media screen and (min-width: 1300px) and (max-width: 1400px){
-  .top-left {
-    margin-top: 7%;
-    padding-left: -7%;
-  }
-}
 
-@media screen and (min-width: 1400px) and (max-width:  1600px){
-  
-  .top-left {
-    margin-top: 10%;
-    padding-left: -5%;
-  }
-  
-}
-  
     
-@media screen and (min-width:2000px){
-  
-  .top-left {
-    margin-top: 45%;
-    padding-left: 19%;
-  }
-
-  #landing-page-telasGrandes .botao{
-    display: inline-block;
-    justify-content: center;
-    text-decoration: none;
-    text-align: center;
-    font-size: 0.5vw;
-    font-weight: bold;
-    background-color: #004852;
-    width: 189px;
-    height: 55px;
-    border-radius: 50px;
-}
-  
-}
-
-@media screen and (min-width:2350px){
-  .top-left {
-    margin-top: 50%;
-    padding-left: 21%;
-  }
-}
