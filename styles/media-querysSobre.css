@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+
+@media screen and (max-width: 988px){
+  #tituloPrincipal, #tituloSecundario{
+    font-size: 2em;
+  } 
+  #texto{
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #navbarNavDropdown{
+    display: flex;
+    justify-content: center;
+  }
+
+  .conteudo{
+    font-size: 1.2em;
+  }
+
+  ul{
+    margin-left: -6%;
+  }
+}
+
+
+@media screen and (max-width: 670px){
+  #tituloPrincipal, #tituloSecundario, .nome{
+    font-size: 30px;
+  }  
+  .conteudo{
+    font-size: 1.2em;
+  }
+  #texto{
+    width: 80%;
+  }
+}
+
+
+@media screen and (max-width: 470px){
+  .conteudo{
+    font-size: 1.2em;
+  }
+}
+
+
+@media screen and (max-width: 380px){
+  #tituloPrincipal, #tituloSecundario, .nome{
+    font-size: 25px;
+  }
+}
+
+/*Galaxy Fold*/
+@media screen and (max-width: 320px){
+  #tituloPrincipal, #tituloSecundario{
+    font-size: 1.3em;
+  }
+
+  .icons{
+    width: 100px;
+  }
+
+  .nome{
+    font-size: 1em;
+  }
+
+  .conteudo, .descricao > div > p{
+    font-size: .7em;
+  }
+
+  .funcao{
+    font-size: 12px;
+    line-height: .2em;
+  }
+
+  .descricao{
+    padding: 5px;
+    }
+}

@@ -1,0 +1,320 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+*{
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+  background-color: #F4F4F4;
+}
+
+main{
+  background-color: #F4F4F4;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*Começo da NavBar*/
+
+/*Começo animação*/
+.cta {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+
+.cta span {
+  padding-bottom: 7px;
+  font-size: 17px;
+  padding-right: 14px;
+}
+
+.cta svg {
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover svg {
+  border: none;
+  background: none;
+  transform: translateX(0);
+}
+
+.cta:focus {
+  outline: none;
+}
+
+.cta:active svg {
+  border: none;
+  background: none;
+  transform: scale(0.9);
+}
+
+/*cadastro*/
+.cadastro {
+  position: relative;
+  color: #4E9E5A;
+  padding-bottom: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bolder;
+}
+
+.cadastro:after {
+  content: "";
+  position: absolute;
+  width: 86%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #004852;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.cta:hover .cadastro:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/*login*/
+.login {
+  position: relative;
+  color: #4E9E5A;
+  padding-bottom: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bolder;
+}
+
+.login:after {
+  content: "";
+  position: absolute;
+  width: 83%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #004852;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.cta:hover .login:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/*contato*/
+.contato {
+  position: relative;
+  color: #4E9E5A;
+  padding-bottom: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bolder;
+}
+
+.contato:after {
+  content: "";
+  position: absolute;
+  width: 83%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #004852;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.cta:hover .contato:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/*ideias*/
+.ideias {
+  position: relative;
+  color: #4E9E5A;
+  padding-bottom: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bolder;
+}
+
+.ideias:after {
+  content: "";
+  position: absolute;
+  width: 79%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #004852;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.cta:hover .ideias:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/*Fim animação*/
+
+button{
+  background-color: #520000;
+}
+
+.nav-item{
+  color:#4E9E5A;
+  font-weight: bold;
+}
+
+.animacao:hover{
+  color: #004852;
+}
+
+.nav-link{
+  color: #4E9E5A;
+}
+
+.navbar{
+  background-color: #F4F4F4;
+}
+
+.navBar{
+  background-color: #F4F4F4;
+}
+
+.navbarAccessed{
+  color: #57cc99;
+}
+
+.navbarIcon{
+  height: 50px;
+}
+
+/*Fim da NavBar*/
+
+/*Começo do Título*/
+#tituloPrincipal{
+  display: flex;
+  justify-content: center;
+  padding-top: 90px;
+  margin-bottom: 20px;
+}
+
+.escrita{
+  color: #05440F;
+  font-size: 36px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.422);
+}
+/*Fim do Título*/
+
+/*Começo do texto*/
+
+.texto{
+  display: flex;
+  text-align: justify;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#texto{
+  width: 60%;
+}
+
+.conteudo{
+  font-size: 1.1em;
+  text-indent: 3em;
+  margin: 10px;
+}
+
+/*Fim do texto*/
+
+#tituloSecundario{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  margin-top: 50px;
+}
+
+.perfil{
+  border-radius: 100%;
+  width: 150px;
+  width: 130px;
+}
+
+.icon{
+  width: 40px;
+  display: block;
+  margin: 0 auto;
+}
+
+.perfis{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.descricao{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+
+  border-radius: 15px;
+  background-color: #94B64B;
+  box-shadow: 10px 10px 0px #3A7D44;
+
+  margin-bottom: 60px;
+  padding: 10px;
+}
+
+.funcao{
+  font-weight: bold;
+}
+
+.nome{
+  text-transform: uppercase;
+  font-size: 22px;
+  
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  
+  margin-bottom: 20px;
+}
+
+.descricao > div > p{
+  margin-top: 10px;
+  text-indent: 2em;
+  margin: 5px;
+}
+
+.icons{
+  margin-top: 25px;
+  width: 130px;
+  margin-bottom: 10px;
+}
+
+.centrar{
+  display: flex;
+  justify-content: center; /* centraliza os ícones horizontalmente */
+  align-items: center; /* centraliza os ícones verticalmente */
+}
+
+.icons .icon {
+  width: 80%; /* Ajuste a largura conforme necessário */
+  max-width: 80%; /* Limite para garantir que não ultrapasse a div */
+}
+
