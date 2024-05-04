@@ -13,66 +13,6 @@ Grandes telas: acima 1200px
 /*telas menores*/
 @media screen and (min-width: 0px) and (max-width: 768px) {
 
-  #titulo-rodape{
-    float: center;
-  }
-
-  .Message {
-    width: 40%; /* adjust to 100% for small and medium screens */
-    height: 30px;
-    border-radius: 10px;
-    background-color: #f4f4f4;
-    transform: translate(0px, 0px);
-    margin-left: 15%;
-  } 
-
-  .SendSVG {
-    width: 20px;
-    height: 20px;
-    border-width: 50px;
-    transform: translate(8px, 1px);
-    background-size: 10px;
-    border-radius: 10px;
-    transition: 0.3s;
-    color: gray;
-    margin-left: 16%;
-  }
-
-  #paragrafo h1{
-    float: center;
-    margin-top: 20px;
-  }
-
-  #paragrafo h3{ 
-    font-size: 11.5px;
-    font-weight: bold;
-    background-color: #3B5364;
-    float: center;
-    padding-left: 15px;
-    padding-right: 15px
-  }
-
-  #paragrafo a{
-    padding-top: -20px;
-    float: center;
-  }
-
-  .stores{
-    height: auto;
-    display: flex;
-    float: center;
-    margin-right: 5%;
-   }
-
-   .ml-1{
-    margin-left: -16px;
-   }
-
-
-  hr{
-    display: block;
-  }
-
   #buttons{
     display: flex;
     flex-direction: row;
@@ -81,16 +21,6 @@ Grandes telas: acima 1200px
   .alinharow{
     display: flex;
     gap: 0px;
-  }
-
-  #titulo-rodape{
-    font-size: 25px;
-    font-weight: bold;
-    color: #F4F4F4;
-  }
-
-  .pontilhado{
-    display: none;
   }
 
     article#landing-page{
@@ -179,6 +109,12 @@ Grandes telas: acima 1200px
 /*celular*/
 @media screen and (min-width: 768px) and (max-width: 992px)
 {
+
+  .store{
+    display: flex;
+    flex-direction: row;
+  }
+
   .alinharow{
     display: flex;
     gap: 0;
@@ -309,7 +245,6 @@ Grandes telas: acima 1200px
 
 /*tablet*/
 @media screen and (min-width: 769px) and (max-width: 987px) {
-
   .SendSVG {
     width: 20px;
     height: 20px;
@@ -363,10 +298,6 @@ Grandes telas: acima 1200px
     display: block;
   }
 
-  #mapa {
-    margin-left: 20%
-  }
-
   .texto1mapa{
     padding-left: 5%;
   }
@@ -405,19 +336,6 @@ Grandes telas: acima 1200px
       #landing-page-telasGrandes{
         display: block;
       }
-
-      hr{
-        display: none;
-      }
-
-      .Message {
-        width: 200px;
-        height: 30px;
-        border-radius: 10px;
-        background-color: #f4f4f4;
-        transform: translate(0px,0px);
-        margin-left: 20%
-      }
 }
 
 /*telas maiores*/
@@ -429,9 +347,4 @@ Grandes telas: acima 1200px
       #landing-page-telasGrandes{
         display: block;
       }
-
-      hr{
-        display: none;
-      }
-      
     }
