@@ -329,19 +329,11 @@ article button{
     margin-bottom: 9%;
   }
 
-  #detalhe1-Principais{
-    margin-top: 10%;
-  }
-  .avatar{
-    width: 140px;
-    height: auto;
-    margin-bottom: 20px;
-  }
-
   .card-text{
-    font-size: 1.5vw;
+    font-size: 20px;
     font-weight: bold;
-
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .holder{

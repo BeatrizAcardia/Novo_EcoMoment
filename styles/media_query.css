@@ -12,7 +12,6 @@ Grandes telas: acima 1200px
 
 /*telas menores*/
 @media screen and (min-width: 0px) and (max-width: 768px) {
-
   #buttons{
     display: flex;
     flex-direction: row;
@@ -41,11 +40,6 @@ Grandes telas: acima 1200px
         background-color:  #72A0C1;
     }
 
-    .avatar{
-        width: 30px;
-        height: auto;
-      }
-
     #Principais-materiais li{
         margin-left: 10%;
         margin-right: 10%;
@@ -60,10 +54,12 @@ Grandes telas: acima 1200px
         background-color:#F4F4F4;
         width: calc(100vw - padding);
         flex-direction: row;
-        justify-content: center;
         padding: 1.2em;
         margin: 0 auto;
         margin-top: -150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       #mapa {
@@ -71,22 +67,15 @@ Grandes telas: acima 1200px
         border-radius: 2vh;
         height: 60vh;
         width: 88vh;
-        flex-direction: row;
         display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .texto1mapa{
-        font-family: 'Nunito', sans-serif;
-        flex-direction: row;
-        display: flex;
-        font-size: 1em;
         text-align: center;
       }
       .texto2mapa{
-        font-family: 'Nunito', sans-serif;
-        flex-direction: row;
-        display: flex;
-        font-size: 0.5em;
         text-align: center;
       }
 
@@ -96,23 +85,20 @@ Grandes telas: acima 1200px
         align-items: center;
       }
 
-      .stores{
-        margin-top: 5%;
-        width: 50px;
-        height: auto;
-        display: flex;
-        align-items: center;
-      }
 }
 /* /\ media query da navbar*/
 
 /*celular*/
 @media screen and (min-width: 768px) and (max-width: 992px)
 {
-
-  .store{
+  #mapa {
+    margin-top: 55px;
+    border-radius: 2vh;
+    height: 60vh;
+    width: 88vh;
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 
   .alinharow{
@@ -130,27 +116,11 @@ Grandes telas: acima 1200px
     margin-top: -150px;
   }
 
-  #mapa {
-    margin-top: 55px;
-    border-radius: 2vh;
-    height: 60vh;
-    width: 88vh;
-    flex-direction: row;
-    display: flex;
-  }
 
   .texto1mapa{
-    font-family: 'Nunito', sans-serif;
-    flex-direction: row;
-    display: flex;
-    font-size: 1em;
     text-align: center;
   }
   .texto2mapa{
-    font-family: 'Nunito', sans-serif;
-    flex-direction: row;
-    display: flex;
-    font-size: 0.5em;
     text-align: center;
   }
 
@@ -231,20 +201,21 @@ Grandes telas: acima 1200px
       font-size: 6px;
       padding-left: 50%;
     }
-  
-    .stores{
-      height: auto;
-      float: right;
-      margin-right: 30%;
-    }
-
-    hr{
-      display: none;
-    }
 }
 
 /*tablet*/
 @media screen and (min-width: 769px) and (max-width: 987px) {
+
+  #mapa {
+    margin-top: 55px;
+    border-radius: 2vh;
+    height: 60vh;
+    width: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .SendSVG {
     width: 20px;
     height: 20px;
@@ -287,43 +258,11 @@ Grandes telas: acima 1200px
     margin-left: 20%
   }
 
-  .stores{
-    margin-top: 3%;
-    width: 90%;
-    height: auto;
-    float: right;
-  }
-
-  hr{
-    display: block;
-  }
-
   .texto1mapa{
     padding-left: 5%;
   }
   .texto2mapa{
     padding-left: 10%;
-  }
-
-  .avatar{
-    width: 15px;
-    height: auto;
-  }
-}
-
-@media screen and (min-width: 900px) and (max-width: 1070px){
-  .alpontilhado{
-    transform: translateY(-60px);
-    margin-left: 10%;
-  }
-
-  .Message {
-    width: 50px;
-    height: 30px;
-    border-radius: 10px;
-    background-color: #f4f4f4;
-    transform: translate(0px,0px);
-    margin-left: 20%
   }
 }
 
