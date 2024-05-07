@@ -332,8 +332,7 @@ article button{
   .card-text{
     font-size: 20px;
     font-weight: bold;
-    display: flex;
-    flex-wrap: wrap;
+    word-wrap: break-word;
   }
 
   .holder{

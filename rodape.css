@@ -9,6 +9,7 @@ body{
     color: #f4f4f4;
     text-decoration: none;
     font-weight: bold;
+    word-wrap: break-word;
 }
 
 .alinharow{
@@ -205,6 +206,7 @@ body{
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s;
+    padding-right: 10px;
   }
   #sendButton svg {
     height: 18px;
