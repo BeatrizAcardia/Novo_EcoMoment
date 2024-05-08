@@ -114,7 +114,7 @@
                     </div>
                 </form>
                 <div class="footer">
-                    <p class="circeB">Não tem uma conta? <a href="#">Cadastre-se</a></p>
+                    <p class="circeB">Não tem uma conta? <a href="cadastroPage.php">Cadastre-se</a></p>
                 </div>
                 <div class="footer-image">
                     <img class="logo" src="" alt="">

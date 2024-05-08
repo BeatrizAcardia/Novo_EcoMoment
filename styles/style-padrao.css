@@ -1,0 +1,239 @@
+@font-face {
+    font-family: 'Circe';
+    src: url('fontes/Circe/Circe-Bold.otf') format('opentype');
+}
+/* <uniquifier>: Use a unique and descriptive class name
+ <weight>: Use a value from 200 to 1000*/
+.nunito {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+body{
+    background-color: #f4f4f4;
+    height: 100vh;
+}
+
+h1{
+    font-family: Circe, sans-serif;
+    text-shadow: 1px 1px 5px #d9d9d9;
+    color: #05440f;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#navbarMargin{
+    margin-top: 90px;
+}
+
+#sub-titulo{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Circe, sans-serif;
+}
+
+/*Card de ideias*/
+.ideias{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card{
+    width: 500px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    z-index: 0;
+}
+
+.card-col{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+}
+
+.card-content{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.card-text{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img-card{
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+}
+
+.img-card-ideia{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.selo-melhor-ideia{
+    width: 100px;
+    position: absolute;
+    z-index: 1;
+    left: -50px;
+    top: -30px;
+}
+
+/*Estrela e dificuldade*/    
+.rating {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    float: right;
+    /* cursor: pointer; */
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.rating label:before {
+    content: '\2605';
+    font-size: 30px;
+}
+
+/* .rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffc30f;
+    transition: color 0.3s;
+} */
+
+.rating input:checked ~ label{
+    color: #ffc03f;
+}
+
+.alinha-estrela{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.dificuldade{
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.dificuldade-facil{
+    background-color: green;
+}
+.dificuldade-media{
+    background-color: #ffec15;
+}
+.dificuldade-dificil{
+    background-color: red;
+}
+
+.row-av-ideia{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* Postar nova ideia / ver mais ideias */
+.novaIdeia{
+    text-align: center;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    width: 50%;
+    color: black;
+    font-size: 16px;
+}
+
+#search2:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none transparent;
+    outline: 0;
+}
+
+.button{
+    cursor: pointer;
+    position: relative;
+    padding: 10px 24px;
+    font-size: 16px;
+    color: black;
+    border: 2px solid #409d4e;
+    border-radius: 34px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    border-radius: inherit;
+    scale: 0;
+    z-index: -1;
+    background-color: #409d4e;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button:hover::before {
+    scale: 3;
+}
+
+.button:hover {
+    color: #f4f4f4;
+    scale: 1.1;
+    box-shadow: 0 0px 20px rgba(193, 163, 98,0.4);
+}
+
+.button:active {
+    scale: 1;
+}

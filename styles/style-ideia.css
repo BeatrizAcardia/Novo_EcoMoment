@@ -1,0 +1,175 @@
+#sub-titulo{
+    font-size: 20px;
+}
+
+.c-inicio{
+    width: 60%;
+}
+
+.c-corpo{
+    width: 80%;
+}
+
+/* Container inicial */
+.topico{
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.avaliacao{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.dif{
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+}
+
+.av-head{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+/*Início do Carrosel*/
+
+.cards-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards-wrapper > .card{
+    height: 13em;
+    text-align: center;
+    box-shadow: none;
+}
+
+.cards-wrapper > .card > .card-body{
+    height: 2em;
+
+}
+
+#numCurtidas{
+    font-size: 14px;
+}
+
+.btnInteraction{
+    cursor: pointer;
+    width: 24px;
+    transition: width 0.3s;
+}
+
+.btnInteraction:hover{
+    width: 28px;
+}
+
+/*Estrela e dificuldade*/    
+.rating-x {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating-x input {
+    display: none;
+}
+
+.rating-x label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.rating-x label:before {
+    content: '\2605';
+    font-size: 30px;
+}
+
+.rating-x input:checked ~ label,
+.rating-x label:hover,
+.rating-x label:hover ~ label {
+    color: #ffc30f;
+    transition: color 0.3s;
+}
+
+.rating-x input:checked ~ label{
+    color: #ffc03f;
+}
+
+/* Descrição */
+.descricoes{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.topico2{
+    background-color: #d9d9d9;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 16px;
+    display: flexbox;
+    align-items: center;
+}
+
+.img-topico{
+    width: 24px;
+    height: 24px;
+}
+
+.sec-desc{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+/* Outras publicações */
+.img-card-ideia{
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+.outras-ideias{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.novaIdeia{
+    font-size: 14px;
+    flex-direction: row;
+    width: 100%;
+}
+
+@media screen and (max-width: 310px){
+    .rating label::before{
+        font-size: 25px;
+    }
+    .rating-x label::before{
+        font-size: 25px;
+    }
+    .dificuldade-facil{
+        height: 12px;
+        width: 12px;
+    }
+    .dificuldade-media{
+        height: 12px;
+        width: 12px;
+    }
+    .dificuldade-dificil{
+        height: 12px;
+        width: 12px;
+    }
+    .topico{
+        font-size: 16px;
+    }
+}

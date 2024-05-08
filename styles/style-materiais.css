@@ -1,0 +1,93 @@
+.imgMaterial{
+    width: 45px;
+}
+
+.contImgMaterial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filtro{
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filtro:hover{
+    background-color: #e8e8e8;
+    box-shadow: 1px 1px 5px #d9d9d9;
+}
+
+.filtro2{
+    background-color: #f4f4f4;
+}
+
+.filtroDflt{
+    cursor: pointer;
+}
+
+.dropdown-menu.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    flex-wrap: nowrap;
+    padding: 8px;
+    line-height: 1.6;
+}
+
+.drop-dif{
+    display: none;
+}
+
+.pesquisa{
+    display: flex;
+    justify-content: end;
+}
+
+.nav-link{
+    color: black;
+}
+
+#nav-definicao-tab{
+    border-bottom: #f4f4f4;
+}
+
+#nav-origem-tab{
+    border-bottom: #f4f4f4;
+}
+
+#nav-descartar-tab{
+    border-bottom: #f4f4f4;
+}
+
+#nav-alternativas-tab{
+    border-bottom: #f4f4f4;
+}
+
+input[type="submit"]{
+    appearance: none;
+    border: 0 none transparent;
+    background-color: transparent;
+    width: 100%;
+}
+
+input[type="submit"]:hover{
+    font-weight: bold;
+}
+
+.filtroDflt:hover{
+    font-weight: bold;
+}
+
+/*Tabela dos materiais*/
+.table{
+    --bs-body-bg: transparent;
+}
+
+
+  
