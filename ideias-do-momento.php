@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="styles/style-melhoresIdeias.css">
     <link rel="stylesheet" href="styles/media-query-melhoresideias.css">
     <link rel="stylesheet" href="styles/style-ideia.css">
+    <link rel="stylesheet" href="styles/style-padrao.css">
     <link rel="stylesheet" href="javascript/script-melhoresIdeias.js">
     <link rel="stylesheet" href="https://use.typekit.net/xhc2seb.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -54,6 +55,10 @@
         }
         .link-material:hover{
           text-decoration: none;
+        }
+
+        body{
+          background-color: #f4f4f4;
         }
     </style>
 </head>
@@ -139,7 +144,7 @@
     <!--Fim Título Principal-->
 
     <!-- Início dos Cards - Ideias do Momento -->
-    <div class="cards row">
+    <div class="container center row nunito ">
       <!-- <div class="card">
         <a href="https://www.revistaartesanato.com.br/ideias-reutilizar-embalagens-vazias/#8_Lembrancinhas_com_pote_de_vidro"><img src="imagens/lembrancinha_vidro.jpeg" class="card-img-top" alt="..."></a>
         <div class="card-body">
