@@ -1,26 +1,5 @@
 <?php 
-  require_once('ideias.php');
-  include 'connection.php';
-
-  $postagens = array();
-
-  $sql = 'SELECT * FROM prototipo_Postagem_EcoMoment ORDER BY avaliacaoPostagem DESC LIMIT 4';
-  $result = $con->query($sql);
-
-  if ($result->num_rows > 0){
-      $existe = true;
-      while ($row = $result->fetch_assoc()){
-          $idPub = $row['idPostagem'];
-          $nomeIdeiaPub = $row['nomePostagem'];
-          $userIdeiaPub = $row['nomeUsuario'];
-          $dificuldadeIdeiaPub = $row['dificuldadePostagem'];
-          $avaliacaoPub = $row['avaliacaoPostagem'];
-          $ideiaPub = new Ideias($idPub, $nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub);
-          $postagens[] = $ideiaPub->createCardIdeia2($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
-      }
-  }
-  
-  $con->close();
+  include('script-ideias-do-momento.php');
 ?>
 
 <!DOCTYPE html>
@@ -138,13 +117,13 @@
     <!--Início Título Principal-->
     <section id="tituloPrincipal">
         <img src="imagens/folhas-de-galho.png" alt="Folha" id="folha">
-        <h1 id="escritaPrincipal" class="circeB">As Ideias do Momento</h1>
+        <h1 id="escritaPrincipal" class="circeB mr-1">As Ideias do Momento </h1>
         <img src="imagens/folhas-de-galho (4).png" alt="Folha" id="folha">
     </section>
     <!--Fim Título Principal-->
 
     <!-- Início dos Cards - Ideias do Momento -->
-    <div class="container center row nunito ">
+    <div class=" ideias row">
       <!-- <div class="card">
         <a href="https://www.revistaartesanato.com.br/ideias-reutilizar-embalagens-vazias/#8_Lembrancinhas_com_pote_de_vidro"><img src="imagens/lembrancinha_vidro.jpeg" class="card-img-top" alt="..."></a>
         <div class="card-body">
@@ -215,62 +194,62 @@
 
 <!-- Início do Carrosel de Plástico -->
 <div class="cards-wrapper">
-<div id="carouselExampleControls" class="carousel slide carousel-dark" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="cards-wrapper">
-        <div id="card1" class="card">
-          <img class="card-img-top" src="imagens/artesanato-reciclagem-caixa-de-sapato-8.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h5 class="card-title">Título do card</h5>
+  <div id="carouselExampleControls" class="carousel slide carousel-dark" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="cards-wrapper">
+          <div id="card1" class="card">
+            <img class="card-img-top" src="imagens/artesanato-reciclagem-caixa-de-sapato-8.jpg" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h5 class="card-title">Título do card</h5>
+            </div>
+          </div>
+          <div id="card2" class="card">
+            <img class="card-img-top" src="imagens/artesanato-reciclagem-caixa-de-sapato-8.jpg" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h5 class="card-title">Título do card</h5>
+            </div>
+          </div>
+          <div id="card3" class="card">
+            <img class="card-img-top" src="imagens/artesanato-reciclagem-caixa-de-sapato-8.jpg" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h5 class="card-title">Título do card</h5>
+            </div>
           </div>
         </div>
-        <div id="card2" class="card">
-          <img class="card-img-top" src="imagens/artesanato-reciclagem-caixa-de-sapato-8.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h5 class="card-title">Título do card</h5>
+      </div>
+      <div class="carousel-item">
+        <div class="cards-wrapper">
+          <div id="card1" class="card">
+            <img class="card-img-top" src="imagens/artesanato-reciclagem-garrafa-pet-4.jpg" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h5 class="card-title">Título do card</h5>
+            </div>
           </div>
-        </div>
-        <div id="card3" class="card">
-          <img class="card-img-top" src="imagens/artesanato-reciclagem-caixa-de-sapato-8.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h5 class="card-title">Título do card</h5>
+          <div id="card2" class="card">
+            <img class="card-img-top" src="imagens/artesanato-reciclagem-garrafa-pet-4.jpg" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h5 class="card-title">Título do card</h5>
+            </div>
+          </div>
+          <div id="card3" class="card">
+            <img class="card-img-top" src="imagens/artesanato-reciclagem-garrafa-pet-4.jpg" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h5 class="card-title">Título do card</h5>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="carousel-item">
-      <div class="cards-wrapper">
-        <div id="card1" class="card">
-          <img class="card-img-top" src="imagens/artesanato-reciclagem-garrafa-pet-4.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h5 class="card-title">Título do card</h5>
-          </div>
-        </div>
-        <div id="card2" class="card">
-          <img class="card-img-top" src="imagens/artesanato-reciclagem-garrafa-pet-4.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h5 class="card-title">Título do card</h5>
-          </div>
-        </div>
-        <div id="card3" class="card">
-          <img class="card-img-top" src="imagens/artesanato-reciclagem-garrafa-pet-4.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h5 class="card-title">Título do card</h5>
-          </div>
-        </div>
-      </div>
-    </div>
+    <a class="carousel-control-prev" style="background: url(imagens/divisa-esquerda.png) no-repeat center center;"  href="#carouselExampleControls" role="button" data-slide="prev">
+      <span  aria-hidden="true"></span>
+      <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" style="background: url(imagens/divisa-direita.png) no-repeat center center;" href="#carouselExampleControls" role="button" data-slide="next">
+      <span aria-hidden="true"></span>
+      <span class="sr-only">Próximo</span>
+    </a>
   </div>
-  <a class="carousel-control-prev" style="background: url(imagens/divisa-esquerda.png) no-repeat center center;"  href="#carouselExampleControls" role="button" data-slide="prev">
-    <span  aria-hidden="true"></span>
-    <span class="sr-only">Anterior</span>
-  </a>
-  <a class="carousel-control-next" style="background: url(imagens/divisa-direita.png) no-repeat center center;" href="#carouselExampleControls" role="button" data-slide="next">
-    <span aria-hidden="true"></span>
-    <span class="sr-only">Próximo</span>
-  </a>
-</div>
 </div>
 <!-- Fim do Carrossel do Plástico -->
 

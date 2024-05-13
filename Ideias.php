@@ -184,6 +184,74 @@ class Ideias {
         return '<div class="card"><div class="row"><div class="col-12 col-sm-6 card-col img-card"><a href="pagIdeia.php?idPostagem='.$idPost.'"><img class="img-card-ideia" src="midias/icones-materiais/img-ideia.jpg" alt="Ideia de reutilização com garrafas pet"></a></div><div class="col-12 col-sm-6 card-col card-content"><a href="pagIdeia.php?idPostagem='.$idPost.'"><div class="card-title">'.$nome.'</div></a><a href="perfil.php?type=perfil&user='.$usuario.'"><div class="card-subtitle">'.$usuario.'</div></a><a href="pagIdeia.php?idPostagem='.$idPost.'"><div class="card-text">'.$this->carregaAvaliacao3($avaliacao).'<div class="dificuldade dificuldade-'.$dificuldade.'"></div> </div></a></div></div></div>';
     }
 
+    public function createCardIdeia6($nome, $usuario, $dificuldade, $avaliacao, $idPost){
+        return '
+        <style>
+            .row-av-ideia>*{
+                width: min-content;
+            }
+        </style>
+            <div class="card">
+                <div class="row">
+                    <div class="col-12 card-col img-card">
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'"><img class="img-card-ideia" src="midias/icones-materiais/img-ideia.jpg" alt="Ideia de reutilização com garrafas pet"></a>
+                    </div>
+                    <div class="col-12 card-col card-content">
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'">
+                            <div class="card-title">'.$nome.'</div>
+                        </a>
+                        <a href="perfil.php?type=perfil&user='.$usuario.'">
+                            <div class="card-subtitle">'.$usuario.'</div>
+                        </a>
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'">
+                            <div class="card-text">
+                                <div class="row row-av-ideia">
+                                    <div class="alinha-estrela">'.$this->carregaAvaliacao($avaliacao).'</div>
+                                    <div>
+                                        <div class="dificuldade dificuldade-'.$dificuldade.'"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>';
+    }
+
+    public function createCardIdeia7($nome, $usuario, $dificuldade, $avaliacao, $idPost){
+        return '
+        <style>
+            .row-av-ideia>*{
+                width: min-content;
+            }
+        </style>
+            <div class="card">
+                <div class="row">
+                    <div class="col-12 card-col img-card">
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'"><img class="img-card-ideia" src="midias/icones-materiais/img-ideia.jpg" alt="Ideia de reutilização com garrafas pet"></a>
+                    </div>
+                    <div class="col-12 card-col card-content">
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'">
+                            <div class="card-title">'.$nome.'</div>
+                        </a>
+                        <a href="perfil.php?type=perfil&user='.$usuario.'">
+                            <div class="card-subtitle">'.$usuario.'</div>
+                        </a>
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'">
+                            <div class="card-text">
+                                <div class="row row-av-ideia">
+                                    <div class="alinha-estrela">'.$this->carregaAvaliacao($avaliacao).'</div>
+                                    <div>
+                                        <div class="dificuldade dificuldade-'.$dificuldade.'"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>';
+    }
+
     public function carregaAvaliacao($avaliacao){
         if ($avaliacao == 5){
             return '

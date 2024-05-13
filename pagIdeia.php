@@ -3,11 +3,11 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
         
-        $idUserWeb = 26;
+        // $idUserWeb = 26;
 
-        echo'<script>alert("Chamando curtido()")</script>';
-        $curtido = curtido($idUserWeb, $idPostagem);
-        echo'<script>alert("curtido: '.$curtido.'")</script>';
+        // echo'<script>alert("Chamando curtido()")</script>';
+        // $curtido = curtido($idUserWeb, $idPostagem);
+        // echo'<script>alert("curtido: '.$curtido.'")</script>';
 
         // echo'<script>alert("Chamando avaliado()")</script>';
         // $avaliado = avaliado($idUserWeb, $idPostagem);
