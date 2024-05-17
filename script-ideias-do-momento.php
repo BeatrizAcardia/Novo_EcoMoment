@@ -48,15 +48,15 @@
           $cont++;
           if($cont%3 == 0){
             if($cont2 == 0){
-                $carrossel[$cont2] = '<script>alert("1º coiso; cont: '.$cont.'; cont2: '.$cont2.'")</script><div class="carousel-item active"><div class="cards-wrapper"><div class="row">';
+                $carrossel[$cont2] = '<div class="carousel-item active"><div class="cards-wrapper"><div class="row ideias">';
             }
             else{
-                $carrossel[$cont2] = '<script>alert("2º coiso; cont: '.$cont.'; cont2: '.$cont2.'")</script><div class="carousel-item"><div class="cards-wrapper"><div class="row">';
+                $carrossel[$cont2] = '<div class="carousel-item"><div class="cards-wrapper"><div class="row ideias">';
             }
-            for($i = $cont-3; $i <= $cont; $i++){
-                echo '<script>alert("i: '.$i.'")</script>';
+            for($i = $cont-3; $i < $cont; $i++){
+                // echo '<script>alert("i: '.$i.'")</script>';
                 $carrossel[$cont2] .= $postagens2[$i];
-                if($i == $cont){
+                if($i == $cont-1){
                     $carrossel[$cont2] .= '</div></div></div>';
                 }
             }

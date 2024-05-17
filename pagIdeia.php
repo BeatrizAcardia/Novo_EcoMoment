@@ -280,7 +280,8 @@
 
     <script>
         
-        var curtida = <?=$curtido?>;
+        // var curtida = <=$curtido?>;
+        var curtida = false;
         console.log('Número de curtidas: <?=$numCurtidas?>')
         if(curtida){
             document.querySelector('.curtida').innerHTML = '<img class="btnInteraction" src="midias/icones-pagIdeia/curtida-1.png" alt="Ícone de coração sem preenchimento">';

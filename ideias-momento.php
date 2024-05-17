@@ -44,7 +44,7 @@
         #tituloPrincipal{
         display: flex;
         justify-content: center;
-        margin-top: 8%;
+        text-align: center;
         margin-bottom: 3%;
         }
 
@@ -84,41 +84,28 @@
         }
                 
         /*Início do Carrosel*/
-
-        .cards-wrapper{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .cards-wrapper > .card{
-          height: 13em;
-          text-align: center;
-        }
-
-        .cards-wrapper > .card > .card-body{
-          height: 2em;
-        }
-
-
         #carouselExampleControls, #carouselExampleControlsVidro, #carouselExampleControlsPapel, #carouselExampleControlsMetal, #carouselExampleControlsOrganico, #carouselExampleControlsMadeira{
-          width: 65em;
+          width: 80%;
+        }
+
+        .sr-only{
+          display: none;
         }
         /*Fim do Carrossel*/
 
     </style>
 </head>
 <body>
-<main>
+<main id="navbarMargin">
     <?php
       include('navbar/navbar.html');
     ?>
 
     <!--Início Título Principal-->
     <section id="tituloPrincipal">
-        <img src="imagens/folhas-de-galho.png" alt="Folha" id="folha">
+        <img class="d-none d-sm-inline" src="imagens/folhas-de-galho.png" alt="Folha" id="folha">
         <h1 id="escritaPrincipal" class="circeB mr-1">As Ideias do Momento </h1>
-        <img src="imagens/folhas-de-galho (4).png" alt="Folha" id="folha">
+        <img class="d-none d-sm-inline" src="imagens/folhas-de-galho (4).png" alt="Folha" id="folha">
     </section>
     <!--Fim Título Principal-->
 
@@ -153,7 +140,7 @@
       <!--Fim Título Plástico-->
       <!-- Início do carrossel Plástico -->
       <div class="cards-wrapper">
-        <div id="carouselExampleControls" class="carousel slide carousel-dark" data-ride="carousel">
+        <div id="carouselExampleControls" class="carousel  carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
             <?php
                 //Carregamento das ideias de reutilazação
