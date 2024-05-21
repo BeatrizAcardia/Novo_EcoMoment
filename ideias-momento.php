@@ -65,6 +65,7 @@
         /* Cards */
         .card{
             width: 280px;
+            height: 320px;
         }
 
         .img-card{
@@ -85,13 +86,15 @@
                 
         /*Início do Carrosel*/
         #carouselExampleControls, #carouselExampleControlsVidro, #carouselExampleControlsPapel, #carouselExampleControlsMetal, #carouselExampleControlsOrganico, #carouselExampleControlsMadeira{
-          width: 80%;
+          width: 90%;
         }
 
-        .sr-only{
-          display: none;
-        }
         /*Fim do Carrossel*/
+
+        .ideias{
+          justify-content: center;
+          width: 100%;
+        }
 
     </style>
 </head>
@@ -114,7 +117,7 @@
         <div class="container ideias row">
             <?php
               //Carregamento das ideias de reutilazação
-              if ($existe){
+              if ($existe && sizeof($postagens)>0){
                   foreach($postagens as $post){
                       echo $post;
                   }
@@ -131,16 +134,16 @@
     <div class="my-5">
 
       <!--Início Título Plástico-->
-      <a href="materiais.php?material=1" class="link-material">
-        <section id="titulos">
-            <img src="midias/icones-materiais/residuos-plasticos.png" alt="Sacola Plástica" id="sacola">
+      <section id="titulos">
+          <img src="midias/icones-materiais/residuos-plasticos.png" alt="Sacola Plástica" id="sacola">
+          <a href="materiais.php?material=1">
             <h1 class="circeB" id="plastico">Plástico</h1>
-        </section>
-      </a>
+          </a>
+      </section>
       <!--Fim Título Plástico-->
       <!-- Início do carrossel Plástico -->
-      <div class="cards-wrapper">
-        <div id="carouselExampleControls" class="carousel  carousel-dark" data-ride="carousel">
+      <div class="center">
+        <div id="carouselExampleControls" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
             <?php
                 //Carregamento das ideias de reutilazação
@@ -154,62 +157,202 @@
                 }
               ?>
           </div>
-          <a class="carousel-control-prev" style="background: url(imagens/divisa-esquerda.png) no-repeat center center;"  href="#carouselExampleControls" role="button" data-slide="prev">
-            <span  aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-          </a>
-          <a class="carousel-control-next" style="background: url(imagens/divisa-direita.png) no-repeat center center;" href="#carouselExampleControls" role="button" data-slide="next">
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span aria-hidden="true"></span>
-            <span class="sr-only">Próximo</span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-esquerda.png" alt="Anterior"></span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita.png" alt="Anterior"></span>
           </a>
         </div>
       </div>
       <!-- Fim do carrossel Plástico -->
 
       <!--Início Título Metal-->
-      <a href="materiais.php?material=2" class="link-material">
-        <section id="titulos">
-          <img src="midias/icones-materiais/metal.png" alt="Latinha de metal" id="lataMetal">
+      <section id="titulos">
+        <img src="midias/icones-materiais/metal.png" alt="Latinha de metal" id="lataMetal">
+        <a href="materiais.php?material=2">
           <h1 class="circeB" id="metal">Metal</h1>
-        </section>
-      </a>
+        </a>
+      </section>
       <!--Fim Título Metal-->
 
+      <!-- Início do carrossel Metal -->
+      <div class="center">
+        <div id="carouselExampleControlsMetal" class="carousel carousel-dark" data-ride="carousel">
+          <div class="carousel-inner">
+            <?php
+                //Carregamento das ideias de reutilazação
+                if ($existe && sizeof($carrossel2)>0){
+                    foreach($carrossel2 as $item){
+                        echo $item;
+                    }
+                }
+                else{
+                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                }
+              ?>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControlsMetal" role="button" data-slide="prev">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-esquerda-amarelo.png" alt="Anterior"></span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControlsMetal" role="button" data-slide="next">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-amarelo.png" alt="Anterior"></span>
+          </a>
+        </div>
+      </div>
+      <!-- Fim do carrossel Metal -->
+
       <!--Início Título Papel-->
-      <a href="materiais.php?material=3" class="link-material">
         <section id="titulos">
           <img src="midias/icones-materiais/papel.png" alt="Papel" id="Folhapapel">
-          <h1 class="circeB" id="papel">Papel</h1>
+          <a href="materiais.php?material=3">
+            <h1 class="circeB" id="papel">Papel</h1>
+          </a>
         </section>
-      </a>
       <!--Fim Título Papel-->
+
+      <!-- Início do carrossel Papel -->
+      <div class="center">
+        <div id="carouselExampleControlsPapel" class="carousel carousel-dark" data-ride="carousel">
+          <div class="carousel-inner">
+            <?php
+                //Carregamento das ideias de reutilazação
+                if ($existe && sizeof($carrossel3)>0){
+                    foreach($carrossel3 as $item){
+                        echo $item;
+                    }
+                }
+                else{
+                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                }
+              ?>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControlsPapel" role="button" data-slide="prev">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-esquerda-azul.png" alt="Anterior"></span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControlsPapel" role="button" data-slide="next">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-azul.png" alt="Anterior"></span>
+          </a>
+        </div>
+      </div>
+      <!-- Fim do carrossel Papel -->
       
       <!--Início Título Vidro-->
-      <a href="materiais.php?material=4" class="link-material">
-        <section id="titulos">
-          <img src="midias/icones-materiais/vidro.png" alt="Taça de Vidro" id="taça">
+      <section id="titulos">
+        <img src="midias/icones-materiais/vidro.png" alt="Taça de Vidro" id="taça">
+        <a href="materiais.php?material=4">
           <h1 class="circeB" id="vidro">Vidro</h1>
-        </section>
-      </a>
+        </a>
+      </section>
       <!--Fim Título Vidro-->
 
+      <!-- Início do carrossel Vidro -->
+      <div class="center">
+        <div id="carouselExampleControlsVidro" class="carousel carousel-dark" data-ride="carousel">
+          <div class="carousel-inner">
+            <?php
+                //Carregamento das ideias de reutilazação
+                if ($existe && sizeof($carrossel4)>0){
+                    foreach($carrossel4 as $item){
+                        echo $item;
+                    }
+                }
+                else{
+                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                }
+              ?>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControlsVidro" role="button" data-slide="prev">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-esquerda-verde.png" alt="Anterior"></span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControlsVidro" role="button" data-slide="next">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-verde.png" alt="Anterior"></span>
+          </a>
+        </div>
+      </div>
+      <!-- Fim do carrossel Vidro -->
+
       <!--Início Título Madeira-->
-      <a href="materiais.php?material=5" class="link-material">
-        <section id="titulos">
-          <img src="midias/icones-materiais/madeira.png" alt="Madeira desmatada" id="desmatamento">
+      <section id="titulos">
+        <img src="midias/icones-materiais/madeira.png" alt="Madeira desmatada" id="desmatamento">
+        <a href="materiais.php?material=5">
           <h1 class="circeB" id="madeira">Madeira</h1>
-        </section>
-      </a>
+        </a>
+      </section>
       <!--Fim Título Madeira-->
 
+      <!-- Início do carrossel Madeira -->
+      <div class="center">
+        <div id="carouselExampleControlsMadeira" class="carousel carousel-dark" data-ride="carousel">
+          <div class="carousel-inner">
+            <?php
+                //Carregamento das ideias de reutilazação
+                if ($existe && sizeof($carrossel5)>0){
+                    foreach($carrossel5 as $item){
+                        echo $item;
+                    }
+                }
+                else{
+                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                }
+              ?>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControlsMadeira" role="button" data-slide="prev">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-esquerda-marromescuro.png" alt="Anterior"></span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControlsMadeira" role="button" data-slide="next">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-marromescuro.png" alt="Anterior"></span>
+          </a>
+        </div>
+      </div>
+      <!-- Fim do carrossel Madeira -->
+
       <!--Início Título Orgânico-->
-      <a href="materiais.php?material=6" class="link-material">
-        <section id="titulos">
-          <img src="midias/icones-materiais/desperdicio-organico.png" alt="Maça" id="macaOrganica">
+      <section id="titulos">
+        <img src="midias/icones-materiais/desperdicio-organico.png" alt="Maça" id="macaOrganica">
+        <a href="materiais.php?material=6">
           <h1 class="circeB" id="organico">Orgânico</h1>
-        </section>
-      </a>
+        </a>
+      </section>
       <!--Fim Título Orgânico-->
+
+      <!-- Início do carrossel Organico -->
+      <div class="center">
+        <div id="carouselExampleControlsOrganico" class="carousel carousel-dark" data-ride="carousel">
+          <div class="carousel-inner">
+            <?php
+                //Carregamento das ideias de reutilazação
+                if ($existe && sizeof($carrossel6)>0){
+                    foreach($carrossel6 as $item){
+                        echo $item;
+                    }
+                }
+                else{
+                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                }
+              ?>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControlsOrganico" role="button" data-slide="prev">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-esquerda-marromclaro.png" alt="Anterior"></span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControlsOrganico" role="button" data-slide="next">
+            <span aria-hidden="true"></span>
+            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-marromclaro.png" alt="Anterior"></span>
+          </a>
+        </div>
+      </div>
+      <!-- Fim do carrossel Organico -->
 
     </div>
     <!-- Final das ideias por material -->

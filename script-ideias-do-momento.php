@@ -55,7 +55,7 @@
             }
             for($i = $cont-3; $i < $cont; $i++){
                 // echo '<script>alert("i: '.$i.'")</script>';
-                $carrossel[$cont2] .= $postagens2[$i];
+                $carrossel[$cont2] .= ''.$postagens2[$i];
                 if($i == $cont-1){
                     $carrossel[$cont2] .= '</div></div></div>';
                 }
@@ -84,9 +84,10 @@
   include 'connection.php';
 
   $postagens3 = array();
-  $cont = 1;
+  $carrossel2 = array();
+  $cont = 0;
 
-  $sql3 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 2 ORDER BY avaliacaoPostagem DESC LIMIT 4';
+  $sql3 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 2 ORDER BY avaliacaoPostagem DESC LIMIT 6';
   $result3 = $con->query($sql3);
 
   if ($result3->num_rows > 0){
@@ -100,6 +101,22 @@
           $ideiaPub = new Ideias($idPub, $nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub);
           $postagens3[] = $ideiaPub->createCardIdeia2($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
           $cont++;
+          if($cont%3 == 0){
+            if($cont2 == 0){
+                $carrossel2[$cont2] = '<div class="carousel-item active"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            else{
+                $carrossel2[$cont2] = '<div class="carousel-item"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            for($i = $cont-3; $i < $cont; $i++){
+                // echo '<script>alert("i: '.$i.'")</script>';
+                $carrossel2[$cont2] .= ''.$postagens3[$i];
+                if($i == $cont-1){
+                    $carrossel2[$cont2] .= '</div></div></div>';
+                }
+            }
+            $cont2++;
+          }
       }
   }
   
@@ -109,9 +126,10 @@
   include 'connection.php';
 
   $postagens4 = array();
-  $cont = 1;
+  $carrossel3 = array();
+  $cont = 0;
 
-  $sql4 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 3 ORDER BY avaliacaoPostagem DESC LIMIT 4';
+  $sql4 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 3 ORDER BY avaliacaoPostagem DESC LIMIT 6';
   $result4 = $con->query($sql4);
 
   if ($result4->num_rows > 0){
@@ -125,6 +143,22 @@
           $ideiaPub = new Ideias($idPub, $nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub);
           $postagens4[] = $ideiaPub->createCardIdeia2($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
           $cont++;
+          if($cont%3 == 0){
+            if($cont2 == 0){
+                $carrossel3[$cont2] = '<div class="carousel-item active"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            else{
+                $carrossel3[$cont2] = '<div class="carousel-item"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            for($i = $cont-3; $i < $cont; $i++){
+                // echo '<script>alert("i: '.$i.'")</script>';
+                $carrossel3[$cont2] .= ''.$postagens4[$i];
+                if($i == $cont-1){
+                    $carrossel3[$cont2] .= '</div></div></div>';
+                }
+            }
+            $cont2++;
+          }
       }
   }
   
@@ -134,9 +168,10 @@
   include 'connection.php';
 
   $postagens5 = array();
-  $cont = 1;
+  $carrossel4 = array();
+  $cont = 0;
 
-  $sql5 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 4 ORDER BY avaliacaoPostagem DESC LIMIT 4';
+  $sql5 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 4 ORDER BY avaliacaoPostagem DESC LIMIT 6';
   $result5 = $con->query($sql5);
 
   if ($result5->num_rows > 0){
@@ -150,6 +185,22 @@
           $ideiaPub = new Ideias($idPub, $nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub);
           $postagens5[] = $ideiaPub->createCardIdeia2($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
           $cont++;
+          if($cont%3 == 0){
+            if($cont2 == 0){
+                $carrossel4[$cont2] = '<div class="carousel-item active"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            else{
+                $carrossel4[$cont2] = '<div class="carousel-item"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            for($i = $cont-3; $i < $cont; $i++){
+                // echo '<script>alert("i: '.$i.'")</script>';
+                $carrossel4[$cont2] .= ''.$postagens5[$i];
+                if($i == $cont-1){
+                    $carrossel4[$cont2] .= '</div></div></div>';
+                }
+            }
+            $cont2++;
+          }
       }
   }
   
@@ -159,9 +210,10 @@
   include 'connection.php';
 
   $postagens6 = array();
-  $cont = 1;
+  $carrossel5 = array();
+  $cont = 0;
 
-  $sql6 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 5 ORDER BY avaliacaoPostagem DESC LIMIT 4';
+  $sql6 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 5 ORDER BY avaliacaoPostagem DESC LIMIT 6';
   $result6 = $con->query($sql4);
 
   if ($result6->num_rows > 0){
@@ -175,6 +227,22 @@
           $ideiaPub = new Ideias($idPub, $nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub);
           $postagens6[] = $ideiaPub->createCardIdeia2($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
           $cont++;
+          if($cont%3 == 0){
+            if($cont2 == 0){
+                $carrossel5[$cont2] = '<div class="carousel-item active"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            else{
+                $carrossel5[$cont2] = '<div class="carousel-item"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            for($i = $cont-3; $i < $cont; $i++){
+                // echo '<script>alert("i: '.$i.'")</script>';
+                $carrossel5[$cont2] .= ''.$postagens6[$i];
+                if($i == $cont-1){
+                    $carrossel5[$cont2] .= '</div></div></div>';
+                }
+            }
+            $cont2++;
+          }
       }
   }
   
@@ -184,9 +252,10 @@
   include 'connection.php';
 
   $postagens7 = array();
-  $cont = 1;
+  $carrossel6 = array();
+  $cont = 0;
 
-  $sql7 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 5 ORDER BY avaliacaoPostagem DESC LIMIT 4';
+  $sql7 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = 5 ORDER BY avaliacaoPostagem DESC LIMIT 6';
   $result7 = $con->query($sql7);
 
   if ($result7->num_rows > 0){
@@ -200,6 +269,22 @@
           $ideiaPub = new Ideias($idPub, $nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub);
           $postagens7[] = $ideiaPub->createCardIdeia2($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
           $cont++;
+          if($cont%3 == 0){
+            if($cont2 == 0){
+                $carrossel6[$cont2] = '<div class="carousel-item active"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            else{
+                $carrossel6[$cont2] = '<div class="carousel-item"><div class="cards-wrapper"><div class="row ideias">';
+            }
+            for($i = $cont-3; $i < $cont; $i++){
+                // echo '<script>alert("i: '.$i.'")</script>';
+                $carrossel6[$cont2] .= ''.$postagens7[$i];
+                if($i == $cont-1){
+                    $carrossel6[$cont2] .= '</div></div></div>';
+                }
+            }
+            $cont2++;
+          }
       }
   }
   
