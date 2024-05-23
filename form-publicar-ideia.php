@@ -72,7 +72,16 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                     $stmt = $con->prepare($sql);
                     if($stmt->execute()){
-                        echo '<script>document.alert("Muito obrigado! \n Sua ideia foi publicada com sucesso.");</script>';
+                        $sql2 = 'SELECT idPostagem FROM prototipo_Postagem_EcoMoment WHERE nomePostagem = "'.$nome.'" AND nomeUsuario = "'.$user.'" AND descricaoPostagem = "'.$descricao.'" AND materiaisNecessariosPostagem = "'.$materiaisNec.'" AND instrucoesPostagem = "'.$instrucoes.'" AND materialPostagem = "'.$material.'"AND dificuldadePostagem = "'.$dificuldade.'"';
+                        $result2 = $con->query($sql2);
+                        if ($result2->num_rows > 0){
+                            $existe = true;
+                            if ($row = $result2->fetch_assoc()){
+                                $idPost = $row['idPostagem'];
+                                $con->close();
+                                header('Location: redirecionamento-postagem.php?id='.$idPub);
+                            }
+                        }
                     }else{
                         echo '<script>document.alert("ERRO \n Não foi possível publicar sua ideia. Verifique se há algum erro ou tente novamente.");</script>';
                     }

@@ -7,10 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style-melhoresIdeias.css">
-    <!-- <link rel="stylesheet" href="styles/media-query-melhoresideias.css"> -->
-    <link rel="stylesheet" href="styles/style-ideia.css">
     <link rel="stylesheet" href="styles/style-padrao.css">
+    <link rel="stylesheet" href="styles/style-melhores-ideias.css">
+    <link rel="stylesheet" href="styles/style-ideia.css">
     <link rel="stylesheet" href="javascript/script-melhoresIdeias.js">
     <link rel="stylesheet" href="https://use.typekit.net/xhc2seb.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -89,12 +88,57 @@
           width: 90%;
         }
 
-        /*Fim do Carrossel*/
-
         .ideias{
           justify-content: center;
           width: 100%;
         }
+        /*Fim do Carrossel*/
+
+        /* Início dos botões */
+        #btn-plastico{
+          border: 2px solid #CF1212;
+        }
+        #btn-plastico::before{
+          background-color: #CF1212;
+        }
+        
+        #btn-metal{
+          border: 2px solid #FFC30F;
+        }
+        #btn-metal::before{
+          background-color: #FFC30F;
+        }
+
+        #btn-papel{
+          border: 2px solid #55A4DD;
+        }
+        #btn-papel::before{
+          background-color: #55A4DD;
+        }
+
+        #btn-vidro{
+          border: 2px solid #4E9E5A;
+        }
+        #btn-vidro::before{
+          background-color: #4E9E5A;
+        }
+
+        #btn-madeira{
+          border: 2px solid #423023;
+        }
+        #btn-madeira::before{
+          background-color: #423023;
+        }
+
+        #btn-organico{
+          border: 2px solid #A8642B;
+        }
+        #btn-organico::before{
+          background-color: #A8642B;
+        }
+
+        /* Fim dos botões */
+
 
     </style>
 </head>
@@ -143,19 +187,9 @@
       <!--Fim Título Plástico-->
       <!-- Início do carrossel Plástico -->
       <div class="center">
-        <div id="carouselExampleControls" class="carousel carousel-dark" data-ride="carousel">
+        <div id="carouselExampleControls" class="carousel carousel-dark" data-ride="carousel" data-bs-touch="true">
           <div class="carousel-inner">
-            <?php
-                //Carregamento das ideias de reutilazação
-                if ($existe){
-                    foreach($carrossel as $item){
-                        echo $item;
-                    }
-                }
-                else{
-                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-              ?>
+            <?=carregaPlastico();?>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span aria-hidden="true"></span>
@@ -168,6 +202,10 @@
         </div>
       </div>
       <!-- Fim do carrossel Plástico -->
+
+      <!-- Botão Plástico -->
+      <div class="center mt-2 mb-5"><a href="materiais.php?material=1#ideias" class="button" id="btn-plastico">Ver mais</a></div>
+      <!-- Fim do botão Plástico -->
 
       <!--Início Título Metal-->
       <section id="titulos">
@@ -182,17 +220,7 @@
       <div class="center">
         <div id="carouselExampleControlsMetal" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
-            <?php
-                //Carregamento das ideias de reutilazação
-                if ($existe && sizeof($carrossel2)>0){
-                    foreach($carrossel2 as $item){
-                        echo $item;
-                    }
-                }
-                else{
-                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-              ?>
+            <?=carregaMetal()?>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControlsMetal" role="button" data-slide="prev">
             <span aria-hidden="true"></span>
@@ -205,6 +233,10 @@
         </div>
       </div>
       <!-- Fim do carrossel Metal -->
+
+      <!-- Botão Metal -->
+      <div class="center mt-2 mb-5"><a href="materiais.php?material=2#ideias" class="button" id="btn-metal">Ver mais</a></div>
+      <!-- Fim do botão Metal -->
 
       <!--Início Título Papel-->
         <section id="titulos">
@@ -219,17 +251,7 @@
       <div class="center">
         <div id="carouselExampleControlsPapel" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
-            <?php
-                //Carregamento das ideias de reutilazação
-                if ($existe && sizeof($carrossel3)>0){
-                    foreach($carrossel3 as $item){
-                        echo $item;
-                    }
-                }
-                else{
-                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-              ?>
+            <?=carregaPapel()?>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControlsPapel" role="button" data-slide="prev">
             <span aria-hidden="true"></span>
@@ -242,6 +264,10 @@
         </div>
       </div>
       <!-- Fim do carrossel Papel -->
+
+      <!-- Botão Papel -->
+      <div class="center mt-2 mb-5"><a href="materiais.php?material=3#ideias" class="button" id="btn-papel">Ver mais</a></div>
+      <!-- Fim do botão Papel -->
       
       <!--Início Título Vidro-->
       <section id="titulos">
@@ -256,17 +282,7 @@
       <div class="center">
         <div id="carouselExampleControlsVidro" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
-            <?php
-                //Carregamento das ideias de reutilazação
-                if ($existe && sizeof($carrossel4)>0){
-                    foreach($carrossel4 as $item){
-                        echo $item;
-                    }
-                }
-                else{
-                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-              ?>
+            <?=carregaVidro()?>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControlsVidro" role="button" data-slide="prev">
             <span aria-hidden="true"></span>
@@ -279,6 +295,10 @@
         </div>
       </div>
       <!-- Fim do carrossel Vidro -->
+
+      <!-- Botão Vidro -->
+      <div class="center mt-2 mb-5"><a href="materiais.php?material=4#ideias" class="button" id="btn-vidro">Ver mais</a></div>
+      <!-- Fim do botão Vidro -->
 
       <!--Início Título Madeira-->
       <section id="titulos">
@@ -293,17 +313,7 @@
       <div class="center">
         <div id="carouselExampleControlsMadeira" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
-            <?php
-                //Carregamento das ideias de reutilazação
-                if ($existe && sizeof($carrossel5)>0){
-                    foreach($carrossel5 as $item){
-                        echo $item;
-                    }
-                }
-                else{
-                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-              ?>
+            <?=carregaMadeira()?>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControlsMadeira" role="button" data-slide="prev">
             <span aria-hidden="true"></span>
@@ -317,6 +327,10 @@
       </div>
       <!-- Fim do carrossel Madeira -->
 
+      <!-- Botão Madeira -->
+      <div class="center mt-2 mb-5"><a href="materiais.php?material=5#ideias" class="button" id="btn-madeira">Ver mais</a></div>
+      <!-- Fim do botão Madeira -->
+
       <!--Início Título Orgânico-->
       <section id="titulos">
         <img src="midias/icones-materiais/desperdicio-organico.png" alt="Maça" id="macaOrganica">
@@ -326,21 +340,11 @@
       </section>
       <!--Fim Título Orgânico-->
 
-      <!-- Início do carrossel Organico -->
+      <!-- Início do carrossel Orgânico -->
       <div class="center">
         <div id="carouselExampleControlsOrganico" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
-            <?php
-                //Carregamento das ideias de reutilazação
-                if ($existe && sizeof($carrossel6)>0){
-                    foreach($carrossel6 as $item){
-                        echo $item;
-                    }
-                }
-                else{
-                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-              ?>
+            <?=carregaOrganico()?>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControlsOrganico" role="button" data-slide="prev">
             <span aria-hidden="true"></span>
@@ -352,7 +356,11 @@
           </a>
         </div>
       </div>
-      <!-- Fim do carrossel Organico -->
+      <!-- Fim do carrossel Orgânico -->
+
+      <!-- Botão Orgânico -->
+      <div class="center mt-2 mb-5"><a href="materiais.php?material=6#ideias" class="button" id="btn-organico">Ver mais</a></div>
+      <!-- Fim do botão Orgânico -->
 
     </div>
     <!-- Final das ideias por material -->

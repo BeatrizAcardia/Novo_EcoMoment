@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles\styleSobre.css">
-    <link rel="stylesheet" href="styles\media-querysSobre.css">
+    <link rel="stylesheet" href="styles/style-padrao.css">
+    <link rel="stylesheet" href="styles/style-sobre-nos.css">
+    <link rel="stylesheet" href="styles/media-querys-sobre-nos.css">
     <link rel="stylesheet" href="https://use.typekit.net/xhc2seb.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -44,18 +45,29 @@
     </style>
 </head>
 <body>
-    <main>
-        <!-- <nav class="navbar navbar-expand-md fixed-top navbar-light">
-        <div class="container-fluid navBar">
-          <span class="navbar-brand"><a href="index.html"><img src="imagens/icon.ico" alt="Biologia - Banner" class="navbarIcon"></a></span>
-            <button class="navbar-toggler d-md-none rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+
+      <!-- <nav class="navbar navbar-expand-md fixed-top navbar-light">
+      <div class="container-fluid navBar">
+        <span class="navbar-brand"><a href="index.html"><img src="imagens/icon.ico" alt="Biologia - Banner" class="navbarIcon"></a></span>
+          <button class="navbar-toggler d-md-none rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-item nav-link padding-navbar" href="index.html"><button class="cta" onclick="cliquei()">
+                    <span class="ideias">Início</span>
+                      <path
+                        id="Path_10"
+                        data-name="Path 10"
+                        d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                        transform="translate(30)"></path>
+                  </button>
+                  </a>
+                </li>
                   <li class="nav-item">
-                    <a class="nav-item nav-link padding-navbar" href="index.html"><button class="cta" onclick="cliquei()">
-                      <span class="ideias">Início</span>
+                    <a class="nav-item nav-link padding-navbar" href="paginaDeIdeias.html"><button class="cta" onclick="cliquei()">
+                      <span class="ideias">Ideias</span>
                         <path
                           id="Path_10"
                           data-name="Path 10"
@@ -64,58 +76,50 @@
                     </button>
                     </a>
                   </li>
-                    <li class="nav-item">
-                      <a class="nav-item nav-link padding-navbar" href="paginaDeIdeias.html"><button class="cta" onclick="cliquei()">
-                        <span class="ideias">Ideias</span>
-                          <path
-                            id="Path_10"
-                            data-name="Path 10"
-                            d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                            transform="translate(30)"></path>
-                      </button>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-item nav-link padding-navbar" href="index.html#footer"><button class="cta" onclick="cliquei()">
-                        <span class="contato">Contato</span>
-                          <path
-                            id="Path_10"
-                            data-name="Path 10"
-                            d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                            transform="translate(30)"></path>
-                      </button>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-item nav-link padding-navbar" href="#"><button class="cta"  onclick="cliquei()">
-                        <span class="login">Login</span>
-                          <path
-                            id="Path_10"
-                            data-name="Path 10"
-                            d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                            transform="translate(30)"></path>
-                      </button>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-item nav-link padding-navbar" href="#"><button class="cta" onclick="cliquei()">
-                        <span class="cadastro">Cadastro</span>
-                          <path
-                            id="Path_10"
-                            data-name="Path 10"
-                            d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                            transform="translate(30)"></path>
-                      </button>
-                      </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link padding-navbar" href="index.html#footer"><button class="cta" onclick="cliquei()">
+                      <span class="contato">Contato</span>
+                        <path
+                          id="Path_10"
+                          data-name="Path 10"
+                          d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                          transform="translate(30)"></path>
+                    </button>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link padding-navbar" href="#"><button class="cta"  onclick="cliquei()">
+                      <span class="login">Login</span>
+                        <path
+                          id="Path_10"
+                          data-name="Path 10"
+                          d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                          transform="translate(30)"></path>
+                    </button>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link padding-navbar" href="#"><button class="cta" onclick="cliquei()">
+                      <span class="cadastro">Cadastro</span>
+                        <path
+                          id="Path_10"
+                          data-name="Path 10"
+                          d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                          transform="translate(30)"></path>
+                    </button>
+                    </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
     </nav> -->
-      <?php
-        include('navbar/navbar.html');
-      ?>
-
+      <header>
+        <?php
+          include('navbar/navbar.html');
+        ?>
+      </header>
+      
+      <main>
       <!--Início Título Principal-->
       <section>
           <h1 class="escrita circeB" id="tituloPrincipal">O projeto EcoMoment</h1>

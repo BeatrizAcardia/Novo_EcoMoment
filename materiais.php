@@ -105,35 +105,55 @@
             $tipo = 'Ordenar';
             $tipo2 = 'Dificuldades';
 
-            //Pesquisa de ideias
-            include 'connection.php';
-        
-            $postagens6 = array();
-
-            $sql8 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = '.$idMaterial.' AND nomePostagem LIKE "%'.$txt.'%"';
-            $result8 = $con->query($sql8);
-
-            if ($result8->num_rows > 0){
-                while ($row = $result8->fetch_assoc()){
-                    $idIdeia = $row['idPostagem'];
-                    $nomeIdeia = $row['nomePostagem'];
-                    $userIdeia = $row['nomeUsuario'];
-                    $dificuldadeIdeia = $row['dificuldadePostagem'];
-                    $avaliacao = $row['avaliacaoPostagem'];
-                    $ideia = new Ideias($idIdeia, $nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao);
-                    $postagens6[] = $ideia->createCardIdeia5($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
+            if($txt != '' or !empty($txt)){
+                //Pesquisa de ideias
+                include 'connection.php';
+            
+                $postagens6 = array();
+    
+                $sql8 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = '.$idMaterial.' AND nomePostagem LIKE "%'.$txt.'%"';
+                $result8 = $con->query($sql8);
+    
+                if ($result8->num_rows > 0){
+                    while ($row = $result8->fetch_assoc()){
+                        $idIdeia = $row['idPostagem'];
+                        $nomeIdeia = $row['nomePostagem'];
+                        $userIdeia = $row['nomeUsuario'];
+                        $dificuldadeIdeia = $row['dificuldadePostagem'];
+                        $avaliacao = $row['avaliacaoPostagem'];
+                        $ideia = new Ideias($idIdeia, $nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao);
+                        $postagens6[] = $ideia->createCardIdeia5($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
+                    }
+                    $con->close();
+                    $conteudo = '';      
+                    foreach($postagens6 as $post){
+                        $conteudo .= (string)$post;
+                    }
+                    if($conteudo == ''){
+                        $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                    }
                 }
-                $con->close();
-                $conteudo = '';      
-                foreach($postagens6 as $post){
-                    $conteudo .= (string)$post;
-                }
-                if($conteudo == ''){
+                else{
                     $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
                 }
             }
             else{
-                $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                echo '<script>alert("A busca não pôde ser concluída.\nDigite o nome ou parte do nome da ideia para obter resultados")</script>';
+                $conteudo = '';
+                $tipo = 'Ordenar';
+                $tipo2 = 'Dificuldades';
+                //Carregamento das ideias de reutilazação
+                if ($existe){       
+                    foreach($postagens as $post){
+                        $conteudo .= (string)$post;
+                    }
+                    if($conteudo == ''){
+                        $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                    }
+                }
+                else{
+                    $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                }
             }
         }
         else{
@@ -198,10 +218,6 @@
             --bs-nav-tabs-link-active-bg: #f4f4f4;
             --bs-nav-tabs-border-color: #737373;
             --bs-nav-tabs-link-hover-border-color: #d9d9d9;
-        }
-
-        #navbarMargin{
-            margin-top: 90px;
         }
 
         .table .tituloTabela{
@@ -303,6 +319,7 @@
                     </div>
                 </div>
             </div>
+            <span id="ideias" class="mb-3"></span>
         </section>
 
         <!--Ideias de reutilização-->
