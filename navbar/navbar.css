@@ -217,7 +217,7 @@ button{
     justify-content: center;
   }
 
-  ul{
+  #ul-navbar{
     margin-left: -6%;
   }
 }

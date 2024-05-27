@@ -3,9 +3,6 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
         $conteudo = '';
-        $tipo = 'Ordenar';
-        $tipo2 = 'Dificuldades';
-        //Carregamento das ideias de reutilazação
         if ($existe){       
             foreach($postagens as $post){
                 $conteudo .= (string)$post;
@@ -13,165 +10,6 @@
         }
         else{
             $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-        }
-    }
-    else if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $filtro = $_POST['filtro'];
-        if($filtro == 1){
-            $conteudo = '';
-            $tipo = '<strong>Dificuldade</strong>';
-            $tipo2 = '<strong>Fácil</strong>';
-            //Carregamento das ideias de reutilazação
-            if ($existe){       
-                foreach($postagens1 as $post){
-                    $conteudo .= (string)$post;
-                }
-                if($conteudo == ''){
-                    $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-            }
-            else{
-                $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-            }
-        }
-        else if($filtro == 2){
-            $conteudo = '';
-            $tipo = '<strong>Dificuldade</strong>';
-            $tipo2 = '<strong>Média</strong>';
-            //Carregamento das ideias de reutilazação
-            if ($existe){       
-                foreach($postagens2 as $post){
-                    $conteudo .= (string)$post;
-                }
-                if($conteudo == ''){
-                    $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-            }
-            else{
-                $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-            }
-        }
-        else if($filtro == 3){
-            $conteudo = '';
-            $tipo = '<strong>Dificuldade</strong>';
-            $tipo2 = '<strong>Difícil</strong>';
-            //Carregamento das ideias de reutilazação
-            if ($existe){       
-                foreach($postagens3 as $post){
-                    $conteudo .= (string)$post;
-                }
-                if($conteudo == ''){
-                    $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-            }
-            else{
-                $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-            }
-        }
-        else if($filtro == 4){
-            $conteudo = '';
-            $tipo = '<strong>Avaliação</strong>';
-            //Carregamento das ideias de reutilazação
-            if ($existe){       
-                foreach($postagens4 as $post){
-                    $conteudo .= (string)$post;
-                }
-                if($conteudo == ''){
-                    $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-            }
-            else{
-                $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-            }
-        }
-        else if($filtro == 5){
-            $conteudo = '';
-            $tipo = '<strong>Curtidas</strong>';
-            //Carregamento das ideias de reutilazação
-            if ($existe){       
-                foreach($postagens5 as $post){
-                    $conteudo .= (string)$post;
-                }
-                if($conteudo == ''){
-                    $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-            }
-            else{
-                $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-            }
-        }
-        else if($filtro == 6){
-            $txt = $_POST['pesquisa'];
-            $tipo = 'Ordenar';
-            $tipo2 = 'Dificuldades';
-
-            if($txt != '' or !empty($txt)){
-                //Pesquisa de ideias
-                include 'connection.php';
-            
-                $postagens6 = array();
-    
-                $sql8 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = '.$idMaterial.' AND nomePostagem LIKE "%'.$txt.'%"';
-                $result8 = $con->query($sql8);
-    
-                if ($result8->num_rows > 0){
-                    while ($row = $result8->fetch_assoc()){
-                        $idIdeia = $row['idPostagem'];
-                        $nomeIdeia = $row['nomePostagem'];
-                        $userIdeia = $row['nomeUsuario'];
-                        $dificuldadeIdeia = $row['dificuldadePostagem'];
-                        $avaliacao = $row['avaliacaoPostagem'];
-                        $ideia = new Ideias($idIdeia, $nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao);
-                        $postagens6[] = $ideia->createCardIdeia5($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
-                    }
-                    $con->close();
-                    $conteudo = '';      
-                    foreach($postagens6 as $post){
-                        $conteudo .= (string)$post;
-                    }
-                    if($conteudo == ''){
-                        $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                    }
-                }
-                else{
-                    $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-            }
-            else{
-                echo '<script>alert("A busca não pôde ser concluída.\nDigite o nome ou parte do nome da ideia para obter resultados")</script>';
-                $conteudo = '';
-                $tipo = 'Ordenar';
-                $tipo2 = 'Dificuldades';
-                //Carregamento das ideias de reutilazação
-                if ($existe){       
-                    foreach($postagens as $post){
-                        $conteudo .= (string)$post;
-                    }
-                    if($conteudo == ''){
-                        $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                    }
-                }
-                else{
-                    $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-            }
-        }
-        else{
-            $conteudo = '';
-            $tipo = 'Ordenar';
-            $tipo2 = 'Dificuldades';
-            //Carregamento das ideias de reutilazação
-            if ($existe){       
-                foreach($postagens as $post){
-                    $conteudo .= (string)$post;
-                }
-                if($conteudo == ''){
-                    $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-                }
-            }
-            else{
-                $conteudo = '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
-            }
         }
     }
 ?>
@@ -224,6 +62,10 @@
             color: <?=$cor?>;
         }
         
+        .loading{
+            width: 60px;
+            margin-bottom: 20px;
+        }
 
     </style>
 </head>
@@ -328,56 +170,21 @@
                 <h1 class="display-5 fw-bold text-center mb-5" id="titulo">IDEIAS DE REUTILIZAÇÃO COM <?=$material?></h1> <!--Muda com Php-->
                 <div class="row center nunito">
                     <div class="dropdown col-3">
-                        <button class="btn dropdown-toggle filtro" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="midias/icones-materiais/ordenacao.png" alt="ícone de organização em lixeiras"> <span class="d-none d-sm-block mx-1" id="selectedFiltro"><?=$tipo?></span> </button>
+                        <button class="btn dropdown-toggle filtro" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="midias/icones-materiais/ordenacao.png" alt="ícone de organização em lixeiras"> <span class="d-none d-sm-block mx-1" id="selectedFiltro">Ordenar</span> </button>
                         <ul class="dropdown-menu">
-                          <li class="filtroDflt" id="filtro1" onclick="selecionaFiltro(1)"> Dificuldade</li> <!--Chama uma função de ordenar por JS-->
-                          <li class="filtroDflt" id="filtro2">
-                            <form method="post">
-                                <input type="hidden" name="filtro" value="4">
-                                <input type="submit" value="Avaliação">
-                            </form>
-                          </li>
-                          <li class="filtroDflt" id="filtro3">
-                            <form method="post">
-                                <input type="hidden" name="filtro" value="5">
-                                <input type="submit" value="Curtidas">
-                            </form>
-                          </li>
-                          <li class="filtroDflt" id="filtro-1">
-                            <form method="post">
-                                <input type="hidden" name="filtro" value="-1">
-                                <input type="submit" value="Limpar seleção">
-                            </form>
-                          </li>
+                            <li class="filtroDflt" id="filtro1" onclick="selecionaFiltro(1, <?=$idMaterial?>)"> Dificuldade</li> <!--Chama uma função de ordenar por JS-->
+                            <li class="filtroDflt" id="filtro2" onclick="selecionaFiltro(2, <?=$idMaterial?>)"> Avaliação</li>
+                            <li class="filtroDflt" id="filtro3" onclick="selecionaFiltro(3, <?=$idMaterial?>)"> Curtidas</li>
+                            <li class="filtroDflt" id="filtro-1" onclick="selecionaFiltro(-1, <?=$idMaterial?>)"></li>
                         </ul>
 
                         <div id="drop-dif" class="mt-2" style="display: none;">
-                            <button class="btn dropdown-toggle filtro" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="midias/icones-materiais/semaforo.png" alt="ícone de semáforo"> <span class="d-none d-sm-block mx-1" id="selectedFiltro2"><?=$tipo2?></span> </button>
+                            <button class="btn dropdown-toggle filtro" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="midias/icones-materiais/semaforo.png" alt="ícone de semáforo"> <span class="d-none d-sm-block mx-1" id="selectedFiltro2">Dificuldades</span> </button>
                             <ul class="dropdown-menu">
-                              <li class="filtroDflt" id="filtro4">
-                                <form method="post">
-                                    <input type="hidden" name="filtro" value="1">
-                                    <input type="submit" value="Fácil">
-                                </form>
-                              </li> <!--Chama uma função de ordenar por JS-->
-                              <li class="filtroDflt" id="filtro5">
-                                <form method="post">
-                                    <input type="hidden" name="filtro" value="2">
-                                    <input type="submit" value="Média">
-                                </form>
-                              </li>
-                              <li class="filtroDflt" id="filtro6">
-                                <form method="post">
-                                    <input type="hidden" name="filtro" value="3">
-                                    <input type="submit" value="Difícil">
-                                </form>
-                              </li>
-                              <li class="filtroDflt" id="filtro-2">
-                                <form method="post">
-                                    <input type="hidden" name="filtro" value="-1">
-                                    <input type="submit" value="Limpar seleção">
-                                </form>
-                              </li>
+                              <li class="filtroDflt" id="filtro4" onclick="selecionaFiltro2(1, <?=$idMaterial?>)"> Fácil</li> <!--Chama uma função de ordenar por JS-->
+                              <li class="filtroDflt" id="filtro5" onclick="selecionaFiltro2(2, <?=$idMaterial?>)"> Média</li>
+                              <li class="filtroDflt" id="filtro6" onclick="selecionaFiltro2(3, <?=$idMaterial?>)"> Difícil</li>
+                              <li class="filtroDflt" id="filtro-2" onclick="selecionaFiltro2(-1, <?=$idMaterial?>)"></li>
                             </ul>
                         </div>
                     </div>
@@ -386,8 +193,7 @@
                     <form class="d-flex" role="search" method="post">
                         <div class="input-group">
                             <input class="form-control" id="search2" type="search" name="pesquisa" placeholder="Buscar" aria-label="Buscar">
-                            <input type="hidden" name="filtro" value="6">
-                            <button class="btn btnPesq input-group-text" type="submit"><i class="bi bi-search"></i></button>
+                            <button class="btn btnPesq input-group-text" type="button" onclick="pesquisar(<?=$idMaterial?>)"><i class="bi bi-search"></i></button>
                         </div>
                     </form>
                     </div>
@@ -412,93 +218,7 @@
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-    <script>
-        function selecionaFiltro(n){
-            switch (n){
-                case 1:
-                    document.getElementById('selectedFiltro').innerHTML = '<strong>Dificuldade</strong>';
-                    document.getElementById('filtro1').innerHTML = '<strong> Dificuldade</strong>';
-                    document.getElementById('filtro2').innerHTML = ' Avaliação';
-                    document.getElementById('filtro3').innerHTML = ' Curtidas';
-                    document.getElementById('filtro-1').innerHTML = 'Limpar seleção';
-                    document.getElementById('drop-dif').style.display = 'block';
-
-                    break;
-                case 2:
-                    document.getElementById('selectedFiltro').innerHTML = '<strong>Avaliação</strong>';
-                    document.getElementById('filtro2').innerHTML = '<strong> Avaliação</strong>';
-                    document.getElementById('filtro1').innerHTML = ' Dificuldade';
-                    document.getElementById('filtro3').innerHTML = ' Curtidas';
-                    document.getElementById('filtro-1').innerHTML = 'Limpar seleção';
-                    document.getElementById('drop-dif').style.display = 'none';
-                    break;
-                case 3:
-                    document.getElementById('selectedFiltro').innerHTML = '<strong>Curtidas</strong>';
-                    document.getElementById('filtro3').innerHTML = '<strong> Curtidas</strong>';
-                    document.getElementById('filtro2').innerHTML = ' Avaliação';
-                    document.getElementById('filtro1').innerHTML = ' Dificuldade';
-                    document.getElementById('filtro-1').innerHTML = 'Limpar seleção';
-                    document.getElementById('drop-dif').style.display = 'none';
-                    break;
-                case -1:
-                    document.getElementById('selectedFiltro').innerHTML = 'Ordenar';
-                    document.getElementById('filtro3').innerHTML = ' Curtidas';
-                    document.getElementById('filtro2').innerHTML = ' Avaliação';
-                    document.getElementById('filtro1').innerHTML = ' Dificuldade';
-                    document.getElementById('filtro-1').innerHTML = '';
-                    document.getElementById('drop-dif').style.display = 'none';
-                    break;
-                default:
-                    alert('ERRO! Houve um problema ao selecionar o filtro. Tente novamente ou reinicie a página.');
-                    break;
-            }
-            
-        }
-                
-        function selecionaFiltro2(n){
-            switch (n){
-                case 1:
-                    document.getElementById('selectedFiltro2').innerHTML = '<strong>Fácil</strong>';
-                    document.getElementById('filtro4').innerHTML = '<strong> Fácil</strong>';
-                    document.getElementById('filtro5').innerHTML = ' Média';
-                    document.getElementById('filtro6').innerHTML = ' Difícil';
-                    document.getElementById('filtro-2').innerHTML = 'Limpar seleção';
-                    break;
-                case 2:
-                    document.getElementById('selectedFiltro2').innerHTML = '<strong>Média</strong>';
-                    document.getElementById('filtro5').innerHTML = '<strong> Média</strong>';
-                    document.getElementById('filtro4').innerHTML = ' Fácil';
-                    document.getElementById('filtro6').innerHTML = ' Difícil';
-                    document.getElementById('filtro-2').innerHTML = 'Limpar seleção';
-                    content = '';
-                    break;
-                case 3:
-                    document.getElementById('selectedFiltro2').innerHTML = '<strong>Difícil</strong>';
-                    document.getElementById('filtro6').innerHTML = '<strong> Difícil</strong>';
-                    document.getElementById('filtro5').innerHTML = ' Média';
-                    document.getElementById('filtro4').innerHTML = ' Fácil';
-                    document.getElementById('filtro-2').innerHTML = 'Limpar seleção';
-                    break;
-                case -1:
-                    document.getElementById('selectedFiltro').innerHTML = 'Ordenar';
-                    document.getElementById('selectedFiltro2').innerHTML = 'Dificuldades';
-                    document.getElementById('filtro1').innerHTML = 'Dificuldade';
-                    document.getElementById('filtro6').innerHTML = ' Difícil';
-                    document.getElementById('filtro5').innerHTML = ' Média';
-                    document.getElementById('filtro4').innerHTML = ' Fácil';
-                    document.getElementById('filtro-1').innerHTML = '';
-                    document.getElementById('filtro-2').innerHTML = '';
-                    document.getElementById('drop-dif').style.display = 'none';
-                    break;
-                default:
-                    alert('ERRO! Houve um problema ao selecionar o filtro. Tente novamente ou reinicie a página.');
-                    break;
-            }
-            
-        }
-
-    </script>
+    <script src="ajax-materiais.js"></script>
 
 </body>
 </html>
