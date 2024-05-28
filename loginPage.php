@@ -78,7 +78,7 @@
 
                     <p id="or" class="circeB">ou</p>
 
-                <form action="loginPage.php" method="post">
+                <form method="post">
                     <div class="input-group">
                         <div class="input-box">
                             <label class="lbl circeB" for="email_username">E-mail / nome de usuário:</label>

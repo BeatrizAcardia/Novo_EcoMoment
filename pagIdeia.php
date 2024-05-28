@@ -275,60 +275,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+    <script src="ajax-ideias.js"></script>
     
-
-    <script>
-        
-        // var curtida = <=$curtido?>;
-        var curtida = false;
-        console.log('Número de curtidas: <?=$numCurtidas?>')
-        if(curtida){
-            document.querySelector('.curtida').innerHTML = '<img class="btnInteraction" src="midias/icones-pagIdeia/curtida-1.png" alt="Ícone de coração sem preenchimento">';
-        }
-        else{
-            document.querySelector('.curtida').innerHTML = '<img class="btnInteraction" src="midias/icones-pagIdeia/curtida-2.png" alt="Ícone de coração sem preenchimento">';
-        }
-
-        function curtirJS(){
-            alert('curti');
-            if (curtida == false){
-                alert('passei por aqui 1');
-                // <?php
-                //     $numCurtidas++;
-                //     $curtiu = curtirPHP($numCurtidas, $idUserWeb, $idPostagem);
-                // //     echo'alert("Curti -> numero: '.$numCurtidas.'");';
-                // ?>
-                curtida = true;
-                document.querySelector('.curtida').innerHTML = '<img class="btnInteraction" src="midias/icones-pagIdeia/curtida-1.png" alt="Ícone de coração sem preenchimento">';
-                document.getElementById('numCurtidas').innerHTML = <?=$numCurtidas?>;
-                
-            } else{
-                alert('passei por aqui 2');
-                // <?php
-                //     $numCurtidas = $numCurtidas-1;
-                //     $curtiu = curtirPHP($numCurtidas, $idUserWeb, $idPostagem);
-                // //     echo'alert("Nn curti -> numero: '.$numCurtidas.'");';
-                // ?>
-                console.log('Num agr: <?=$numCurtidas?>');
-                curtida = false;
-                document.querySelector('.curtida').innerHTML = '<img class="btnInteraction" src="midias/icones-pagIdeia/curtida-2.png" alt="Ícone de coração sem preenchimento">';
-                document.getElementById('numCurtidas').innerHTML = <?=$numCurtidas?>;
-            }
-        }
-
-        function compartilhar(){
-            alert('Compartilhou')
-        }
-
-        function avaliar(n){
-            alert(`${n} estrela(s)`)
-            document.getElementById('x-star5').disabled = 'true';
-            document.getElementById('x-star4').disabled = 'true';
-            document.getElementById('x-star3').disabled = 'true';
-            document.getElementById('x-star2').disabled = 'true';
-            document.getElementById('x-star1').disabled = 'true';
-        }
-    </script>
 </body>
 </html>

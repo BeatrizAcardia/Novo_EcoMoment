@@ -134,7 +134,7 @@
                                     Editar
                                 </button> -->
                                 <?=$btn1?>
-                                <button class="button btn-share my-2 d-none d-md-block">Compartilhar</button>
+                                <button class="button btn-share my-2 d-none d-md-block"><a href="logout.php">Compartilhar</a></button>
                             </div>
                             <!-- Dados -->
                             <div class="col-12 col-md-6 col-dados">
@@ -242,8 +242,8 @@
                             <input class="form-control" type="text" name="nome" id="nome" placeholder="Até 30 caracteres" maxlength="30" value="<?=$user?>">
                         </div>
                         <div class="my-3">
-                            <label for="bio" class="form-label">Sobre mim:</label>
-                            <textarea class="form-control" name="bio" id="bio" cols="23" rows="4" placeholder="Até 150 caracteres" maxlength="150"><?=$biog?></textarea>
+                            <label for="biog" class="form-label">Sobre mim:</label>
+                            <textarea class="form-control" name="bio" id="biog" cols="23" rows="4" placeholder="Até 150 caracteres" maxlength="150"><?=$biog?></textarea>
                         </div>
                     </div>
                     <div class="center footer nunito mt-3">
@@ -288,7 +288,7 @@
         }
     </script>
 
-    
+    <!-- Foto -->
     <script>
         document.getElementById('foto').addEventListener('change', function(){
             document.querySelector('#nome-ft').textContent = this.files[0].name;
