@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/xhc2seb.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <title>Ideias do Momento</title>
     <style>
         .circeR{
@@ -37,6 +38,10 @@
 
         body{
           background-color: #f4f4f4;
+        }
+        
+        .row-av-ideia > *{
+            width: min-content;
         }
 
         /*Começo do Título Principal*/
@@ -65,17 +70,20 @@
         .card{
             width: 280px;
             height: 320px;
+            object-fit: cover;
         }
 
         .img-card{
-            padding-left: 2px;
-            padding-right: 2px;
-            padding-top: 3px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 5px;
         }
 
         .card-content{
-            padding: 5px;
+            padding: 15px;
+            padding-top: 5px;
             text-align: center;
+            font-weight: bold;
         }
 
         .card-text{
@@ -84,13 +92,72 @@
         }
                 
         /*Início do Carrosel*/
-        #carouselExampleControls, #carouselExampleControlsVidro, #carouselExampleControlsPapel, #carouselExampleControlsMetal, #carouselExampleControlsOrganico, #carouselExampleControlsMadeira{
-          width: 90%;
+        .swiper-wrapper{
+            margin-bottom: 15px;
+            width: 80%;
         }
 
-        .ideias{
+        .swiper{
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        .swiper-slide{
+          width: fit-content;
+        }
+
+        .swiper-button-prev{
+            left: 0;
+        }
+
+        .swiper-button-next{
+            right: 0;
+        }
+
+        .swiper-button-prev:after{
+            content: '';
+        }
+
+        .swiper-button-next:after{
+            content: '';
+        }
+
+        .swiper-slide{
+          display: flex;
+          align-items: center;
           justify-content: center;
-          width: 100%;
+        }
+
+        #containerCarrossel{
+          max-width: 100%;
+        }
+        
+        #pag-melhores .swiper-pagination-bullet-active{
+          background-color: #05440F;
+        }
+
+        #pag-plastico .swiper-pagination-bullet-active{
+          background-color: #CF1212;
+        }
+
+        #pag-metal .swiper-pagination-bullet-active{
+          background-color: #FFC30F;
+        }
+
+        #pag-papel .swiper-pagination-bullet-active{
+          background-color: #55A4DD;
+        }
+
+        #pag-vidro .swiper-pagination-bullet-active{
+          background-color: #4E9E5A;
+        }
+
+        #pag-madeira .swiper-pagination-bullet-active{
+          background-color: #423023;
+        }
+
+        #pag-madeira .swiper-pagination-bullet-active{
+          background-color: #A8642B;
         }
         /*Fim do Carrossel*/
 
@@ -158,18 +225,38 @@
 
     <!-- Início dos Cards - Ideias do Momento -->
     <div class="center">
-        <div class="container ideias row">
+        <div class="container center ideias d-none d-md-flex row">
             <?php
               //Carregamento das ideias de reutilazação
               if ($existe && sizeof($postagens)>0){
                   foreach($postagens as $post){
-                      echo $post;
+                      echo '<div class="center col-12 col-md-6 col-xl-3">'.$post.'</div>';
                   }
               }
               else{
                   echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
               }
             ?>
+        </div>
+        <div class="container center d-block d-md-none" id="containerCarrossel">
+          <div class="swiper" id="carrosselMelhores">
+            <div class="swiper-wrapper">
+              <?php
+                //Carregamento das ideias de reutilazação
+                if ($existe && sizeof($postagens)>0){
+                    foreach($postagens as $post){
+                        echo $post;
+                    }
+                }
+                else{
+                    echo '<div class="novaIdeia">Nenhuma postagem cadastrada</div>';
+                }
+              ?>
+            </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination" id="pag-melhores"></div>
+
+          </div>
         </div>
     </div>
     <!-- Final dos Cards -->
@@ -187,18 +274,16 @@
       <!--Fim Título Plástico-->
       <!-- Início do carrossel Plástico -->
       <div class="center">
-        <div id="carouselExampleControls" class="carousel carousel-dark" data-ride="carousel" data-bs-touch="true">
-          <div class="carousel-inner">
-            <?=carregaPlastico();?>
+        <div class="swiper" id="carrosselPlastico">
+          <div class="swiper-wrapper">
+            <?=carregaPlastico()?>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span aria-hidden="true"></span>
-            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-esquerda.png" alt="Anterior"></span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span aria-hidden="true"></span>
-            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita.png" alt="Anterior"></span>
-          </a>
+          <!-- Pagination -->
+          <div class="swiper-pagination" id="pag-plastico"></div>
+          <!-- Navigation buttons -->
+          <div class="swiper-button-prev d-none d-md-block" id="prev-plastico"><img src="midias/divisas-carrossel/divisa-esquerda.png" alt="Seta para a esquerda"></div>
+          <div class="swiper-button-next d-none d-md-block" id="next-plastico"><img src="midias/divisas-carrossel/divisa-direita.png" alt="Seta para a direita"></div>
+
         </div>
       </div>
       <!-- Fim do carrossel Plástico -->
@@ -218,18 +303,16 @@
 
       <!-- Início do carrossel Metal -->
       <div class="center">
-        <div id="carouselExampleControlsMetal" class="carousel carousel-dark" data-ride="carousel">
-          <div class="carousel-inner">
+        <div class="swiper" id="carrosselMetal">
+          <div class="swiper-wrapper">
             <?=carregaMetal()?>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleControlsMetal" role="button" data-slide="prev">
-            <span aria-hidden="true"></span>
-            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-esquerda-amarelo.png" alt="Anterior"></span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControlsMetal" role="button" data-slide="next">
-            <span aria-hidden="true"></span>
-            <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-amarelo.png" alt="Anterior"></span>
-          </a>
+          <!-- Pagination -->
+          <div class="swiper-pagination" id="pag-metal"></div>
+          <!-- Navigation buttons -->
+          <div class="swiper-button-prev d-none d-md-block" id="prev-metal"><img src="midias/divisas-carrossel/divisa-esquerda-amarelo.png" alt="Seta para a esquerda"></div>
+          <div class="swiper-button-next d-none d-md-block" id="next-metal"><img src="midias/divisas-carrossel/divisa-direita-amarelo.png" alt="Seta para a direita"></div>
+
         </div>
       </div>
       <!-- Fim do carrossel Metal -->
@@ -249,6 +332,9 @@
 
       <!-- Início do carrossel Papel -->
       <div class="center">
+
+        <!-- VERSÃO OBSOLETA -->
+
         <div id="carouselExampleControlsPapel" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
             <?=carregaPapel()?>
@@ -262,6 +348,20 @@
             <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-azul.png" alt="Anterior"></span>
           </a>
         </div>
+
+        <!-- VERSÃO ATUALIZADA -->
+
+        <!-- <div class="swiper" id="carrosselPapel">
+          <div class="swiper-wrapper">
+            <?=carregaPapel()?>
+          </div>
+          <! -- Pagination -- >
+          <div class="swiper-pagination" id="pag-papel"></div>
+          <! -- Navigation buttons -- >
+          <div class="swiper-button-prev d-none d-md-block" id="prev-papel"><img src="midias/divisas-carrossel/divisa-esquerda-azul.png" alt="Seta para a esquerda"></div>
+          <div class="swiper-button-next d-none d-md-block" id="next-papel"><img src="midias/divisas-carrossel/divisa-direita-azul.png" alt="Seta para a direita"></div>
+
+        </div> -->
       </div>
       <!-- Fim do carrossel Papel -->
 
@@ -280,6 +380,9 @@
 
       <!-- Início do carrossel Vidro -->
       <div class="center">
+        
+        <!-- VERSÃO OBSOLETA -->
+
         <div id="carouselExampleControlsVidro" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
             <?=carregaVidro()?>
@@ -293,6 +396,20 @@
             <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-verde.png" alt="Anterior"></span>
           </a>
         </div>
+
+        <!-- VERSÃO ATUALIZADA -->
+
+        <!-- <div class="swiper" id="carrosselVidro">
+          <div class="swiper-wrapper">
+            <?=carregaVidro()?>
+          </div>
+          <! -- Pagination -- >
+          <div class="swiper-pagination" id="pag-vidro"></div>
+          <! -- Navigation buttons -- >
+          <div class="swiper-button-prev d-none d-md-block" id="prev-vidro"><img src="midias/divisas-carrossel/divisa-esquerda-verde.png" alt="Seta para a esquerda"></div>
+          <div class="swiper-button-next d-none d-md-block" id="next-vidro"><img src="midias/divisas-carrossel/divisa-direita-verde.png" alt="Seta para a direita"></div>
+
+        </div> -->
       </div>
       <!-- Fim do carrossel Vidro -->
 
@@ -311,6 +428,9 @@
 
       <!-- Início do carrossel Madeira -->
       <div class="center">
+
+        <!-- VERSÃO OBSOLETA -->
+
         <div id="carouselExampleControlsMadeira" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
             <?=carregaMadeira()?>
@@ -324,6 +444,21 @@
             <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-marromescuro.png" alt="Anterior"></span>
           </a>
         </div>
+        
+        <!-- VERSÃO ATUALIZADA -->
+
+        <!-- 
+          <div class="swiper" id="carrosselMadeira">
+          <div class="swiper-wrapper">
+          <?=carregaMadeira()?>
+          </div>
+          <! -- Pagination -- >
+          <div class="swiper-pagination" id="pag-madeira"></div>
+          <! -- Navigation buttons -- >
+          <div class="swiper-button-prev d-none d-md-block" id="prev-madeira"><img src="midias/divisas-carrossel/divisa-esquerda-marromescuro.png" alt="Seta para a esquerda"></div>
+          <div class="swiper-button-next d-none d-md-block" id="next-madeira"><img src="midias/divisas-carrossel/divisa-direita-marromescuro.png" alt="Seta para a direita"></div>
+        </div>
+         -->
       </div>
       <!-- Fim do carrossel Madeira -->
 
@@ -342,6 +477,9 @@
 
       <!-- Início do carrossel Orgânico -->
       <div class="center">
+        
+        <!-- VERSÃO OBSOLETA -->
+
         <div id="carouselExampleControlsOrganico" class="carousel carousel-dark" data-ride="carousel">
           <div class="carousel-inner">
             <?=carregaOrganico()?>
@@ -355,6 +493,21 @@
             <span class="sr-only"><img src="midias/divisas-carrossel/divisa-direita-marromclaro.png" alt="Anterior"></span>
           </a>
         </div>
+
+        <!-- VERSÃO ATUALIZADA -->
+
+        <!-- 
+          <div class="swiper" id="carrosselMadeira">
+          <div class="swiper-wrapper">
+          <?=carregaMadeira()?>
+          </div>
+          <! -- Pagination -- >
+          <div class="swiper-pagination" id="pag-madeira"></div>
+          <! -- Navigation buttons -- >
+          <div class="swiper-button-prev d-none d-md-block" id="prev-madeira"><img src="midias/divisas-carrossel/divisa-esquerda-marromescuro.png" alt="Seta para a esquerda"></div>
+          <div class="swiper-button-next d-none d-md-block" id="next-madeira"><img src="midias/divisas-carrossel/divisa-direita-marromescuro.png" alt="Seta para a direita"></div>
+        </div>
+         -->
       </div>
       <!-- Fim do carrossel Orgânico -->
 
@@ -374,9 +527,14 @@
     </footer>
 
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Carrosséis -->
+    <script src="carrosseis-ideias.js"></script>
+
 </body>
 </html>

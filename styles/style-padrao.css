@@ -176,6 +176,10 @@ a:hover{
     flex-wrap: nowrap;
 }
 
+.row-av-ideia>*{
+    width: min-content;
+}
+
 /* Postar nova ideia / ver mais ideias */
 .novaIdeia{
     text-align: center;
