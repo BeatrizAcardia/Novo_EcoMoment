@@ -1,8 +1,8 @@
 <?php
     require_once('usuarios.php');
     require_once('ideias.php');
-    $type = $_REQUEST['type'];
-    $user = $_REQUEST['user'];
+    $type = $_GET['type'];
+    $user = $_GET['user'];
     $usuario = new Usuarios();
 
     //Dados da conta

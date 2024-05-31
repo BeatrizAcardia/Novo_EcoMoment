@@ -1,4 +1,51 @@
-<!--  -->
+<?php 
+if($_SERVER['REQUEST_METHOD'] === 'GET'){
+    $msgErro = '';
+}
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if((!empty(trim($_POST['email_username'])) and !empty(trim($_POST['password']))) or (trim($_POST['email_username']) != '' and trim($_POST['password']) != '')){
+        $user = $_POST['email_username'];
+        $senha = $_POST['password'];
+
+        //Consulta ao BD
+        include 'connection.php';
+
+        $sql1 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE NomeWeb = '$user' AND SenhaWeb = '$senha'"; //nome de usuario
+        $sql2 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha'";//email
+
+        $result1 = $con->query($sql1);
+        $result2 = $con->query($sql2);
+
+        if(mysqli_num_rows($result1) == 1){
+            setcookie('user', $user, time()+604800, '/');
+            setcookie('senha', $senha, time()+604800, '/');
+            $con->close();
+            header('Location: logado.php');
+        }
+        else if(mysqli_num_rows($result2) == 1){
+            $sql3 = "SELECT NomeWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha'";
+            $result3 = $con->query($sql3);
+            if ($result3->num_rows > 0){
+                if ($row = $result->fetch_assoc()){
+                    $nomeUser = $row['idPostagem'];
+                    setcookie('user', $nomeUser, time()+604800, '/');
+                    setcookie('senha', $senha, time()+604800, '/');
+                    $con->close();
+                    header('Location: logado.php');
+                }
+            }
+        }
+        else{
+            $msgErro = 'Usuário ou senha incorretos';
+        }
+        
+        $con->close();
+    }
+    else{
+        $msgErro = 'Um ou mais campos vazios. Preencha todos para continuar.';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -21,6 +68,15 @@
             font-family: "circe", sans-serif;
             font-weight: 700;
             font-style: normal;
+        }
+
+        .msgErro{
+            color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 1.1rem;
         }
     </style>
 </head>
@@ -101,13 +157,15 @@
                                     <img id="icon" src="imagens/padlock.png" alt="">
                                 </label>
                                 <input type="password" name="password" class="input" id="password" required>
-                              <div class="border"></div>
-                              <button class="micButton">
-                                <img id="icon" src="imagens/danger.png" alt="">
-                              </button>
-                              </div>
+                                <div class="border"></div>
+                                <button class="micButton">
+                                    <img id="icon" src="imagens/danger.png" alt="">
+                                </button>
+                            </div>
                         </div>
                     </div>
+                    
+                    <div class="msgErro"><?=$msgErro?></div>
 
                     <div class="btn-entrar">
                         <button class="button" type="submit">Entrar</button>

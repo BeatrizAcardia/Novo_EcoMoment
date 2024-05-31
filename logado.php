@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="4;url=index.html">
+    <meta http-equiv="refresh" content="2;url=index.html">
     <title>Sucesso</title>
     <link rel="stylesheet" href="styles/style-padrao.css">
     <style>
