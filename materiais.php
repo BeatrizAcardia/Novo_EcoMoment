@@ -73,7 +73,7 @@
 <body>
     <header>
         <?php
-            require_once('navbar/navbar.html');
+            require_once('navbar/navbar.php');
         ?>
     </header>
 

@@ -108,7 +108,7 @@ if($_GET['type'] == 'conta' and ($_GET['user'] != $_COOKIE['user'])){
 <body>
     <header>
         <?php
-            require_once('navbar/navbar.html');
+            require_once('navbar/navbar.php');
         ?>
     </header>
 

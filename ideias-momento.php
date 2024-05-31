@@ -212,7 +212,7 @@
 <body>
 <main id="navbarMargin">
     <?php
-      include('navbar/navbar.html');
+      include('navbar/navbar.php');
     ?>
 
     <!--Início Título Principal-->

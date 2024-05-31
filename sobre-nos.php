@@ -115,7 +115,7 @@
     </nav> -->
       <header>
         <?php
-          include('navbar/navbar.html');
+          include('navbar/navbar.php');
         ?>
       </header>
       

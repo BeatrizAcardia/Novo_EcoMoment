@@ -5,46 +5,46 @@
   border: none;
   background: none;
   cursor: pointer;
-}
+  }
 
 
-.cta span {
+  .cta span {
   padding-bottom: 7px;
   font-size: 17px;
   padding-right: 14px;
-}
+  }
 
-.cta svg {
+  .cta svg {
   transform: translateX(-8px);
   transition: all 0.3s ease;
-}
+  }
 
-.cta:hover svg {
+  .cta:hover svg {
   border: none;
   background: none;
   transform: translateX(0);
-}
+  }
 
-.cta:focus {
+  .cta:focus {
   outline: none;
-}
+  }
 
-.cta:active svg {
+  .cta:active svg {
   border: none;
   background: none;
   transform: scale(0.9);
-}
+  }
 
-/*cadastro*/
-.cadastro {
+  /*cadastro*/
+  .cadastro {
   position: relative;
   color: #4E9E5A;
   padding-bottom: 20px;
   font-family: 'Nunito', sans-serif;
   font-weight: bolder;
-}
+  }
 
-.cadastro:after {
+  .cadastro:after {
   content: "";
   position: absolute;
   width: 86%;
@@ -55,23 +55,23 @@
   background-color: #004852;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
-}
+  }
 
-.cta:hover .cadastro:after {
+  .cta:hover .cadastro:after {
   transform: scaleX(1);
   transform-origin: bottom left;
-}
+  }
 
-/*login*/
-.login {
+  /*login*/
+  .login {
   position: relative;
   color: #4E9E5A;
   padding-bottom: 20px;
   font-family: 'Nunito', sans-serif;
   font-weight: bolder;
-}
+  }
 
-.login:after {
+  .login:after {
   content: "";
   position: absolute;
   width: 83%;
@@ -82,23 +82,23 @@
   background-color: #004852;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
-}
+  }
 
-.cta:hover .login:after {
+  .cta:hover .login:after {
   transform: scaleX(1);
   transform-origin: bottom left;
-}
+  }
 
-/*contato*/
-.contato {
+  /*contato*/
+  .contato {
   position: relative;
   color: #4E9E5A;
   padding-bottom: 20px;
   font-family: 'Nunito', sans-serif;
   font-weight: bolder;
-}
+  }
 
-.contato:after {
+  .contato:after {
   content: "";
   position: absolute;
   width: 83%;
@@ -109,23 +109,23 @@
   background-color: #004852;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
-}
+  }
 
-.cta:hover .contato:after {
+  .cta:hover .contato:after {
   transform: scaleX(1);
   transform-origin: bottom left;
-}
+  }
 
-/*sobreNos*/
-.sobreNos {
+  /*sobreNos*/
+  .sobreNos {
   position: relative;
   color: #4E9E5A;
   padding-bottom: 20px;
   font-family: 'Nunito', sans-serif;
   font-weight: bolder;
-}
+  }
 
-.sobreNos:after {
+  .sobreNos:after {
   content: "";
   position: absolute;
   width: 87%;
@@ -136,23 +136,23 @@
   background-color: #004852;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
-}
+  }
 
-.cta:hover .sobreNos:after {
+  .cta:hover .sobreNos:after {
   transform: scaleX(1);
   transform-origin: bottom left;
-}
+  }
 
-/*ideias*/
-.ideias {
+  /*ideias*/
+  .ideias {
   position: relative;
   color: #4E9E5A;
   padding-bottom: 20px;
   font-family: 'Nunito', sans-serif;
   font-weight: bolder;
-}
+  }
 
-.ideias:after {
+  .ideias:after {
   content: "";
   position: absolute;
   width: 79%;
@@ -163,63 +163,89 @@
   background-color: #004852;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
-}
+  }
 
-.cta:hover .ideias:after {
+  .cta:hover .ideias:after {
   transform: scaleX(1);
   transform-origin: bottom left;
-}
+  }
 
-/*Fim animação*/
+  /*Fim animação*/
 
-button{
-  background-color: #520000;
-}
-
-.nav-item{
+  .nav-item{
   color:#4E9E5A;
   font-weight: bold;
-}
+  }
 
-.animacao:hover{
+  .animacao:hover{
   color: #004852;
-}
+  }
 
-.navbar-link{
+  .navbar-link{
   color: #4E9E5A;
-}
+  }
 
-.navbar{
+  .navbar{
   background-color: #F4F4F4;
   padding: .5rem 1rem;
-}
+  }
 
-.navBar{
+  .navBar{
   background-color: #F4F4F4;
   padding: 0;
   margin: 0;
-}
+  }
 
-.navbarAccessed{
+  .navbarAccessed{
   color: #57cc99;
-}
+  }
 
-.navbarIcon{
+  .navbarIcon{
   height: 50px;
-}
-
-@media (min-width: 768px){
-  .navbar-collapse{
-    display: flex;
-    flex-basis: 100%;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
   }
 
-  #ul-navbar{
-    margin-left: -6%;
+  /* Imagem de perfil */
+  .img-conta{
+      width: 30px;
+      position: absolute;
+      transition: 0.05s ease-in;
   }
-}
 
-/*Fim da NavBar*/
+  @media (min-width: 768px){
+      .navbar-collapse{
+          display: flex;
+          flex-basis: 100%;
+          flex-grow: 1;
+          align-items: center;
+          justify-content: center;
+      }
+
+      #ul-navbar{
+          margin-left: -6%;
+          width: 80%;
+          justify-content: center;
+      }
+
+      #li-login{
+          position: absolute;
+          right: 100px;
+          margin-right: 5px;
+      }
+
+      #li-cadastro{
+          position: absolute;
+          right: 20px;
+      }
+
+      .img-conta{
+          right: 20px;
+          top: 15px;
+      }
+
+      .img-conta:hover{
+          width: 32px;
+      }
+
+  }
+
+  /*Fim da NavBar*/
