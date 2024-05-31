@@ -8,8 +8,14 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     }
     else if($_GET['id'] == 'acesso-negado'){
         $imgBanner = '<img src="midias/icones-banners/aviso.png" alt="Garoto segurando uma lata e um megafone">';
-        $msg = '<h2>Parado aí! Parece que você não tem acesso a essa página.</h2>Clique em voltar e continue navegando em nosso site!';
+        $msg = '<h2><span id="erro">Parado aí!</span><br>Parece que você não tem acesso a essa página.</h2>Clique em voltar e continue navegando em nosso site!';
         $btn1 = '<button class="button" id="btnVoltar">VOLTAR</button>';
+        $btn2 = '';
+    }
+    else if($_GET['id'] == 'banido'){
+        $imgBanner = '<img src="midias/icones-banners/aviso.png" alt="Garoto segurando uma lata e um megafone">';
+        $msg = '<h2><span id="erro">Acesso negado!</span><br>Parece que sua conta foi banida por atos que violam os termos de conduta do site.</h2>Clique em voltar e continue navegando sem acesso aos recursos que necessitam de login.';
+        $btn1 = '<a href="index.html"><button class="button">VOLTAR</button></a>';
         $btn2 = '';
     }
 }
@@ -56,10 +62,18 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
             left: 15px;
             width: 90px;
         }
+        #erro{
+            color: #FF1212;
+            font-weight: bolder;
+        }
 
-        @media screen and (max-width: 510px) {
+        @media screen and (max-width: 600px) {
             .banner{
                 margin-top: 50px;
+            }
+            .btns-banner{
+                flex-wrap: wrap;
+                gap: 1vh;
             }
         }
 
@@ -75,7 +89,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     <div class="center nunito">
         <div class="center banner">
             <div class="img-banner mb-3"><?=$imgBanner?></div>
-            <div class="msg-banner my-3"><?=$msg?></div>
+            <div class="msg-banner"><?=$msg?></div>
             <div class="btns-banner mt-3">
                 <?=$btn1?>
                 <?=$btn2?>

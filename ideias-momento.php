@@ -243,8 +243,8 @@
             <div class="swiper-wrapper">
               <?php
                 //Carregamento das ideias de reutilazação
-                if ($existe && sizeof($postagens)>0){
-                    foreach($postagens as $post){
+                if ($existe && sizeof($postagensCarrossel)>0){
+                    foreach($postagensCarrossel as $post){
                         echo $post;
                     }
                 }

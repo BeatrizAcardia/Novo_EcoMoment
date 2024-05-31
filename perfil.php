@@ -1,4 +1,8 @@
 <?php 
+
+if($_GET['type'] == 'conta' and ($_GET['user'] != $_COOKIE['user'])){
+    header('location: acesso-negado.php?id=acesso-negado');
+}
     require_once('script-conta.php');
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){

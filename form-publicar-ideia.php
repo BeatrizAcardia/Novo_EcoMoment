@@ -1,123 +1,127 @@
 <?php
-
-if ($_SERVER['REQUEST_METHOD'] === 'GET'){
-    $msg = '';
-    $msgNome = '';
-    $msgDesc = '';
-    $msgMat = '';
-    $msgInst = '';
-    $msgFoto = '';
-    //Dados do usuário logado
+if(!isset($_COOKIE['user']) and !isset($_COOKIE['senha'])){
+    header('location: acesso-negado.php?id=erro-login');
 }
-else if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+else{
+    if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+        $msg = '';
+        $msgNome = '';
+        $msgDesc = '';
+        $msgMat = '';
+        $msgInst = '';
+        $msgFoto = '';
+        //Dados do usuário logado
+    }
+    else if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    $msg = '';
-    $msgNome = '';
-    $msgDesc = '';
-    $msgMat = '';
-    $msgInst = '';
-    $msgFoto = '';
+        $msg = '';
+        $msgNome = '';
+        $msgDesc = '';
+        $msgMat = '';
+        $msgInst = '';
+        $msgFoto = '';
 
-    $nome = trim($_REQUEST['nomeIdeia']);
-    // $user = $_REQUEST['user']; /* Pega a informação do login */
-    $user = '@enzoop1402';
-    $descricao = trim($_REQUEST['descricaoIdeia']);
-    $materiaisNec = trim($_REQUEST['materiaisNecessariosIdeia']);
-    $instrucoes = trim($_REQUEST['instrucoesIdeia']);
-    $material = $_REQUEST['material'];
-    $dificuldade = $_REQUEST['dificuldade'];
+        $nome = trim($_REQUEST['nomeIdeia']);
+        // $user = $_REQUEST['user']; /* Pega a informação do login */
+        $user = '@enzoop1402';
+        $descricao = trim($_REQUEST['descricaoIdeia']);
+        $materiaisNec = trim($_REQUEST['materiaisNecessariosIdeia']);
+        $instrucoes = trim($_REQUEST['instrucoesIdeia']);
+        $material = $_REQUEST['material'];
+        $dificuldade = $_REQUEST['dificuldade'];
 
-    if(($nome != '' and $user != '' and $descricao != '' and $materiaisNec != '' and $instrucoes != '' and $material != null and $dificuldade != null and isset($_FILES['arquivo'])) and (strlen($nome)>3 and strlen($descricao)>10 and strlen($materiaisNec)>10 and strlen($instrucoes)>10)){
-        if(! empty($_FILES['arquivo']['name'])){
+        if(($nome != '' and $user != '' and $descricao != '' and $materiaisNec != '' and $instrucoes != '' and $material != null and $dificuldade != null and isset($_FILES['arquivo'])) and (strlen($nome)>3 and strlen($descricao)>10 and strlen($materiaisNec)>10 and strlen($instrucoes)>10)){
+            if(! empty($_FILES['arquivo']['name'])){
 
-            $nomeArq = $_FILES['arquivo']['name'];
-            $tipo = $_FILES['arquivo']['type'];
-            $nomeTemp = $_FILES['arquivo']['tmp_name'];
-            $tamanho = $_FILES['arquivo']['size'];
-            $erros = array();
+                $nomeArq = $_FILES['arquivo']['name'];
+                $tipo = $_FILES['arquivo']['type'];
+                $nomeTemp = $_FILES['arquivo']['tmp_name'];
+                $tamanho = $_FILES['arquivo']['size'];
+                $erros = array();
 
-            $tamanhoMaximo = 1024 * 1024 * 5;
-            if($tamanho > $tamanhoMaximo){
-                $erros[] = 'Seu arquivo excede o tamanho máximo<br>';
-            }
-
-            $arquivosPermitidos = ['png','jpg','jpeg'];
-            $extensao = pathinfo($nomeArq, PATHINFO_EXTENSION);
-            if(! in_array($extensao, $arquivosPermitidos)){
-                $erros[] = 'Arquivo não permitido';
-            }
-
-            $typesPermitidos = ['image/png','image/jpg','image/jpeg'];
-            if(! in_array($extensao, $arquivosPermitidos)){
-                $erros[] = 'Tipo de arquivo não permitido';
-            }
-
-            // list($larguraOriginal, $alturaOriginal) = getimagesize($nomeArq);
-            // if(($larguraOriginal != 64 and $alturaOriginal != 64) or $larguraOriginal/$alturaOriginal != 1){
-            //     $erros[] = 'Imagem fora das dimensões permitidas';
-            // }
-
-            if(! empty($erros)){
-                foreach($erros as $erro){
-                    $msgFoto .= $erro.'<br>';
+                $tamanhoMaximo = 1024 * 1024 * 5;
+                if($tamanho > $tamanhoMaximo){
+                    $erros[] = 'Seu arquivo excede o tamanho máximo<br>';
                 }
-            } else{
-                $caminho = 'midias/imagens-ideias/';
-                $novo_nome = md5(time().rand(0,999)).'.'.$extensao;
-                if(move_uploaded_file($nomeTemp, $caminho.$novo_nome)){
-                    
-                    include 'connection.php';
 
-                    $sql = 'INSERT INTO prototipo_Postagem_EcoMoment (nomePostagem, nomeUsuario, descricaoPostagem, materiaisNecessariosPostagem, instrucoesPostagem, materialPostagem, dificuldadePostagem) values ("'.$nome.'", "'.$user.'", "'.$descricao.'", "'.$materiaisNec.'", "'.$instrucoes.'", "'.$material.'", "'.$dificuldade.'")';
+                $arquivosPermitidos = ['png','jpg','jpeg'];
+                $extensao = pathinfo($nomeArq, PATHINFO_EXTENSION);
+                if(! in_array($extensao, $arquivosPermitidos)){
+                    $erros[] = 'Arquivo não permitido';
+                }
 
-                    $stmt = $con->prepare($sql);
-                    if($stmt->execute()){
-                        $sql2 = 'SELECT idPostagem FROM prototipo_Postagem_EcoMoment WHERE nomePostagem = "'.$nome.'" AND nomeUsuario = "'.$user.'" AND descricaoPostagem = "'.$descricao.'" AND materiaisNecessariosPostagem = "'.$materiaisNec.'" AND instrucoesPostagem = "'.$instrucoes.'" AND materialPostagem = "'.$material.'"AND dificuldadePostagem = "'.$dificuldade.'"';
-                        $result2 = $con->query($sql2);
-                        if ($result2->num_rows > 0){
-                            $existe = true;
-                            if ($row = $result2->fetch_assoc()){
-                                $idPost = $row['idPostagem'];
-                                $con->close();
-                                header('Location: redirecionamento-postagem.php?id='.$idPub);
-                            }
-                        }
-                    }else{
-                        echo '<script>document.alert("ERRO \n Não foi possível publicar sua ideia. Verifique se há algum erro ou tente novamente.");</script>';
+                $typesPermitidos = ['image/png','image/jpg','image/jpeg'];
+                if(! in_array($extensao, $arquivosPermitidos)){
+                    $erros[] = 'Tipo de arquivo não permitido';
+                }
+
+                // list($larguraOriginal, $alturaOriginal) = getimagesize($nomeArq);
+                // if(($larguraOriginal != 64 and $alturaOriginal != 64) or $larguraOriginal/$alturaOriginal != 1){
+                //     $erros[] = 'Imagem fora das dimensões permitidas';
+                // }
+
+                if(! empty($erros)){
+                    foreach($erros as $erro){
+                        $msgFoto .= $erro.'<br>';
                     }
+                } else{
+                    $caminho = 'midias/imagens-ideias/';
+                    $novo_nome = md5(time().rand(0,999)).'.'.$extensao;
+                    if(move_uploaded_file($nomeTemp, $caminho.$novo_nome)){
+                        
+                        include 'connection.php';
 
-                    $con->close();
-                    $msg = '';
-                    $msgNome = '';
-                    $msgDesc = '';
-                    $msgMat = '';
-                    $msgInst = '';
-                    $msgFoto = '';
+                        $sql = 'INSERT INTO prototipo_Postagem_EcoMoment (nomePostagem, nomeUsuario, descricaoPostagem, materiaisNecessariosPostagem, instrucoesPostagem, materialPostagem, dificuldadePostagem) values ("'.$nome.'", "'.$user.'", "'.$descricao.'", "'.$materiaisNec.'", "'.$instrucoes.'", "'.$material.'", "'.$dificuldade.'")';
+
+                        $stmt = $con->prepare($sql);
+                        if($stmt->execute()){
+                            $sql2 = 'SELECT idPostagem FROM prototipo_Postagem_EcoMoment WHERE nomePostagem = "'.$nome.'" AND nomeUsuario = "'.$user.'" AND descricaoPostagem = "'.$descricao.'" AND materiaisNecessariosPostagem = "'.$materiaisNec.'" AND instrucoesPostagem = "'.$instrucoes.'" AND materialPostagem = "'.$material.'"AND dificuldadePostagem = "'.$dificuldade.'"';
+                            $result2 = $con->query($sql2);
+                            if ($result2->num_rows > 0){
+                                $existe = true;
+                                if ($row = $result2->fetch_assoc()){
+                                    $idPost = $row['idPostagem'];
+                                    $con->close();
+                                    header('Location: sucesso.php?id=ideia');
+                                }
+                            }
+                        }else{
+                            echo '<script>document.alert("ERRO \n Não foi possível publicar sua ideia. Verifique se há algum erro ou tente novamente.");</script>';
+                        }
+
+                        $con->close();
+                        $msg = '';
+                        $msgNome = '';
+                        $msgDesc = '';
+                        $msgMat = '';
+                        $msgInst = '';
+                        $msgFoto = '';
+                    }
+                    else '<script>alert("Falha ao realizar o upload")</script>';
                 }
-                else '<script>alert("Falha ao realizar o upload")</script>';
+
+
             }
-
-
         }
+        else{
+            if(strlen($nome)<3){
+                $msgNome = 'O nome deve ter no mínimo 3 caracteres.';
+            }
+            if(strlen($descricao)<10){
+                $msgDesc = 'A descrição deve ter no mínimo 10 caracteres.';
+            }
+            if(strlen($materiaisNec)<10){
+                $msgMat = 'A descrição dos materiais necessários deve ter no mínimo 10 caracteres.<br>Verifique se todos estão informados.';
+            }
+            if(strlen($instrucoes)<10){
+                $msgInst = 'A descrição das instruções deve ter no mínimo 10 caracteres';
+            }
+            $msg = '<span class="erro" class="mb-3">Todos os campos devem estar preenchidos corretamente</span>';
+        }
+
+        
+
     }
-    else{
-        if(strlen($nome)<3){
-            $msgNome = 'O nome deve ter no mínimo 3 caracteres.';
-        }
-        if(strlen($descricao)<10){
-            $msgDesc = 'A descrição deve ter no mínimo 10 caracteres.';
-        }
-        if(strlen($materiaisNec)<10){
-            $msgMat = 'A descrição dos materiais necessários deve ter no mínimo 10 caracteres.<br>Verifique se todos estão informados.';
-        }
-        if(strlen($instrucoes)<10){
-            $msgInst = 'A descrição das instruções deve ter no mínimo 10 caracteres';
-        }
-        $msg = '<span class="erro" class="mb-3">Todos os campos devem estar preenchidos corretamente</span>';
-    }
-
-    
-
 }
 
 ?>

@@ -57,9 +57,13 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
             width: 90px;
         }
 
-        @media screen and (max-width: 510px) {
+        @media screen and (max-width: 600px) {
             .banner{
                 margin-top: 50px;
+            }
+            .btns-banner{
+                flex-wrap: wrap;
+                gap: 1vh;
             }
         }
 
@@ -75,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     <div class="center nunito">
         <div class="center banner">
             <div class="img-banner mb-3"><?=$imgBanner?></div>
-            <div class="msg-banner my-3"><?=$msg?></div>
+            <div class="msg-banner"><?=$msg?></div>
             <div class="btns-banner mt-3">
                 <?=$btn1?>
                 <?=$btn2?>

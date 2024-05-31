@@ -5,5 +5,5 @@ if(isset($_COOKIE['user']) and isset($_COOKIE['senha'])){
     header('Location: loginPage.php');
 }
 else{
-    header('Location: perfil.php?type=conta&user=@enzoop1402');
+    header('Location: index.html');
 }

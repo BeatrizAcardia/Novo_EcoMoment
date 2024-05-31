@@ -1,5 +1,23 @@
 <?php 
     require_once('script-ideias.php');
+    
+    if(isset($_COOKIE['user'])){
+        if($_COOKIE['user'] == $userIdeia){
+            $btnEditar = '<div class="col-4 col-sm-2 topico"><img src="midias/icones-pagIdeia/editar.png" alt="ícone de quadrado com uma caneta" class="btnInteraction"></div>';
+            $col1 = '4';
+            $col2 = '2';
+        }
+        else{
+            $btnEditar = '';
+            $col1 = '6';
+            $col2 = '3';
+        }
+    }
+    else{
+        $btnEditar = '';
+        $col1 = '6';
+        $col2 = '3';
+    }
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){
         
@@ -31,42 +49,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style-padrao.css">
     <link rel="stylesheet" href="styles/style-ideia.css">
-    <script>
-        /* Carrossel */
-        const controls = document.querySelectorAll(".control");
-        let currentItem = 0;
-        const items = document.querySelectorAll(".pics");
-        const maxItems = items.length;
-
-        controls.forEach((control) => {
-        control.addEventListener("click", (e) => {
-            isLeft = e.target.classList.contains("arrow-left");
-
-            if (isLeft) {
-            currentItem -= 1;
-            } else {
-            currentItem += 1;
-            }
-
-            if (currentItem >= maxItems) {
-            currentItem = 0;
-            }
-
-            if (currentItem < 0) {
-            currentItem = maxItems - 1;
-            }
-
-            items.forEach((item) => item.classList.remove("current-item"));
-
-            items[currentItem].scrollIntoView({
-            behavior: "smooth",
-            inline: "center"
-            });
-
-            items[currentItem].classList.add("current-item");
-        });
-        });
-    </script>
 </head>
 <body>
     <header>
@@ -89,7 +71,7 @@
                         } else if ($dificuldadeIdeia == 'dificil'){
                             $dif = 'Difícil';
                         }
-                        echo $ideia->carregaAvaliacao($avaliacaoPostagem);
+                        echo $ideia->carregaAvaliacao($avaliacaoPostagem, $idPostagem);
                     ?>
                     <span style="width: 6px;"></span>
                     <span><?=$avaliacaoPostagem?>/5</span>
@@ -105,43 +87,9 @@
         <section>
             <div class="container mb-5 c-inicio nunito">
                 <!-- Início do carrosel -->
-                <!-- <div class="cards-wrapper mb-5">
-                    <div id="carouselExampleControls" class="carousel slide carousel-dark" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                            <div class="cards-wrapper">
-                                <div id="card1" class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Título do card</h5>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="carousel-item">
-                            <div class="cards-wrapper">
-                                <div id="card1" class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Título do card 2</h5>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                            <
-                            <span  aria-hidden="true"></span>
-                            <span class="sr-only">Anterior</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            >
-                            <span aria-hidden="true"></span>
-                            <span class="sr-only">Próximo</span>
-                        </a>
-                    </div>
-                </div> -->
                 <!-- Fim do carrossel -->
                 <div class="row center row-topico">
-                    <div class="col-6 col-sm-3 col-md-3 topico">
+                    <div class="col-6 col-sm-3 topico">
                         Avaliar: 
                         <div class="rating-x">  
                             <input value="5" name="rating-x" id="x-star5" type="radio" onclick="avaliar(5)">
@@ -156,7 +104,7 @@
                             <label for="x-star1"></label>
                         </div>
                     </div>
-                    <div class="col-6 col-sm-3 col-md-3 topico">
+                    <div class="col-6 col-sm-3 topico">
                             <div class="d-none d-md-block d-lg-flex dif">
                                 Nível:
                                 <br>
@@ -168,19 +116,17 @@
                                 <div class="dificuldade dificuldade-<?=$dificuldadeIdeia?>"></div><?=$dif?>
                             </div>
                     </div>
-                    <div class="col-6 col-sm-3 col-md-3 topico">
+                    <div class="col-<?=$col1?> col-sm-<?=$col2?> topico">
                         <div>
                             <!-- <span id="img-curtida"><img src="midias/icones-pagIdeia/curtida-1.png" alt="ícone de coração" class="btnInteraction" onclick="curtir()"></span> -->
                             <div class="curtida" onclick="curtirJS()">
                                 <img class="btnInteraction" src="midias/icones-pagIdeia/curtida-2.png" alt="Ícone de coração sem preenchimento">
                             </div>
                             <span id="numCurtidas" class="center"><?=$numCurtidas?></span>
-                            <!-- <form method="post">
-                                <input type="hidden" name="curtir" id="numCurtidas" class="center" value="true"><?=$numCurtidas?></input>
-                            </form> -->
                         </div>
                     </div>
-                    <div class="col-6 col-sm-3 col-md-3 topico">
+                    <?=$btnEditar?>
+                    <div class="col-<?=$col1?> col-sm-<?=$col2?> topico">
                         <div>
                             <img src="midias/icones-pagIdeia/compartilhar.png" alt="ícone de seta para compartilhamento" class="btnInteraction" onclick="compartilhar()">
                         </div>
@@ -276,6 +222,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="ajax-ideias.js"></script>
-    
+
 </body>
 </html>

@@ -148,7 +148,7 @@
                         $dificuldadeIdeia = $row['dificuldadePostagem'];
                         $avaliacao = $row['avaliacaoPostagem'];
                         $ideia = new Ideias($idIdeia, $nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao);
-                        $postagens4[] = $ideia->createCardIdeia4($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
+                        $postagens4[] = $ideia->createCardIdeia($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
                     }
                 }
 
@@ -183,7 +183,7 @@
                         $dificuldadeIdeia = $row['dificuldadePostagem'];
                         $avaliacao = $row['avaliacaoPostagem'];
                         $ideia = new Ideias($idIdeia, $nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao);
-                        $postagens5[] = $ideia->createCardIdeia4($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
+                        $postagens5[] = $ideia->createCardIdeia($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
                     }
                 }
                 
@@ -253,7 +253,7 @@
                         $dificuldadeIdeia = $row['dificuldadePostagem'];
                         $avaliacao = $row['avaliacaoPostagem'];
                         $ideia = new Ideias($idIdeia, $nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao);
-                        $postagens1[] = $ideia->createCardIdeia4($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
+                        $postagens1[] = $ideia->createCardIdeia($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
                     }
                 }
                 
@@ -288,7 +288,7 @@
                         $dificuldadeIdeia = $row['dificuldadePostagem'];
                         $avaliacao = $row['avaliacaoPostagem'];
                         $ideia = new Ideias($idIdeia, $nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao);
-                        $postagens2[] = $ideia->createCardIdeia4($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
+                        $postagens2[] = $ideia->createCardIdeia($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
                     }
                 }
                 
@@ -323,7 +323,7 @@
                         $dificuldadeIdeia = $row['dificuldadePostagem'];
                         $avaliacao = $row['avaliacaoPostagem'];
                         $ideia = new Ideias($idIdeia, $nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao);
-                        $postagens3[] = $ideia->createCardIdeia4($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
+                        $postagens3[] = $ideia->createCardIdeia($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
                     }
                 }
                 
@@ -395,7 +395,7 @@
                 $dificuldadeIdeia = $row['dificuldadePostagem'];
                 $avaliacao = $row['avaliacaoPostagem'];
                 $ideia = new Ideias($idIdeia, $nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao);
-                $postagens6[] = $ideia->createCardIdeia4($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
+                $postagens6[] = $ideia->createCardIdeia($nomeIdeia, $userIdeia, $dificuldadeIdeia, $avaliacao, $idIdeia);
             }
         }
 

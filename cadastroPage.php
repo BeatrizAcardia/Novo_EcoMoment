@@ -21,21 +21,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }else if (mysqli_num_rows($verifica2)>= 1){
             $invalid_msg = "Email já cadastrado!";
         }else{
-    $sql = 'INSERT INTO cl202247.EcoMomentBD_UsuarioWeb (nomeWeb, emailWeb, senhaWeb) values (?, ?, ?)';
+            $sql = 'INSERT INTO cl202247.EcoMomentBD_UsuarioWeb (nomeWeb, emailWeb, senhaWeb) values (?, ?, ?)';
 
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('sss', $username, $email, $password);  // Bind the parameters to the parameter markers
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('sss', $username, $email, $password);  // Bind the parameters to the parameter markers
 
-        if($stmt->execute()){
-            setcookie('user', $username, time()+604800, '/');
-            setcookie('senha', $password, time()+604800, '/');
-            header('Location: logado.php');
-        }else{
-            echo '<script>alert("ERRO")</script>';
+            if($stmt->execute()){
+                setcookie('user', $username, time()+604800, '/');
+                setcookie('senha', $password, time()+604800, '/');
+                header('Location: logado.php');
+            }else{
+                echo '<script>alert("ERRO")</script>';
+            }
+            $stmt->close();
         }
-        $stmt->close();
     }
-        }
     else {
         $invalid_msg = 'Preencha todos os campos corretamente!';
     }    

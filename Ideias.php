@@ -40,6 +40,7 @@ class Ideias {
 
     //Métodos
 
+    /* Cards de ideia */
     public function createCardIdeia($nome, $usuario, $dificuldade, $avaliacao, $idPost){
         return '
         <div class="card">
@@ -56,7 +57,7 @@ class Ideias {
                     </a>
                     <a href="pagIdeia.php?idPostagem='.$idPost.'">
                         <div class="card-text">
-                            '.$this->carregaAvaliacao2($avaliacao).'
+                            '.$this->carregaAvaliacao2($avaliacao, $idPost).'
                             <div class="dificuldade dificuldade-'.$dificuldade.'"></div>
                         </div>
                     </a>
@@ -64,35 +65,6 @@ class Ideias {
             </div>
         </div>';
     }
-    /*
-    Código acima descomprimido ↑
-
-    '<div class="card">
-            <div class="row">
-                <div class="col-12 col-sm-6 card-col img-card">
-                    <a href="pagIdeia.php?idPostagem='.$idPost.'"><img class="img-card-ideia" src="midias/icones-materiais/img-ideia.jpg" alt="Ideia de reutilização com garrafas pet"></a>
-                </div>
-                <div class="col-12 col-sm-6 card-col card-content">
-                    <a href="pagIdeia.php?idPostagem='.$idPost.'">
-                        <div class="card-title">'.$nome.'</div>
-                    </a>
-                    <a href="perfil.php?type=perfil&user='.$usuario.'">
-                        <div class="card-subtitle">'.$usuario.'</div>
-                    </a>
-                    <a href="pagIdeia.php?idPostagem='.$idPost.'">
-                        <div class="card-text">
-                            '.$this->carregaAvaliacao2($avaliacao).'
-                            <div class="dificuldade dificuldade-'.$dificuldade.'"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>';
-
-    Código comprimido
-
-    '<div class="card"><div class="row"><div class="col-12 col-sm-6 card-col img-card"><a href="pagIdeia.php?idPostagem='.$idPost.'"><img class="img-card-ideia" src="midias/icones-materiais/img-ideia.jpg" alt="Ideia de reutilização com garrafas pet"></a></div><div class="col-12 col-sm-6 card-col card-content"><a href="pagIdeia.php?idPostagem='.$idPost.'"><div class="card-title">'.$nome.'</div></a><a href="perfil.php?type=perfil&user='.$usuario.'"><div class="card-subtitle">'.$usuario.'</div></a><a href="pagIdeia.php?idPostagem='.$idPost.'"><div class="card-text">'.$this->carregaAvaliacao2($avaliacao).'<div class="dificuldade dificuldade-'.$dificuldade.'"></div> </div></a></div></div></div>';
-    */
 
     public function createCardIdeia2($nome, $usuario, $dificuldade, $avaliacao, $idPost){
         return '
@@ -116,7 +88,7 @@ class Ideias {
                     <a href="pagIdeia.php?idPostagem='.$idPost.'">
                         <div class="card-text">
                             <div class="row row-av-ideia">
-                                <div class="alinha-estrela">'.$this->carregaAvaliacao($avaliacao).'</div>
+                                <div class="alinha-estrela">'.$this->carregaAvaliacao($avaliacao, $idPost).'</div>
                                 <div>
                                     <div class="dificuldade dificuldade-'.$dificuldade.'"></div>
                                 </div>
@@ -146,7 +118,7 @@ class Ideias {
                         </a>
                         <a href="pagIdeia.php?idPostagem='.$idPost.'">
                             <div class="card-text">
-                                '.$this->carregaAvaliacao($avaliacao).'
+                                '.$this->carregaAvaliacao($avaliacao, $idPost).'
                                 <div class="dificuldade dificuldade-'.$dificuldade.'"></div>
                             </div>
                         </a>
@@ -156,7 +128,39 @@ class Ideias {
     }
 
     public function createCardIdeia4($nome, $usuario, $dificuldade, $avaliacao, $idPost){
-        return '<div class="card"><div class="row"><div class="col-12 col-sm-6 card-col img-card"><a href="pagIdeia.php?idPostagem='.$idPost.'"><img class="img-card-ideia" src="midias/icones-materiais/img-ideia.jpg" alt="Ideia de reutilização com garrafas pet"></a></div><div class="col-12 col-sm-6 card-col card-content"><a href="pagIdeia.php?idPostagem='.$idPost.'"><div class="card-title">'.$nome.'</div></a><a href="perfil.php?type=perfil&user='.$usuario.'"><div class="card-subtitle">'.$usuario.'</div></a><a href="pagIdeia.php?idPostagem='.$idPost.'"><div class="card-text">'.$this->carregaAvaliacao3($avaliacao).'<div class="dificuldade dificuldade-'.$dificuldade.'"></div> </div></a></div></div></div>';
+        return '
+        <style>
+            .row-av-ideia>*{
+                width: min-content;
+            }
+        </style>
+        <div class="swiper-slide">
+            <div class="card">
+                <div class="row">
+                    <div class="col-12 card-col img-card">
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'"><img class="img-card-ideia" src="midias/icones-materiais/img-ideia.jpg" alt="Ideia de reutilização com garrafas pet"></a>
+                    </div>
+                    <div class="col-12 card-col card-content">
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'">
+                            <div class="card-title">'.$nome.'</div>
+                        </a>
+                        <a href="perfil.php?type=perfil&user='.$usuario.'">
+                            <div class="card-subtitle">'.$usuario.'</div>
+                        </a>
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'">
+                            <div class="card-text">
+                                <div class="row row-av-ideia">
+                                    <div class="alinha-estrela">'.$this->carregaAvaliacao($avaliacao, $idPost).'</div>
+                                    <div>
+                                        <div class="dificuldade dificuldade-'.$dificuldade.'"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>';
     }
 
     public function createCardIdeia5($nome, $usuario, $dificuldade, $avaliacao, $idPost){
@@ -182,7 +186,7 @@ class Ideias {
                         <a href="pagIdeia.php?idPostagem='.$idPost.'">
                             <div class="card-text">
                                 <div class="row row-av-ideia">
-                                    <div class="alinha-estrela">'.$this->carregaAvaliacao($avaliacao).'</div>
+                                    <div class="alinha-estrela">'.$this->carregaAvaliacao2($avaliacao, $idPost).'</div>
                                     <div>
                                         <div class="dificuldade dificuldade-'.$dificuldade.'"></div>
                                     </div>
@@ -195,213 +199,321 @@ class Ideias {
         </div>';
     }
 
-    public function carregaAvaliacao($avaliacao){
+    public function createCardIdeia6($nome, $usuario, $dificuldade, $avaliacao, $idPost){
+        return '
+        <style>
+            .row-av-ideia>*{
+                width: min-content;
+            }
+        </style>
+        <div class="swiper-slide">
+            <div class="card">
+                <div class="row">
+                    <div class="col-12 card-col img-card">
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'"><img class="img-card-ideia" src="midias/icones-materiais/img-ideia.jpg" alt="Ideia de reutilização com garrafas pet"></a>
+                    </div>
+                    <div class="col-12 card-col card-content">
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'">
+                            <div class="card-title">'.$nome.'</div>
+                        </a>
+                        <a href="perfil.php?type=perfil&user='.$usuario.'">
+                            <div class="card-subtitle">'.$usuario.'</div>
+                        </a>
+                        <a href="pagIdeia.php?idPostagem='.$idPost.'">
+                            <div class="card-text">
+                                <div class="row row-av-ideia">
+                                    <div class="alinha-estrela">'.$this->carregaAvaliacao3($avaliacao, $idPost).'</div>
+                                    <div>
+                                        <div class="dificuldade dificuldade-'.$dificuldade.'"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>';
+    }
+
+    /* Avaliações */
+    public function carregaAvaliacao($avaliacao, $idPost){
         if ($avaliacao == 5){
             return '
             <div class="rating">
-                <input value="5" name="rating-5" id="star5" type="radio" disabled checked>
-                <label for="star5"></label>
-                <input value="4" name="rating-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-'.$idPost.'-5" id="star-'.$idPost.'-5" type="radio" disabled checked>
+                <label for="star-'.$idPost.'-5"></label>
+                <input value="4" name="rating-'.$idPost.'-4" id="star-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-'.$idPost.'-4"></label>
+                <input value="3" name="rating-'.$idPost.'-3" id="star-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-'.$idPost.'-3"></label>
+                <input value="2" name="rating-'.$idPost.'-2" id="star-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-'.$idPost.'-2"></label>
+                <input value="1" name="rating-'.$idPost.'-1" id="star-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-'.$idPost.'-1"></label>
             </div>';
         }
         else if ($avaliacao >= 4){
             return '
             <div class="rating">
-                <input value="5" name="rating-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-4" id="star4" type="radio" disabled checked>
-                <label for="star4"></label>
-                <input value="3" name="rating-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-'.$idPost.'-5" id="star-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-'.$idPost.'-5"></label>
+                <input value="4" name="rating-'.$idPost.'-4" id="star-'.$idPost.'-4" type="radio" disabled checked>
+                <label for="star-'.$idPost.'-4"></label>
+                <input value="3" name="rating-'.$idPost.'-3" id="star-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-'.$idPost.'-3"></label>
+                <input value="2" name="rating-'.$idPost.'-2" id="star-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-'.$idPost.'-2"></label>
+                <input value="1" name="rating-'.$idPost.'-1" id="star-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-'.$idPost.'-1"></label>
             </div>';
         }
         else if ($avaliacao >= 3){
             return '
             <div class="rating">
-                <input value="5" name="rating-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-3" id="star3" type="radio" disabled checked>
-                <label for="star3"></label>
-                <input value="2" name="rating-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-'.$idPost.'-5" id="star-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-'.$idPost.'-5"></label>
+                <input value="4" name="rating-'.$idPost.'-4" id="star-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-'.$idPost.'-4"></label>
+                <input value="3" name="rating-'.$idPost.'-3" id="star-'.$idPost.'-3" type="radio" disabled checked>
+                <label for="star-'.$idPost.'-3"></label>
+                <input value="2" name="rating-'.$idPost.'-2" id="star-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-'.$idPost.'-2"></label>
+                <input value="1" name="rating-'.$idPost.'-1" id="star-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-'.$idPost.'-1"></label>
             </div>';
         }
         else if ($avaliacao >= 2){
             return '
             <div class="rating">
-                <input value="5" name="rating-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-2" id="star2" type="radio" disabled checked>
-                <label for="star2"></label>
-                <input value="1" name="rating-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-'.$idPost.'-5" id="star-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-'.$idPost.'-5"></label>
+                <input value="4" name="rating-'.$idPost.'-4" id="star-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-'.$idPost.'-4"></label>
+                <input value="3" name="rating-'.$idPost.'-3" id="star-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-'.$idPost.'-3"></label>
+                <input value="2" name="rating-'.$idPost.'-2" id="star-'.$idPost.'-2" type="radio" disabled checked>
+                <label for="star-'.$idPost.'-2"></label>
+                <input value="1" name="rating-'.$idPost.'-1" id="star-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-'.$idPost.'-1"></label>
             </div>';
         }
         else if ($avaliacao >= 1){
             return '
             <div class="rating">
-                <input value="5" name="rating-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-1" id="star1" type="radio" disabled checked>
-                <label for="star1"></label>
+                <input value="5" name="rating-'.$idPost.'-5" id="star-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-'.$idPost.'-5"></label>
+                <input value="4" name="rating-'.$idPost.'-4" id="star-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-'.$idPost.'-4"></label>
+                <input value="3" name="rating-'.$idPost.'-3" id="star-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-'.$idPost.'-3"></label>
+                <input value="2" name="rating-'.$idPost.'-2" id="star-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-'.$idPost.'-2"></label>
+                <input value="1" name="rating-'.$idPost.'-1" id="star-'.$idPost.'-1" type="radio" disabled checked>
+                <label for="star-'.$idPost.'-1"></label>
             </div>';
         }
         else{
             return '
             <div class="rating">
-                <input value="5" name="rating-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-'.$idPost.'-5" id="star-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-'.$idPost.'-5"></label>
+                <input value="4" name="rating-'.$idPost.'-4" id="star-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-'.$idPost.'-4"></label>
+                <input value="3" name="rating-'.$idPost.'-3" id="star-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-'.$idPost.'-3"></label>
+                <input value="2" name="rating-'.$idPost.'-2" id="star-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-'.$idPost.'-2"></label>
+                <input value="1" name="rating-'.$idPost.'-1" id="star-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-'.$idPost.'-1"></label>
             </div>';
         }
     }
 
-    public function carregaAvaliacao2($avaliacao){
+    public function carregaAvaliacao2($avaliacao, $idPost){
         if ($avaliacao == 5){
             return '
             <div class="rating">
-                <input value="5" name="rating-best-5" id="star5" type="radio" disabled checked>
-                <label for="star5"></label>
-                <input value="4" name="rating-best-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-best-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-best-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-best-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-best-'.$idPost.'-5" id="star-best-'.$idPost.'-5" type="radio" disabled checked>
+                <label for="star-best-'.$idPost.'-5"></label>
+                <input value="4" name="rating-best-'.$idPost.'-4" id="star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-4"></label>
+                <input value="3" name="rating-best-'.$idPost.'-3" id="star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-3"></label>
+                <input value="2" name="rating-best-'.$idPost.'-2" id="star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-2"></label>
+                <input value="1" name="rating-best-'.$idPost.'-1" id="star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-1"></label>
             </div>';
         }
         else if ($avaliacao >= 4){
             return '
             <div class="rating">
-                <input value="5" name="rating-best-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-best-4" id="star4" type="radio" disabled checked>
-                <label for="star4"></label>
-                <input value="3" name="rating-best-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-best-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-best-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-best-'.$idPost.'-5" id="star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-5"></label>
+                <input value="4" name="rating-best-'.$idPost.'-4" id="star-best-'.$idPost.'-4" type="radio" disabled checked>
+                <label for="star-best-'.$idPost.'-4"></label>
+                <input value="3" name="rating-best-'.$idPost.'-3" id="star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-3"></label>
+                <input value="2" name="rating-best-'.$idPost.'-2" id="star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-2"></label>
+                <input value="1" name="rating-best-'.$idPost.'-1" id="star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-1"></label>
             </div>';
         }
         else if ($avaliacao >= 3){
             return '
             <div class="rating">
-                <input value="5" name="rating-best-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-best-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-best-3" id="star3" type="radio" disabled checked>
-                <label for="star3"></label>
-                <input value="2" name="rating-best-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-best-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-best-'.$idPost.'-5" id="star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-5"></label>
+                <input value="4" name="rating-best-'.$idPost.'-4" id="star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-4"></label>
+                <input value="3" name="rating-best-'.$idPost.'-3" id="star-best-'.$idPost.'-3" type="radio" disabled checked>
+                <label for="star-best-'.$idPost.'-3"></label>
+                <input value="2" name="rating-best-'.$idPost.'-2" id="star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-2"></label>
+                <input value="1" name="rating-best-'.$idPost.'-1" id="star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-1"></label>
             </div>';
         }
         else if ($avaliacao >= 2){
             return '
             <div class="rating">
-                <input value="5" name="rating-best-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-best-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-best-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-best-2" id="star2" type="radio" disabled checked>
-                <label for="star2"></label>
-                <input value="1" name="rating-best-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-best-'.$idPost.'-5" id="star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-5"></label>
+                <input value="4" name="rating-best-'.$idPost.'-4" id="star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-4"></label>
+                <input value="3" name="rating-best-'.$idPost.'-3" id="star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-3"></label>
+                <input value="2" name="rating-best-'.$idPost.'-2" id="star-best-'.$idPost.'-2" type="radio" disabled checked>
+                <label for="star-best-'.$idPost.'-2"></label>
+                <input value="1" name="rating-best-'.$idPost.'-1" id="star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-1"></label>
             </div>';
         }
         else if ($avaliacao >= 1){
             return '
             <div class="rating">
-                <input value="5" name="rating-best-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-best-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-best-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-best-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-best-1" id="star1" type="radio" disabled checked>
-                <label for="star1"></label>
+                <input value="5" name="rating-best-'.$idPost.'-5" id="star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-5"></label>
+                <input value="4" name="rating-best-'.$idPost.'-4" id="star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-4"></label>
+                <input value="3" name="rating-best-'.$idPost.'-3" id="star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-3"></label>
+                <input value="2" name="rating-best-'.$idPost.'-2" id="star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-2"></label>
+                <input value="1" name="rating-best-'.$idPost.'-1" id="star-best-'.$idPost.'-1" type="radio" disabled checked>
+                <label for="star-best-'.$idPost.'-1"></label>
             </div>';
         }
         else{
             return '
             <div class="rating">
-                <input value="5" name="rating-best-5" id="star5" type="radio" disabled>
-                <label for="star5"></label>
-                <input value="4" name="rating-best-4" id="star4" type="radio" disabled>
-                <label for="star4"></label>
-                <input value="3" name="rating-best-3" id="star3" type="radio" disabled>
-                <label for="star3"></label>
-                <input value="2" name="rating-best-2" id="star2" type="radio" disabled>
-                <label for="star2"></label>
-                <input value="1" name="rating-best-1" id="star1" type="radio" disabled>
-                <label for="star1"></label>
+                <input value="5" name="rating-best-'.$idPost.'-5" id="star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-5"></label>
+                <input value="4" name="rating-best-'.$idPost.'-4" id="star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-4"></label>
+                <input value="3" name="rating-best-'.$idPost.'-3" id="star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-3"></label>
+                <input value="2" name="rating-best-'.$idPost.'-2" id="star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-2"></label>
+                <input value="1" name="rating-best-'.$idPost.'-1" id="star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="star-best-'.$idPost.'-1"></label>
             </div>';
-        }
-    }
-
-    public function carregaAvaliacao3($avaliacao){
-        if ($avaliacao == 5){
-            return '<div class="rating"><input value="5" name="rating-best-5" id="star5" type="radio" disabled checked><label for="star5"></label><input value="4" name="rating-best-4" id="star4" type="radio" disabled><label for="star4"></label><input value="3" name="rating-best-3" id="star3" type="radio" disabled><label for="star3"></label><input value="2" name="rating-best-2" id="star2" type="radio" disabled><label for="star2"></label><input value="1" name="rating-best-1" id="star1" type="radio" disabled><label for="star1"></label></div>';
-        }
-        else if ($avaliacao >= 4){
-            return '<div class="rating"><input value="5" name="rating-best-5" id="star5" type="radio" disabled><label for="star5"></label><input value="4" name="rating-best-4" id="star4" type="radio" disabled checked><label for="star4"></label><input value="3" name="rating-best-3" id="star3" type="radio" disabled><label for="star3"></label><input value="2" name="rating-best-2" id="star2" type="radio" disabled><label for="star2"></label><input value="1" name="rating-best-1" id="star1" type="radio" disabled><label for="star1"></label></div>';
-        }
-        else if ($avaliacao >= 3){
-            return '<div class="rating"><input value="5" name="rating-best-5" id="star5" type="radio" disabled><label for="star5"></label><input value="4" name="rating-best-4" id="star4" type="radio" disabled><label for="star4"></label><input value="3" name="rating-best-3" id="star3" type="radio" disabled checked><label for="star3"></label><input value="2" name="rating-best-2" id="star2" type="radio" disabled><label for="star2"></label><input value="1" name="rating-best-1" id="star1" type="radio" disabled><label for="star1"></label></div>';
-        }
-        else if ($avaliacao >= 2){
-            return '<div class="rating"><input value="5" name="rating-best-5" id="star5" type="radio" disabled><label for="star5"></label><input value="4" name="rating-best-4" id="star4" type="radio" disabled><label for="star4"></label><input value="3" name="rating-best-3" id="star3" type="radio" disabled><label for="star3"></label><input value="2" name="rating-best-2" id="star2" type="radio" disabled checked><label for="star2"></label><input value="1" name="rating-best-1" id="star1" type="radio" disabled><label for="star1"></label></div>';
-        }
-        else if ($avaliacao >= 1){
-            return '<div class="rating"><input value="5" name="rating-best-5" id="star5" type="radio" disabled><label for="star5"></label><input value="4" name="rating-best-4" id="star4" type="radio" disabled><label for="star4"></label><input value="3" name="rating-best-3" id="star3" type="radio" disabled><label for="star3"></label><input value="2" name="rating-best-2" id="star2" type="radio" disabled><label for="star2"></label><input value="1" name="rating-best-1" id="star1" type="radio" disabled checked><label for="star1"></label></div>';
-        }
-        else{
-            return '<div class="rating"><input value="5" name="rating-best-5" id="star5" type="radio" disabled><label for="star5"></label><input value="4" name="rating-best-4" id="star4" type="radio" disabled><label for="star4"></label><input value="3" name="rating-best-3" id="star3" type="radio" disabled><label for="star3"></label><input value="2" name="rating-best-2" id="star2" type="radio" disabled><label for="star2"></label><input value="1" name="rating-best-1" id="star1" type="radio" disabled><label for="star1"></label></div>';
         }
     }
     
+    public function carregaAvaliacao3($avaliacao, $idPost){
+        if ($avaliacao == 5){
+            return '
+            <div class="rating">
+                <input value="5" name="2nd-rating-best-'.$idPost.'-5" id="2nd-star-best-'.$idPost.'-5" type="radio" disabled checked>
+                <label for="2nd-star-best-'.$idPost.'-5"></label>
+                <input value="4" name="2nd-rating-best-'.$idPost.'-4" id="2nd-star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-4"></label>
+                <input value="3" name="2nd-rating-best-'.$idPost.'-3" id="2nd-star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-3"></label>
+                <input value="2" name="2nd-rating-best-'.$idPost.'-2" id="2nd-star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-2"></label>
+                <input value="1" name="2nd-rating-best-'.$idPost.'-1" id="2nd-star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-1"></label>
+            </div>';
+        }
+        else if ($avaliacao >= 4){
+            return '
+            <div class="rating">
+                <input value="5" name="2nd-rating-best-'.$idPost.'-5" id="2nd-star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-5"></label>
+                <input value="4" name="2nd-rating-best-'.$idPost.'-4" id="2nd-star-best-'.$idPost.'-4" type="radio" disabled checked>
+                <label for="2nd-star-best-'.$idPost.'-4"></label>
+                <input value="3" name="2nd-rating-best-'.$idPost.'-3" id="2nd-star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-3"></label>
+                <input value="2" name="2nd-rating-best-'.$idPost.'-2" id="2nd-star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-2"></label>
+                <input value="1" name="2nd-rating-best-'.$idPost.'-1" id="2nd-star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-1"></label>
+            </div>';
+        }
+        else if ($avaliacao >= 3){
+            return '
+            <div class="rating">
+                <input value="5" name="2nd-rating-best-'.$idPost.'-5" id="2nd-star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-5"></label>
+                <input value="4" name="2nd-rating-best-'.$idPost.'-4" id="2nd-star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-4"></label>
+                <input value="3" name="2nd-rating-best-'.$idPost.'-3" id="2nd-star-best-'.$idPost.'-3" type="radio" disabled checked>
+                <label for="2nd-star-best-'.$idPost.'-3"></label>
+                <input value="2" name="2nd-rating-best-'.$idPost.'-2" id="2nd-star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-2"></label>
+                <input value="1" name="2nd-rating-best-'.$idPost.'-1" id="2nd-star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-1"></label>
+            </div>';
+        }
+        else if ($avaliacao >= 2){
+            return '
+            <div class="rating">
+                <input value="5" name="2nd-rating-best-'.$idPost.'-5" id="2nd-star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-5"></label>
+                <input value="4" name="2nd-rating-best-'.$idPost.'-4" id="2nd-star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-4"></label>
+                <input value="3" name="2nd-rating-best-'.$idPost.'-3" id="2nd-star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-3"></label>
+                <input value="2" name="2nd-rating-best-'.$idPost.'-2" id="2nd-star-best-'.$idPost.'-2" type="radio" disabled checked>
+                <label for="2nd-star-best-'.$idPost.'-2"></label>
+                <input value="1" name="2nd-rating-best-'.$idPost.'-1" id="2nd-star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-1"></label>
+            </div>';
+        }
+        else if ($avaliacao >= 1){
+            return '
+            <div class="rating">
+                <input value="5" name="2nd-rating-best-'.$idPost.'-5" id="2nd-star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-5"></label>
+                <input value="4" name="2nd-rating-best-'.$idPost.'-4" id="2nd-star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-4"></label>
+                <input value="3" name="2nd-rating-best-'.$idPost.'-3" id="2nd-star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-3"></label>
+                <input value="2" name="2nd-rating-best-'.$idPost.'-2" id="2nd-star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-2"></label>
+                <input value="1" name="2nd-rating-best-'.$idPost.'-1" id="2nd-star-best-'.$idPost.'-1" type="radio" disabled checked>
+                <label for="2nd-star-best-'.$idPost.'-1"></label>
+            </div>';
+        }
+        else{
+            return '
+            <div class="rating">
+                <input value="5" name="2nd-rating-best-'.$idPost.'-5" id="2nd-star-best-'.$idPost.'-5" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-5"></label>
+                <input value="4" name="2nd-rating-best-'.$idPost.'-4" id="2nd-star-best-'.$idPost.'-4" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-4"></label>
+                <input value="3" name="2nd-rating-best-'.$idPost.'-3" id="2nd-star-best-'.$idPost.'-3" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-3"></label>
+                <input value="2" name="2nd-rating-best-'.$idPost.'-2" id="2nd-star-best-'.$idPost.'-2" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-2"></label>
+                <input value="1" name="2nd-rating-best-'.$idPost.'-1" id="2nd-star-best-'.$idPost.'-1" type="radio" disabled>
+                <label for="2nd-star-best-'.$idPost.'-1"></label>
+            </div>';
+        }
+    }
     //Getters e Setters
 
     public function getIdPostagem() {

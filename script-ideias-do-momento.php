@@ -5,6 +5,7 @@
     include 'connection.php';
 
     $postagens = array();
+    $postagensCarrossel = array();
 
     $sql = 'SELECT * FROM prototipo_Postagem_EcoMoment ORDER BY avaliacaoPostagem DESC LIMIT 4';
     $result = $con->query($sql);
@@ -19,6 +20,7 @@
             $avaliacaoPub = $row['avaliacaoPostagem'];
             $ideiaPub = new Ideias($idPub, $nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub);
             $postagens[] = $ideiaPub->createCardIdeia5($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
+            $postagensCarrossel[] = $ideiaPub->createCardIdeia6($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
         }
     }
     
@@ -43,7 +45,7 @@
                 $dificuldadeIdeiaPub = $row['dificuldadePostagem'];
                 $avaliacaoPub = $row['avaliacaoPostagem'];
                 $ideiaPub = new Ideias($idPub, $nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub);
-                $postagens2[] = $ideiaPub->createCardIdeia5($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
+                $postagens2[] = $ideiaPub->createCardIdeia4($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
             }
         }
         if($existe && sizeof($postagens2)>0){
@@ -78,7 +80,7 @@
                 $dificuldadeIdeiaPub = $row['dificuldadePostagem'];
                 $avaliacaoPub = $row['avaliacaoPostagem'];
                 $ideiaPub = new Ideias($idPub, $nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub);
-                $postagens3[] = $ideiaPub->createCardIdeia5($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
+                $postagens3[] = $ideiaPub->createCardIdeia4($nomeIdeiaPub, $userIdeiaPub, $dificuldadeIdeiaPub, $avaliacaoPub, $idPub);
             }
         }
         //Carregamento das ideias de reutilazação
