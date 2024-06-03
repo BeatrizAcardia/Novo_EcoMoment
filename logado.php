@@ -6,6 +6,7 @@
     <meta http-equiv="refresh" content="2;url=index.html">
     <title>Sucesso</title>
     <link rel="stylesheet" href="styles/style-padrao.css">
+    <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
     <style>
         body{
             display: flex;

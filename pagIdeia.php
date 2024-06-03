@@ -12,24 +12,26 @@
             $col1 = '6';
             $col2 = '3';
         }
+
+        include 'connection.php';
+        $query = 'SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb  WHERE NomeWeb = "'.$_COOKIE['user'].'" AND SenhaWeb = "'.$_COOKIE['senha'].'"';
+        $resultado = $con->query($query);
+        if ($resultado->num_rows > 0){
+            if ($row = $resultado->fetch_assoc()){
+                $idUserWeb = $row['idUsuarioWeb'];
+            }
+        }
+        else{
+            echo '<script>alert("Erro com o usuário")</script>';
+            $idUsuarioWeb = 0;
+        }
+
     }
     else{
+        $idUserWeb = 0;
         $btnEditar = '';
         $col1 = '6';
         $col2 = '3';
-    }
-
-    if($_SERVER['REQUEST_METHOD'] === 'GET'){
-        
-        // $idUserWeb = 26;
-
-        // echo'<script>alert("Chamando curtido()")</script>';
-        // $curtido = curtido($idUserWeb, $idPostagem);
-        // echo'<script>alert("curtido: '.$curtido.'")</script>';
-
-        // echo'<script>alert("Chamando avaliado()")</script>';
-        // $avaliado = avaliado($idUserWeb, $idPostagem);
-        // echo'<script>alert("avaliado: '.$avaliado.'")</script>';
     }
 
 ?>
@@ -49,8 +51,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style-padrao.css">
     <link rel="stylesheet" href="styles/style-ideia.css">
+    <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
 </head>
-<body>
+<body onload="estaCurtido(<?=$idUserWeb?>,<?=$idPostagem?>); estaAvaliado(<?=$idUserWeb?>,<?=$idPostagem?>)">
     <header>
         <?php
             require_once('navbar/navbar.php');
@@ -91,16 +94,16 @@
                 <div class="row center row-topico">
                     <div class="col-6 col-sm-3 topico">
                         Avaliar: 
-                        <div class="rating-x">  
-                            <input value="5" name="rating-x" id="x-star5" type="radio" onclick="avaliar(5)">
+                        <div class="rating-x" id="avaliacao">  
+                            <input value="5" name="rating-x" id="x-star5" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,5)">
                             <label for="x-star5"></label>
-                            <input value="4" name="rating-x" id="x-star4" type="radio" onclick="avaliar(4)">
+                            <input value="4" name="rating-x" id="x-star4" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,4)">
                             <label for="x-star4"></label>
-                            <input value="3" name="rating-x" id="x-star3" type="radio" onclick="avaliar(3)">
+                            <input value="3" name="rating-x" id="x-star3" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,3)">
                             <label for="x-star3"></label>
-                            <input value="2" name="rating-x" id="x-star2" type="radio" onclick="avaliar(2)">
+                            <input value="2" name="rating-x" id="x-star2" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,2)">
                             <label for="x-star2"></label>
-                            <input value="1" name="rating-x" id="x-star1" type="radio" onclick="avaliar(1)">
+                            <input value="1" name="rating-x" id="x-star1" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,1)">
                             <label for="x-star1"></label>
                         </div>
                     </div>
@@ -119,7 +122,7 @@
                     <div class="col-<?=$col1?> col-sm-<?=$col2?> topico">
                         <div>
                             <!-- <span id="img-curtida"><img src="midias/icones-pagIdeia/curtida-1.png" alt="ícone de coração" class="btnInteraction" onclick="curtir()"></span> -->
-                            <div class="curtida" onclick="curtirJS()">
+                            <div class="curtida" onclick="curtirJS(<?=$idUserWeb?>,<?=$idPostagem?>)">
                                 <img class="btnInteraction" src="midias/icones-pagIdeia/curtida-2.png" alt="Ícone de coração sem preenchimento">
                             </div>
                             <span id="numCurtidas" class="center"><?=$numCurtidas?></span>

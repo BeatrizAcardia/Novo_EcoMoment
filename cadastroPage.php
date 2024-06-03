@@ -1,49 +1,52 @@
 <?php
-
-require_once 'database/config.php';
-if($_SERVER['REQUEST_METHOD'] == 'GET'){
-    $invalid_msg = "";
-    $username = "";
-    $email = "";  
-    $password = ""; 
+if(isset($_COOKIE['user']) and isset($_COOKIE['senha'])){
+    header('location: perfil.php?type=conta&user='.$_COOKIE['user']);
 }
-        
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    if (trim($username) != "" && trim($email) != "" && trim($password) != "") {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $verifica1 = $conn->query("SELECT * FROM cl202247.EcoMomentBD_UsuarioWeb where NomeWeb = '$username'");
-        $verifica2 = $conn->query("SELECT * FROM cl202247.EcoMomentBD_UsuarioWeb where EmailWeb = '$email'");
-        if(mysqli_num_rows($verifica1) == 1){
-            $invalid_msg = "Nome de usuário já existente!";
-        }else if (mysqli_num_rows($verifica2)>= 1){
-            $invalid_msg = "Email já cadastrado!";
-        }else{
-            $sql = 'INSERT INTO cl202247.EcoMomentBD_UsuarioWeb (nomeWeb, emailWeb, senhaWeb) values (?, ?, ?)';
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('sss', $username, $email, $password);  // Bind the parameters to the parameter markers
-
-            if($stmt->execute()){
-                setcookie('user', $username, time()+604800, '/');
-                setcookie('senha', $password, time()+604800, '/');
-                header('Location: logado.php');
-            }else{
-                echo '<script>alert("ERRO")</script>';
-            }
-            $stmt->close();
-        }
+else{
+    require_once 'database/config.php';
+    if($_SERVER['REQUEST_METHOD'] == 'GET'){
+        $invalid_msg = "";
+        $username = "";
+        $email = "";  
+        $password = ""; 
     }
-    else {
-        $invalid_msg = 'Preencha todos os campos corretamente!';
-    }    
+            
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        if (trim($username) != "" && trim($email) != "" && trim($password) != "") {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $verifica1 = $conn->query("SELECT * FROM cl202247.EcoMomentBD_UsuarioWeb where NomeWeb = '$username'");
+            $verifica2 = $conn->query("SELECT * FROM cl202247.EcoMomentBD_UsuarioWeb where EmailWeb = '$email'");
+            if(mysqli_num_rows($verifica1) == 1){
+                $invalid_msg = "Nome de usuário já existente!";
+            }else if (mysqli_num_rows($verifica2)>= 1){
+                $invalid_msg = "Email já cadastrado!";
+            }else{
+                $sql = 'INSERT INTO cl202247.EcoMomentBD_UsuarioWeb (nomeWeb, emailWeb, senhaWeb) values (?, ?, ?)';
+
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param('sss', $username, $email, $password);  // Bind the parameters to the parameter markers
+
+                if($stmt->execute()){
+                    setcookie('user', $username, time()+604800, '/');
+                    setcookie('senha', $password, time()+604800, '/');
+                    header('Location: logado.php');
+                }else{
+                    echo '<script>alert("ERRO")</script>';
+                }
+                $stmt->close();
+            }
+        }
+        else {
+            $invalid_msg = 'Preencha todos os campos corretamente!';
+        }    
+    }
+
+    $conn->close();
 }
-
-$conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -55,9 +58,7 @@ $conn->close();
     <link rel="stylesheet" href="styles/mediaQuery.css">
     <link rel="stylesheet" href="styles/style-padrao.css">
     <link rel="stylesheet" href="https://use.typekit.net/xhc2seb.css">
-    
-
-
+    <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
     <style>
         .circeR{
             font-family: "circe", sans-serif;

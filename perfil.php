@@ -3,6 +3,7 @@
 if($_GET['type'] == 'conta' and ($_GET['user'] != $_COOKIE['user'])){
     header('location: acesso-negado.php?id=acesso-negado');
 }
+else{
     require_once('script-conta.php');
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -88,6 +89,7 @@ if($_GET['type'] == 'conta' and ($_GET['user'] != $_COOKIE['user'])){
 
         }
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -104,6 +106,7 @@ if($_GET['type'] == 'conta' and ($_GET['user'] != $_COOKIE['user'])){
     <link rel="stylesheet" href="styles/style-padrao.css">
     <link rel="stylesheet" href="styles/style-publicar-ideia.css">
     <link rel="stylesheet" href="styles/style-conta.css">
+    <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
 </head>
 <body>
     <header>

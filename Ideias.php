@@ -514,6 +514,7 @@ class Ideias {
             </div>';
         }
     }
+
     //Getters e Setters
 
     public function getIdPostagem() {

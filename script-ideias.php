@@ -54,11 +54,128 @@
     
     $con->close();
 
-    
-    function curtirPHP($numCurt, $usuarioCurtida, $id){
+    if(isset($_GET['user']) and isset($_GET['idPostagem']) and isset($_GET['funcao'])){
+        $userFuncao = $_GET['user'];
+        $idPostFuncao = $_GET['idPostagem'];
+        $funcao = $_GET['funcao'];
+
+        //Verifica se a publicação já foi curtida
+        if($funcao == 'curtida'){
+            $res = false;
+            include 'connection.php';
+            // echo'<script>alert("Usuário: '.$userFuncao.'\nId postagem: '.$idPostFuncao.'")</script>';
+            $sqlx = 'SELECT idCurtida FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' AND idPostagem = '.$idPostFuncao;
+            $resultx = $con->query($sqlx);
+
+            if ($resultx->num_rows > 0){
+                $con->close();
+                // echo'<script>alert("True")</script>';
+                $res = true;
+                echo $res;
+            }
+            else{
+                $con->close();
+                // echo'<script>alert("Falso")</script>';
+                echo $res;
+            }
+        }
+        else if($funcao == 'avaliado'){
+            $res = false;
+            include 'connection.php';
+            // echo'<script>alert("Usuário: '.$userFuncao.'\nId postagem: '.$idPostFuncao.'")</script>';
+            $sql = 'SELECT * FROM prototipo_Avaliacao_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
+            $result = $con->query($sql);
+
+            if ($result->num_rows > 0){
+                $con->close();
+                // echo'<script>alert("True")</script>';
+                $res = true;
+                echo $res;
+            }
+            else{
+                $con->close();
+                // echo'<script>alert("Falso")</script>';
+                echo $res;
+            }
+        }
+        else if($funcao == 'curtir'){
+            include 'connection.php';
+
+            $res = false;
+
+            //Verifica se a publicação já foi curtida
+            $sql2 = 'SELECT * FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
+            $result2 = $con->query($sql2);
+            if ($result2->num_rows > 0){
+                $foiCurtida = true;
+            }
+            else{
+                $foiCurtida = false;
+            }
+
+            //Curtindo
+            if($foiCurtida){
+                $sql3 = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = numeroCurtidas - 1 WHERE idPostagem = '.$idPostFuncao;
+                $stmt = $con->prepare($sql3);
+                if($stmt->execute()){
+                    $sql4 = 'DELETE FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao;
+                    $stmt2 = $con->prepare($sql4);
+                    if($stmt2->execute()){
+                        $con->close();
+                        $res = 'descurtiu';
+                        // $res[1] = $numCurtidas-1;
+                        echo $res;
+                    }
+                }
+                else{
+                    $con->close();
+                    echo $res;  
+                }
+            }
+            //Caso a publicação não tenha sido curtida
+            else{
+                $sql3 = 'INSERT INTO prototipo_Curtidas_EcoMoment (idPostagem, idUsuarioWeb) VALUES ('.$idPostFuncao.', '.$userFuncao.')';
+                $stmt = $con->prepare($sql3);
+                if($stmt->execute()){
+                    $sql4 = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = numeroCurtidas+1 WHERE idPostagem = '.$idPostFuncao;
+                    $stmt2 = $con->prepare($sql4);
+                    if($stmt2->execute()){
+                        $con->close();
+                        $res = 'curtiu';
+                        // $res[1] = $numCurtidas+1;
+                        echo $res;
+                    }
+                    else{
+                        $con->close();
+                        echo $res; 
+                    }
+                }
+                else{
+                    $con->close();
+                    echo $res;  
+                }
+            }
+
+        }
+        else if($funcao == 'numeroCurtidas'){
+            include 'connection.php';
+            //Obtem o número atual de curtidas
+            $sql = 'SELECT numeroCurtidas FROM prototipo_Postagem_EcoMoment WHERE idPostagem = '.$idPostFuncao;
+            $result = $con->query($sql);
+            if ($result->num_rows > 0){
+                if($row = $result->fetch_assoc()){
+                    $numCurtidas = $row['numeroCurtidas'];
+                }
+                echo $numCurtidas;
+            }
+            $con->close();            
+        }
+    }
+
+    function curtirPHP($numCurt, $userFuncao, $id){
         $res = 0;
         echo'<script>alert("CurtirPHP")</script>';
-        if(curtido($usuarioCurtida, $id)){
+        if(curtido($userFuncao, $id)){
             include 'connection.php';
     
             $sql = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = '.$numCurt.' WHERE idPostagem = '.$id;
@@ -77,7 +194,7 @@
         else{
             include 'connection.php';
     
-            $sql = 'INSERT INTO prototipo_Curtidas_EcoMoment (idPostagem, idUsuarioWeb) VALUES ('.$id.', '.$usuarioCurtida.')';
+            $sql = 'INSERT INTO prototipo_Curtidas_EcoMoment (idPostagem, idUsuarioWeb) VALUES ('.$id.', '.$userFuncao.')';
     
             $stmt = $con->prepare($sql);
             if($stmt->execute()){
@@ -100,43 +217,27 @@
         }
     }
 
-    function curtido($usuarioCurtida, $id){
-        $res = 0;
-        include 'connection.php';
-        echo'<script>alert("Usuário: '.$usuarioCurtida.'\nId postagem: '.$id.'")</script>';
-        $sql = 'SELECT * FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$usuarioCurtida.' and idPostagem = '.$id;
-        $result = $con->query($sql);
-
-        if ($result->num_rows > 0){
-            $con->close();
-            // echo'<script>alert("True")</script>';
-            $res = 1;
-            return $res;
-        }
-        else{
-            $con->close();
-            // echo'<script>alert("Falso")</script>';
-            return $res;
-        }
+    function curtido($userFuncao, $id){
+        
     }
     
-    function avaliarPHP($valor, $usuarioAv, $id){
+    function avaliarPHP($valor, $userFuncao, $id){
         $res = 0;
         echo'<script>alert("AvaliarPHP")</script>';
-        if(avaliado($usuarioAv, $id)){
+        if(avaliado($userFuncao, $id)){
             include 'connection.php';
     
-            $sql = 'UPDATE prototipo_Avaliacao_EcoMoment SET valor = '.$valor.' WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$usuarioAv;
+            $sql = 'UPDATE prototipo_Avaliacao_EcoMoment SET valor = '.$valor.' WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
     
             $stmt = $con->prepare($sql);
             if($stmt->execute()){
-                $sql2 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$usuarioAv;
+                $sql2 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
                 $result2 = $con->query($sql2);
                 if ($result2->num_rows > 0){
                     while ($row = $result2->fetch_assoc()){
                         $qtdeAv = $row['numero'];
                     }
-                    $sql3 = 'SELECT sum(valor) AS soma FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$usuarioAv;
+                    $sql3 = 'SELECT sum(valor) AS soma FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
                     $result3 = $con->query($sql3);
                     if ($result3->num_rows > 0){
                         while ($row = $result3->fetch_assoc()){
@@ -160,20 +261,20 @@
         else{
             include 'connection.php';
     
-            $sql = 'INSERT INTO prototipo_Avaliacao_EcoMoment (idPostagem, idUsuarioWeb, valor) VALUES ('.$id.', '.$usuarioAv.', '.$valor.')';
+            $sql = 'INSERT INTO prototipo_Avaliacao_EcoMoment (idPostagem, idUsuarioWeb, valor) VALUES ('.$id.', '.$userFuncao.', '.$valor.')';
     
             $stmt = $con->prepare($sql);
             if($stmt->execute()){
                 $sql2 = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = '.$numCurt.' WHERE idPostagem = '.$id;
                 $stmt2 = $con->prepare($sql2);
                 if($stmt2->execute()){
-                    $sql3 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$usuarioAv;
+                    $sql3 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
                     $result3 = $con->query($sql3);
                     if ($result3->num_rows > 0){
                         while ($row = $result3->fetch_assoc()){
                             $qtdeAv = $row['numero'];
                         }
-                        $sql4 = 'SELECT sum(valor) AS soma FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$usuarioAv;
+                        $sql4 = 'SELECT sum(valor) AS soma FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
                         $result4 = $con->query($sql4);
                         if ($result4->num_rows > 0){
                             while ($row = $result4->fetch_assoc()){
@@ -201,23 +302,7 @@
         }
     }
 
-    function avaliado($usuarioAv, $id){
-        $res = 0;
-        include 'connection.php';
-        echo'<script>alert("Usuário: '.$usuarioAv.'\nId postagem: '.$id.'")</script>';
-        $sql = 'SELECT * FROM prototipo_Avaliacao_EcoMoment WHERE idUsuarioWeb = '.$usuarioAv.' and idPostagem = '.$id;
-        $result = $con->query($sql);
-
-        if ($result->num_rows > 0){
-            $con->close();
-            // echo'<script>alert("True")</script>';
-            $res = 1;
-            return $res;
-        }
-        else{
-            $con->close();
-            // echo'<script>alert("Falso")</script>';
-            return $res;
-        }
+    function avaliado($userFuncao, $id){
+        
     }
     

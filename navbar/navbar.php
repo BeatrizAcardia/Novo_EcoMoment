@@ -16,6 +16,18 @@ if((isset($_COOKIE['user'])) and (isset($_COOKIE['senha']))){
                                     transform="translate(30)"></path>
                             </button>
                         </a>
+                    </li>
+                    <li class="nav-item d-flex d-md-none">
+                        <a class="nav-item navbar-link padding-navbar" href="logout.php">
+                            <button type="button" class="cta" onclick="cliquei()">
+                                <span class="contato">Sair</span>
+                                <path
+                                    id="Path_10"
+                                    data-name="Path 10"
+                                    d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                                    transform="translate(30)"></path>
+                            </button>
+                        </a>
                     </li>';
 }
 else{

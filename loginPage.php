@@ -1,56 +1,61 @@
 <?php 
-if($_SERVER['REQUEST_METHOD'] === 'GET'){
-    $msgErro = '';
+if(isset($_COOKIE['user']) and isset($_COOKIE['senha'])){
+    header('location: perfil.php?type=conta&user='.$_COOKIE['user']);
 }
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    if((!empty(trim($_POST['email_username'])) and !empty(trim($_POST['password']))) or (trim($_POST['email_username']) != '' and trim($_POST['password']) != '')){
-        $user = $_POST['email_username'];
-        $senha = $_POST['password'];
-
-        //Consulta ao BD
-        include 'connection.php';
-
-        $sql1 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE NomeWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 1"; //nome de usuario ativo
-        $sql2 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 1";//email ativo
-
-        $sql3 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE NomeWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 0"; //nome de usuario banido
-        $sql4 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 0";//email banido
-
-        $result1 = $con->query($sql1);
-        $result2 = $con->query($sql2);
-        $result3 = $con->query($sql3);
-        $result4 = $con->query($sql4);
-
-        if(mysqli_num_rows($result1) == 1){
-            setcookie('user', $user, time()+604800, '/');
-            setcookie('senha', $senha, time()+604800, '/');
-            $con->close();
-            header('Location: logado.php');
-        }
-        else if(mysqli_num_rows($result2) == 1){
-            $sql3 = "SELECT NomeWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha'";
+else{
+    if($_SERVER['REQUEST_METHOD'] === 'GET'){
+        $msgErro = '';
+    }
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if((!empty(trim($_POST['email_username'])) and !empty(trim($_POST['password']))) or (trim($_POST['email_username']) != '' and trim($_POST['password']) != '')){
+            $user = $_POST['email_username'];
+            $senha = $_POST['password'];
+    
+            //Consulta ao BD
+            include 'connection.php';
+    
+            $sql1 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE NomeWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 1"; //nome de usuario ativo
+            $sql2 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 1";//email ativo
+    
+            $sql3 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE NomeWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 0"; //nome de usuario banido
+            $sql4 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 0";//email banido
+    
+            $result1 = $con->query($sql1);
+            $result2 = $con->query($sql2);
             $result3 = $con->query($sql3);
-            if ($result3->num_rows > 0){
-                if ($row = $result->fetch_assoc()){
-                    $nomeUser = $row['idPostagem'];
-                    setcookie('user', $nomeUser, time()+604800, '/');
-                    setcookie('senha', $senha, time()+604800, '/');
-                    $con->close();
-                    header('Location: logado.php');
+            $result4 = $con->query($sql4);
+    
+            if(mysqli_num_rows($result1) == 1){
+                setcookie('user', $user, time()+604800, '/');
+                setcookie('senha', $senha, time()+604800, '/');
+                $con->close();
+                header('Location: logado.php');
+            }
+            else if(mysqli_num_rows($result2) == 1){
+                $sql3 = "SELECT NomeWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha'";
+                $result3 = $con->query($sql3);
+                if ($result3->num_rows > 0){
+                    if ($row = $result->fetch_assoc()){
+                        $nomeUser = $row['idPostagem'];
+                        setcookie('user', $nomeUser, time()+604800, '/');
+                        setcookie('senha', $senha, time()+604800, '/');
+                        $con->close();
+                        header('Location: logado.php');
+                    }
                 }
             }
-        }
-        else if(mysqli_num_rows($result3) == 1 || mysqli_num_rows($result4) == 1){
-            header('location: acesso-negado.php?id=banido');
+            else if(mysqli_num_rows($result3) == 1 || mysqli_num_rows($result4) == 1){
+                header('location: acesso-negado.php?id=banido');
+            }
+            else{
+                $msgErro = 'Usuário ou senha incorretos';
+            }
+            
+            $con->close();
         }
         else{
-            $msgErro = 'Usuário ou senha incorretos';
+            $msgErro = 'Um ou mais campos vazios. Preencha todos para continuar.';
         }
-        
-        $con->close();
-    }
-    else{
-        $msgErro = 'Um ou mais campos vazios. Preencha todos para continuar.';
     }
 }
 ?>
@@ -63,6 +68,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <link rel="stylesheet" href="styles/login-page.css">
     <link rel="stylesheet" href="https://use.typekit.net/xhc2seb.css">
     <link rel="stylesheet" href="styles/mediaQuery-login.css">
+    <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
 
 
     <style>

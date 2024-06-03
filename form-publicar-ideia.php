@@ -138,6 +138,7 @@ else{
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style-padrao.css">
     <link rel="stylesheet" href="styles/style-publicar-ideia.css">
+    <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
     <title>Publicar ideia</title>
 </head>
 <body>
