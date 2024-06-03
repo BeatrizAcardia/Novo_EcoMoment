@@ -53,17 +53,12 @@ function estaAvaliado(user, idPost){
 function curtirJS(user, idPost){
     if(user != 0){
         let ajax = new XMLHttpRequest();
-        alert('entrou em curtirJS');
         if (curtido == true){
-            alert('Já está curtida');
             ajax.open('GET', 'script-ideias.php?user='+user+'&idPostagem='+idPost+'&funcao=curtir', true);
-            alert('Entrando na função ajax2');
             ajax.onreadystatechange = function(){
-                alert('Entrei na função ajax2');
                 if(ajax.readyState == 4){
                     if(ajax.status == 200){
                         let descurtiu = ajax.responseText;
-                        alert(`descurtiu: ${descurtiu}`);
                         if(descurtiu == 'descurtiu'){
                             document.querySelector('.curtida').innerHTML = '<img class="btnInteraction" src="midias/icones-pagIdeia/curtida-2.png" alt="Ícone de coração sem preenchimento">';
                             numeroCurtidas(user, idPost);
@@ -77,19 +72,14 @@ function curtirJS(user, idPost){
                         alert('2 - Erro ao descurtir. Tente novamente ou, se o problema persistir, atualize a página.');
                     }
                 }
-                else{
-                    alert('3 - Erro ao descurtir. Tente novamente ou, se o problema persistir, atualize a página.');
-                }
             }
 
         } else{
-            alert('Ainda não está curtida');
             ajax.open('GET', 'script-ideias.php?user='+user+'&idPostagem='+idPost+'&funcao=curtir', true);
             ajax.onreadystatechange = function(){
                 if(ajax.readyState == 4){
                     if(ajax.status == 200){
                         let curtiu = ajax.responseText;
-                        alert(`curtiu: ${curtiu}`);
                         if(curtiu == 'curtiu'){
                             document.querySelector('.curtida').innerHTML = '<img class="btnInteraction" src="midias/icones-pagIdeia/curtida-1.png" alt="Ícone de coração com preenchimento">';
                             numeroCurtidas(user, idPost);
@@ -102,9 +92,6 @@ function curtirJS(user, idPost){
                     else{
                         alert('2 - Erro ao curtir. Tente novamente ou, se o problema persistir, atualize a página.');
                     }
-                }
-                else{
-                    alert('3 - Erro ao curtir. Tente novamente ou, se o problema persistir, atualize a página.');
                 }
             }
         }
