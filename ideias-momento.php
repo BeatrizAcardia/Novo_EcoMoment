@@ -1,5 +1,28 @@
 <?php 
   include('script-ideias-do-momento.php');
+  if(isset($_COOKIE['user']) and isset($_COOKIE['senha'])){
+    $offcanvas = '    
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasConta" aria-labelledby="offcanvasContaLabel">
+        <div class="offcanvas-header">
+            <div class="center">
+                <h1 class="offcanvas-title" id="offcanvasContaLabel">CONTA</h1>
+            </div>
+            <div class="end"><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
+        </div>
+        <div class="offcanvas-body">
+            <div class="center nunito canvasBody">
+                <img src="midias/icones-perfil/perfil.png" alt="Silhueta de busto">
+                <p class="my-3 fw-bold">'.$_COOKIE['user'].'</p>
+                <div class="row row-btn-canva">
+                    <div class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</div>
+                    <div class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</div>
+                </div>
+        </div>
+    </div>';
+  }
+  else{
+    $offcanvas = '';
+  }
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +37,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/xhc2seb.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
     <title>Ideias do Momento</title>
@@ -526,6 +550,10 @@
         include('rodape/rodape.html');
     ?>
     </footer>
+    
+    <?php 
+      echo $offcanvas;
+    ?>
 
     </main>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script></script>

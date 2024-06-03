@@ -1,7 +1,26 @@
 <?php 
     require_once('script-ideias.php');
     
-    if(isset($_COOKIE['user'])){
+    if(isset($_COOKIE['user']) and isset($_COOKIE['senha'])){
+        $offcanvas = '    
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasConta" aria-labelledby="offcanvasContaLabel">
+            <div class="offcanvas-header">
+                <div class="center">
+                    <h1 class="offcanvas-title" id="offcanvasContaLabel">CONTA</h1>
+                </div>
+                <div class="end"><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
+            </div>
+            <div class="offcanvas-body">
+                <div class="center nunito canvasBody">
+                    <img src="midias/icones-perfil/perfil.png" alt="Silhueta de busto">
+                    <p class="my-3 fw-bold">'.$_COOKIE['user'].'</p>
+                    <div class="row row-btn-canva">
+                        <div class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</div>
+                        <div class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</div>
+                    </div>
+            </div>
+        </div>';
+
         if($_COOKIE['user'] == $userIdeia){
             $btnEditar = '<div class="col-4 col-sm-2 topico"><img src="midias/icones-pagIdeia/editar.png" alt="ícone de quadrado com uma caneta" class="btnInteraction"></div>';
             $col1 = '4';
@@ -32,6 +51,7 @@
         $btnEditar = '';
         $col1 = '6';
         $col2 = '3';
+        $offcanvas = '';
     }
 
 ?>
@@ -219,6 +239,10 @@
             require_once('rodape/rodape.html');
         ?>
     </footer>
+
+    <?php
+        echo $offcanvas;
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

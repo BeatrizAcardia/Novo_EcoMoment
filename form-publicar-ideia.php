@@ -3,6 +3,24 @@ if(!isset($_COOKIE['user']) and !isset($_COOKIE['senha'])){
     header('location: acesso-negado.php?id=erro-login');
 }
 else{
+    $offcanvas = '    
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasConta" aria-labelledby="offcanvasContaLabel">
+        <div class="offcanvas-header">
+            <div class="center">
+                <h1 class="offcanvas-title" id="offcanvasContaLabel">CONTA</h1>
+            </div>
+            <div class="end"><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
+        </div>
+        <div class="offcanvas-body">
+            <div class="center nunito canvasBody">
+                <img src="midias/icones-perfil/perfil.png" alt="Silhueta de busto">
+                <p class="my-3 fw-bold">'.$_COOKIE['user'].'</p>
+                <div class="row row-btn-canva">
+                    <div class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</div>
+                    <div class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</div>
+                </div>
+        </div>
+    </div>';
     if ($_SERVER['REQUEST_METHOD'] === 'GET'){
         $msg = '';
         $msgNome = '';
@@ -132,6 +150,7 @@ else{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -282,6 +301,10 @@ else{
             require_once('rodape/rodape.html');
         ?>
     </footer>
+
+    <?php
+        echo $offcanvas;
+    ?>
 
 
     <!--Scripts Bootstrap-->

@@ -29,24 +29,6 @@ if((isset($_COOKIE['user'])) and (isset($_COOKIE['senha']))){
                             </button>
                         </a>
                     </li>';
-    $offcanvas = '    
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasConta" aria-labelledby="offcanvasContaLabel">
-        <div class="offcanvas-header">
-            <div class="center">
-                <h1 class="offcanvas-title" id="offcanvasContaLabel">CONTA</h1>
-            </div>
-            <div class="end"><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
-        </div>
-        <div class="offcanvas-body">
-            <div class="center nunito canvasBody">
-                <img src="midias/icones-perfil/perfil.png" alt="Silhueta de busto">
-                <p class="my-3 fw-bold">'.$_COOKIE['user'].'</p>
-                <div class="row row-btn-canva">
-                    <div class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</div>
-                    <div class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</div>
-                </div>
-        </div>
-    </div>';
 }
 else{
     $campoLogin = '<li class="nav-item" id="li-login">
@@ -73,7 +55,6 @@ else{
                             </button>
                         </a>
                     </li>';
-    $offcanvas = '';
 }
 ?>
 
@@ -147,6 +128,5 @@ else{
             </div>
         </div>
     </nav>
-    <?=$offcanvas?>
 </body>
 </html>

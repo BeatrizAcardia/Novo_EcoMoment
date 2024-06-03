@@ -249,3 +249,40 @@
   }
 
   /*Fim da NavBar*/
+
+  
+/* Offcanvas navbar */
+.offcanvas-header{
+    text-align: center;
+    font-family: 'Circe';
+    font-weight: bold;
+    color: #05440f;
+    justify-content: center;
+}
+
+.btn-close{
+    position: absolute;
+    top: 20px;
+    right: 15px;
+}
+
+.canvasBody{
+    flex-direction: column;
+}
+
+.canvasBody p{
+    font-size: 20px;
+}
+
+.row-btn-canva{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 5vw;
+}
+
+.row-btn-canva .btn{
+    height: 40px;
+    width: -moz-fit-content;
+    width: fit-content;
+}
