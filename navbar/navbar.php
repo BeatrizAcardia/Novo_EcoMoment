@@ -69,14 +69,14 @@ else{
 <body>
     <nav class="navbar navbar-expand-md fixed-top navbar-light">
         <div class="container-fluid navBar">
-            <a href="index.html"><span class="navbar-brand"><img src="navbar/logo.ico" alt="Logo EcoMoment" class="navbarIcon"></span></a>
+            <a href="index.php"><span class="navbar-brand"><img src="navbar/logo.ico" alt="Logo EcoMoment" class="navbarIcon"></span></a>
             <button class="navbar-toggler d-md-none rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav" id="ul-navbar">
                     <li class="nav-item">
-                        <a class="nav-item navbar-link padding-navbar" href="index.html">
+                        <a class="nav-item navbar-link padding-navbar" href="index.php">
                             <button class="cta" onclick="cliquei()">
                                 <span class="ideias">Início</span>
                                 <path
@@ -112,7 +112,7 @@ else{
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-item navbar-link padding-navbar" href="index.html#footer">
+                        <a class="nav-item navbar-link padding-navbar" href="index.php#footer">
                             <button type="button" class="cta" onclick="cliquei()">
                                 <span class="contato">Contato</span>
                                 <path
