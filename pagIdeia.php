@@ -42,7 +42,7 @@
         }
         else{
             echo '<script>alert("Erro com o usuário")</script>';
-            $idUsuarioWeb = 0;
+            $idUserWeb = 0;
         }
 
     }
@@ -114,17 +114,37 @@
                 <div class="row center row-topico">
                     <div class="col-6 col-sm-3 topico">
                         Avaliar: 
-                        <div class="rating-x" id="avaliacao">  
-                            <input value="5" name="rating-x" id="x-star5" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,5)">
-                            <label for="x-star5"></label>
-                            <input value="4" name="rating-x" id="x-star4" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,4)">
-                            <label for="x-star4"></label>
-                            <input value="3" name="rating-x" id="x-star3" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,3)">
-                            <label for="x-star3"></label>
-                            <input value="2" name="rating-x" id="x-star2" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,2)">
-                            <label for="x-star2"></label>
-                            <input value="1" name="rating-x" id="x-star1" type="radio" onclick="avaliar(<?=$idUserWeb?>,<?=$idPostagem?>,1)">
-                            <label for="x-star1"></label>
+                        <div class="rating rating-x" id="avaliacao">  
+                            <?php
+                            if($idUserWeb != 0){
+                                echo '
+                                <input value="5" name="rating-x" id="x-star5" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',5)">
+                                <label for="x-star5"></label>
+                                <input value="4" name="rating-x" id="x-star4" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',4)">
+                                <label for="x-star4"></label>
+                                <input value="3" name="rating-x" id="x-star3" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',3)">
+                                <label for="x-star3"></label>
+                                <input value="2" name="rating-x" id="x-star2" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',2)">
+                                <label for="x-star2"></label>
+                                <input value="1" name="rating-x" id="x-star1" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',1)">
+                                <label for="x-star1"></label>
+                                ';
+                            }
+                            else{
+                                echo '
+                                <input value="0" name="rating-x" id="x-star5" type="radio" disabled>
+                                <label for="x-star5" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
+                                <input value="0" name="rating-x" id="x-star4" type="radio" disabled>
+                                <label for="x-star4" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
+                                <input value="0" name="rating-x" id="x-star3" type="radio" disabled>
+                                <label for="x-star3" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
+                                <input value="0" name="rating-x" id="x-star2" type="radio" disabled>
+                                <label for="x-star2" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
+                                <input value="0" name="rating-x" id="x-star1" type="radio" disabled>
+                                <label for="x-star1" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
+                                ';
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="col-6 col-sm-3 topico">
@@ -141,8 +161,7 @@
                     </div>
                     <div class="col-<?=$col1?> col-sm-<?=$col2?> topico">
                         <div>
-                            <!-- <span id="img-curtida"><img src="midias/icones-pagIdeia/curtida-1.png" alt="ícone de coração" class="btnInteraction" onclick="curtir()"></span> -->
-                            <div class="curtida" onclick="curtirJS(<?=$idUserWeb?>,<?=$idPostagem?>)">
+                            <div class="curtida" onclick="curtir(<?=$idUserWeb?>,<?=$idPostagem?>)">
                                 <img class="btnInteraction" src="midias/icones-pagIdeia/curtida-2.png" alt="Ícone de coração sem preenchimento">
                             </div>
                             <span id="numCurtidas" class="center"><?=$numCurtidas?></span>

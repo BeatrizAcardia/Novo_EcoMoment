@@ -4,6 +4,7 @@
     include_once 'ideias.php';
 
     $idPostagem = $_REQUEST['idPostagem'];
+    $ideia;
     $existe = false;
 
     
@@ -104,7 +105,7 @@
             $res = false;
 
             //Verifica se a publicação já foi curtida
-            $sql2 = 'SELECT * FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
+            $sql2 = 'SELECT idCurtida FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
             $result2 = $con->query($sql2);
             if ($result2->num_rows > 0){
                 $foiCurtida = true;
@@ -170,139 +171,121 @@
             }
             $con->close();            
         }
-    }
+        else if($funcao == 'avaliar'){
+            include 'connection.php';
 
-    function curtirPHP($numCurt, $userFuncao, $id){
-        $res = 0;
-        echo'<script>alert("CurtirPHP")</script>';
-        if(curtido($userFuncao, $id)){
-            include 'connection.php';
-    
-            $sql = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = '.$numCurt.' WHERE idPostagem = '.$id;
-    
-            $stmt = $con->prepare($sql);
-            if($stmt->execute()){
-                $con->close();
-                $res = 1;
-                return $res;
-            }
-            else{
-                $con->close();
-                return $res;  
-            }
-        }
-        else{
-            include 'connection.php';
-    
-            $sql = 'INSERT INTO prototipo_Curtidas_EcoMoment (idPostagem, idUsuarioWeb) VALUES ('.$id.', '.$userFuncao.')';
-    
-            $stmt = $con->prepare($sql);
-            if($stmt->execute()){
-                $sql2 = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = '.$numCurt.' WHERE idPostagem = '.$id;
-                $stmt2 = $con->prepare($sql2);
-                if($stmt2->execute()){
-                    $con->close();
-                    $res = 1;
-                    return $res;
+            $res = false;
+
+            if(isset($_GET['valor'])){
+                $valor = $_GET['valor'];
+
+                //Verifica se a publicação já foi avaliada
+                $sqlX = 'SELECT idAvaliacao FROM prototipo_Avaliacao_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
+                $resultX = $con->query($sqlX);
+                if ($resultX->num_rows > 0){
+                    $foiAvaliado = true;
                 }
                 else{
-                    $con->close();
-                    return $res; 
+                    $foiAvaliado = false;
                 }
-            }
-            else{
-                $con->close();
-                return $res;  
-            }
-        }
-    }
-
-    function curtido($userFuncao, $id){
-        
-    }
     
-    function avaliarPHP($valor, $userFuncao, $id){
-        $res = 0;
-        echo'<script>alert("AvaliarPHP")</script>';
-        if(avaliado($userFuncao, $id)){
-            include 'connection.php';
-    
-            $sql = 'UPDATE prototipo_Avaliacao_EcoMoment SET valor = '.$valor.' WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
-    
-            $stmt = $con->prepare($sql);
-            if($stmt->execute()){
-                $sql2 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
-                $result2 = $con->query($sql2);
-                if ($result2->num_rows > 0){
-                    while ($row = $result2->fetch_assoc()){
-                        $qtdeAv = $row['numero'];
-                    }
-                    $sql3 = 'SELECT sum(valor) AS soma FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
-                    $result3 = $con->query($sql3);
-                    if ($result3->num_rows > 0){
-                        while ($row = $result3->fetch_assoc()){
-                            $somaValor = $row['soma'];
+                //Iniciando as avaliações
+                if($foiAvaliado){
+            
+                    $sql = 'UPDATE prototipo_Avaliacao_EcoMoment SET valor = '.$valor.' WHERE idPostagem = '.$idPostFuncao.' and idUsuarioWeb = '.$userFuncao;
+            
+                    $stmt = $con->prepare($sql);
+                    if($stmt->execute()){
+                        $sql2 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$idPostFuncao;
+                        $result2 = $con->query($sql2);
+                        if ($result2->num_rows > 0){
+                            while ($row = $result2->fetch_assoc()){
+                                $qtdeAv = $row['numero'];
+                            }
+                            $sql3 = 'SELECT sum(valor) AS soma FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$idPostFuncao;
+                            $result3 = $con->query($sql3);
+                            if ($result3->num_rows > 0){
+                                while ($row = $result3->fetch_assoc()){
+                                    $somaValor = $row['soma'];
+                                }
+                                $sql4 = 'UPDATE prototipo_Postagem_EcoMoment SET avaliacaoPostagem = '.($somaValor/$qtdeAv).' WHERE idPostagem = '.$idPostFuncao;
+                                $stmt4 = $con->prepare($sql4);
+                                if($stmt4->execute()){
+                                    $con->close();
+                                    $res = true;
+                                    echo $res;
+                                }
+                            }
                         }
-                        $sql4 = 'UPDATE prototipo_Postagem_EcoMoment SET avaliacaoPostagem = '.($somaValor/$qtdeAv).' WHERE idPostagem = '.$id;
-                        $stmt4 = $con->prepare($sql4);
-                        if($stmt4->execute()){
+                    }
+                    else{
+                        $con->close();
+                        echo $res;  
+                    }
+                }
+                else{
+            
+                    $sql = 'INSERT INTO prototipo_Avaliacao_EcoMoment (idPostagem, idUsuarioWeb, valor) VALUES ('.$idPostFuncao.', '.$userFuncao.', '.$valor.')';
+            
+                    $stmt = $con->prepare($sql);
+                    if($stmt->execute()){
+                        $sql2 = 'UPDATE prototipo_Postagem_EcoMoment SET qtdeAvaliacoesPostagem = qtdeAvaliacoesPostagem + 1 WHERE idPostagem = '.$idPostFuncao;
+                        $stmt2 = $con->prepare($sql2);
+                        if($stmt2->execute()){
+                            $sql3 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$idPostFuncao;
+                            $result3 = $con->query($sql3);
+                            if ($result3->num_rows > 0){
+                                while ($row = $result3->fetch_assoc()){
+                                    $qtdeAv = $row['numero'];
+                                }
+                                $sql4 = 'SELECT sum(valor) AS soma FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$idPostFuncao;
+                                $result4 = $con->query($sql4);
+                                if ($result4->num_rows > 0){
+                                    while ($row = $result4->fetch_assoc()){
+                                        $somaValor = $row['soma'];
+                                    }
+                                    $sql5 = 'UPDATE prototipo_Postagem_EcoMoment SET avaliacaoPostagem = '.($somaValor/$qtdeAv).' WHERE idPostagem = '.$idPostFuncao;
+                                    $stmt5 = $con->prepare($sql5);
+                                    if($stmt5->execute()){
+                                        $con->close();
+                                        $res = true;
+                                        echo $res;
+                                    }
+                                }
+                            }
+                        }
+                        else{
                             $con->close();
-                            $res = 1;
-                            return $res;
+                            echo $res; 
                         }
+                    }
+                    else{
+                        $con->close();
+                        echo $res;  
                     }
                 }
             }
             else{
-                $con->close();
-                return $res;  
+                echo $res;
             }
         }
-        else{
+        else if($funcao == 'carregarAvaliacao'){
             include 'connection.php';
-    
-            $sql = 'INSERT INTO prototipo_Avaliacao_EcoMoment (idPostagem, idUsuarioWeb, valor) VALUES ('.$id.', '.$userFuncao.', '.$valor.')';
-    
-            $stmt = $con->prepare($sql);
-            if($stmt->execute()){
-                $sql2 = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = '.$numCurt.' WHERE idPostagem = '.$id;
-                $stmt2 = $con->prepare($sql2);
-                if($stmt2->execute()){
-                    $sql3 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
-                    $result3 = $con->query($sql3);
-                    if ($result3->num_rows > 0){
-                        while ($row = $result3->fetch_assoc()){
-                            $qtdeAv = $row['numero'];
-                        }
-                        $sql4 = 'SELECT sum(valor) AS soma FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$id.' and idUsuarioWeb = '.$userFuncao;
-                        $result4 = $con->query($sql4);
-                        if ($result4->num_rows > 0){
-                            while ($row = $result4->fetch_assoc()){
-                                $somaValor = $row['soma'];
-                            }
-                            $sql5 = 'UPDATE prototipo_Postagem_EcoMoment SET avaliacaoPostagem = '.($somaValor/$qtdeAv).' WHERE idPostagem = '.$id;
-                            $stmt5 = $con->prepare($sql5);
-                            if($stmt5->execute()){
-                                $con->close();
-                                $res = 1;
-                                return $res;
-                            }
-                        }
-                    }
+            $resultado;
+            //Verifica se a publicação já foi avaliada
+            $sqlX = 'SELECT valor FROM prototipo_Avaliacao_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
+            $resultX = $con->query($sqlX);
+            if ($resultX->num_rows > 0){
+                while ($row = $resultX->fetch_assoc()){
+                    $valor = $row['valor'];
                 }
-                else{
-                    $con->close();
-                    return $res; 
-                }
+                $resultado = $ideia->carregaAvaliacao4($valor, $idPostFuncao, $userFuncao);
             }
             else{
-                $con->close();
-                return $res;  
+                $resultado = false;
             }
+            echo $resultado;
         }
-    }
 
-    function avaliado($userFuncao, $id){
-        
     }
     

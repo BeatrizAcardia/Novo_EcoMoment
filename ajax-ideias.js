@@ -37,7 +37,7 @@ function estaAvaliado(user, idPost){
                 if(ajax.status == 200){
                     let avaliado = ajax.responseText;
                     if(avaliado == true){
-                        document.getElementById('avaliacao').innerHTML = "Já avaliado"; //Carregar a avaliação dada (criar função)
+                        carregarAvaliacao(user, idPost);
                     }
                 }
                 else{
@@ -50,7 +50,7 @@ function estaAvaliado(user, idPost){
     }
 }
 
-function curtirJS(user, idPost){
+function curtir(user, idPost){
     if(user != 0){
         let ajax = new XMLHttpRequest();
         if (curtido == true){
@@ -124,19 +124,72 @@ function numeroCurtidas(user, idPost){
     }
 }
 
-function avaliar(user, idPost, n){
+function avaliar(user, idPost, valor){
     if(user != 0){
-        alert(`${n} estrela(s)`)
-        document.getElementById('x-star5').disabled = 'true';
-        document.getElementById('x-star4').disabled = 'true';
-        document.getElementById('x-star3').disabled = 'true';
-        document.getElementById('x-star2').disabled = 'true';
-        document.getElementById('x-star1').disabled = 'true';
+        alert(`${valor} estrela(s)`);
+        let ajax = new XMLHttpRequest();
+    
+        ajax.open('GET', 'script-ideias.php?user='+user+'&idPostagem='+idPost+'&funcao=avaliar&valor='+valor, true);
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState == 4){
+                if(ajax.status == 200){
+                    let avaliou = ajax.responseText;
+                    if(avaliou == true){
+                        document.getElementById('x-star5').disabled = 'true';
+                        document.getElementById('x-star4').disabled = 'true';
+                        document.getElementById('x-star3').disabled = 'true';
+                        document.getElementById('x-star2').disabled = 'true';
+                        document.getElementById('x-star1').disabled = 'true';
+                    }
+                    else{
+                        alert('false - Houve um ao processar a avaliação. Tente atualizar a página.\navaliou: '+avaliou);
+                        document.getElementById('x-star5').checked = false;
+                        document.getElementById('x-star4').checked = false;
+                        document.getElementById('x-star3').checked = false;
+                        document.getElementById('x-star2').checked = false;
+                        document.getElementById('x-star1').checked = false;
+                    }
+                }
+                else{
+                    alert('200 - Houve um ao processar a avaliação. Tente atualizar a página.');
+                }
+            }
+        }
+    
+        ajax.send(null);
     }
     else{
         alert('Para ter acesso a essa funcionalidade você precisa estar logado.');
     }
 }
+
+function carregarAvaliacao(user, idPost){
+    if(user != 0){
+        let ajax = new XMLHttpRequest();
+    
+        ajax.open('GET', 'script-ideias.php?user='+user+'&idPostagem='+idPost+'&funcao=carregarAvaliacao', true);
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState == 4){
+                if(ajax.status == 200){
+                    let av = ajax.responseText;
+                    if(av == false){
+                        document.getElementById('avaliacao').innerHTML = 'Já avaliada. Erro ao carregar';
+                    }
+                    else{
+                        document.getElementById('avaliacao').innerHTML = av;
+                    }
+                }
+                else{
+                    alert('Houve um ao carregar o número de curtidas. Tente atualizar a página.');
+                }
+            }
+        }
+    
+        ajax.send(null);
+    }
+}
+
+//select no bd de av e chama a func de carregar ideia -> a func js retorna o resultado do carregamento
 
 function compartilhar(){
     alert('Compartilhou')

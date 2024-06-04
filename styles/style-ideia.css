@@ -71,17 +71,6 @@
 }
 
 /*Estrela e dificuldade*/    
-.rating-x {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-}
-
-.rating-x input {
-    display: none;
-}
-
 .rating-x label {
     float: right;
     cursor: pointer;
@@ -92,17 +81,6 @@
 .rating-x label:before {
     content: '\2605';
     font-size: 30px;
-}
-
-.rating-x input:checked ~ label,
-.rating-x label:hover,
-.rating-x label:hover ~ label {
-    color: #ffc30f;
-    transition: color 0.3s;
-}
-
-.rating-x input:checked ~ label{
-    color: #ffc03f;
 }
 
 /* Descrição */
