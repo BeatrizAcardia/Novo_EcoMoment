@@ -5,7 +5,7 @@
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasConta" aria-labelledby="offcanvasContaLabel">
         <div class="offcanvas-header">
             <div class="center">
-                <h1 class="offcanvas-title" id="offcanvasContaLabel">CONTA</h1>
+                <h1 class="offcanvas-title circeB" id="offcanvasContaLabel">CONTA</h1>
             </div>
             <div class="end"><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
         </div>
@@ -14,8 +14,8 @@
                 <img src="midias/icones-perfil/perfil.png" alt="Silhueta de busto">
                 <p class="my-3 fw-bold">'.$_COOKIE['user'].'</p>
                 <div class="row row-btn-canva">
-                    <div class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</div>
-                    <div class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</div>
+                    <a href="perfil.php?type=conta&user='.$_COOKIE['user'].'" class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</a>
+                    <a href="logout.php" class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</a>
                 </div>
         </div>
     </div>';
@@ -30,209 +30,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style-padrao.css">
-    <link rel="stylesheet" href="styles/style-melhores-ideias.css">
-    <link rel="stylesheet" href="styles/style-ideia.css">
-    <link rel="stylesheet" href="javascript/script-melhoresIdeias.js">
     <link rel="stylesheet" href="https://use.typekit.net/xhc2seb.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles/style-padrao.css">
+    <link rel="stylesheet" href="styles/style-melhores-ideias.css">
+    <link rel="stylesheet" href="styles/style-ideia.css">
+    <link rel="stylesheet" href="javascript/script-melhoresIdeias.js">
     <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
     <title>Ideias do Momento</title>
-    <style>
-        .circeR{
-          font-family: "circe", sans-serif;
-          font-weight: 400;
-          font-style: normal;
-        }
-
-        .circeB{
-          font-family: "circe", sans-serif;
-          font-weight: 700;
-          font-style: normal;
-        } 
-
-        .link-material{
-          text-decoration: none;
-        }
-        .link-material:hover{
-          text-decoration: none;
-        }
-
-        body{
-          background-color: #f4f4f4;
-        }
-        
-        .row-av-ideia > *{
-            width: min-content;
-        }
-
-        /*Começo do Título Principal*/
-        #tituloPrincipal{
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        margin-bottom: 3%;
-        }
-
-        #folha{
-        margin-top: -3px;
-        margin-right: 5px;
-        width: 2.5em;
-        height: 2.5em;
-        }
-
-        #escritaPrincipal{
-        color: #05440F;
-        font-size: 35px;
-        text-transform: uppercase;
-        }
-        /*Fim do Título Principal*/
-
-        /* Cards */
-        .card{
-            width: 280px;
-            height: 320px;
-            object-fit: cover;
-        }
-
-        .img-card{
-            padding-left: 15px;
-            padding-right: 15px;
-            padding-top: 5px;
-        }
-
-        .card-content{
-            padding: 15px;
-            padding-top: 5px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .card-text{
-            width: 100%;
-            justify-content: center;
-        }
-                
-        /*Início do Carrosel*/
-        .swiper-wrapper{
-            margin-bottom: 15px;
-            width: 80%;
-        }
-
-        .swiper{
-            margin-left: 10%;
-            margin-right: 10%;
-        }
-
-        .swiper-slide{
-          width: fit-content;
-        }
-
-        .swiper-button-prev{
-            left: 0;
-        }
-
-        .swiper-button-next{
-            right: 0;
-        }
-
-        .swiper-button-prev:after{
-            content: '';
-        }
-
-        .swiper-button-next:after{
-            content: '';
-        }
-
-        .swiper-slide{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        #containerCarrossel{
-          max-width: 100%;
-        }
-        
-        #pag-melhores .swiper-pagination-bullet-active{
-          background-color: #05440F;
-        }
-
-        #pag-plastico .swiper-pagination-bullet-active{
-          background-color: #CF1212;
-        }
-
-        #pag-metal .swiper-pagination-bullet-active{
-          background-color: #FFC30F;
-        }
-
-        #pag-papel .swiper-pagination-bullet-active{
-          background-color: #55A4DD;
-        }
-
-        #pag-vidro .swiper-pagination-bullet-active{
-          background-color: #4E9E5A;
-        }
-
-        #pag-madeira .swiper-pagination-bullet-active{
-          background-color: #423023;
-        }
-
-        #pag-madeira .swiper-pagination-bullet-active{
-          background-color: #A8642B;
-        }
-        /*Fim do Carrossel*/
-
-        /* Início dos botões */
-        #btn-plastico{
-          border: 2px solid #CF1212;
-        }
-        #btn-plastico::before{
-          background-color: #CF1212;
-        }
-        
-        #btn-metal{
-          border: 2px solid #FFC30F;
-        }
-        #btn-metal::before{
-          background-color: #FFC30F;
-        }
-
-        #btn-papel{
-          border: 2px solid #55A4DD;
-        }
-        #btn-papel::before{
-          background-color: #55A4DD;
-        }
-
-        #btn-vidro{
-          border: 2px solid #4E9E5A;
-        }
-        #btn-vidro::before{
-          background-color: #4E9E5A;
-        }
-
-        #btn-madeira{
-          border: 2px solid #423023;
-        }
-        #btn-madeira::before{
-          background-color: #423023;
-        }
-
-        #btn-organico{
-          border: 2px solid #A8642B;
-        }
-        #btn-organico::before{
-          background-color: #A8642B;
-        }
-
-        /* Fim dos botões */
-
-
-    </style>
 </head>
 <body>
 <main id="navbarMargin">
@@ -556,7 +364,7 @@
     ?>
 
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

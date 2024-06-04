@@ -15,8 +15,8 @@
                   <img src="midias/icones-perfil/perfil.png" alt="Silhueta de busto">
                   <p class="my-3 fw-bold">'.$_COOKIE['user'].'</p>
                   <div class="row row-btn-canva">
-                      <div class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</div>
-                      <div class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</div>
+                    <a href="perfil.php?type=conta&user='.$_COOKIE['user'].'" class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</a>
+                    <a href="logout.php" class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</a>
                   </div>
           </div>
       </div>';

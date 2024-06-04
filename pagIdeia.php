@@ -15,8 +15,8 @@
                     <img src="midias/icones-perfil/perfil.png" alt="Silhueta de busto">
                     <p class="my-3 fw-bold">'.$_COOKIE['user'].'</p>
                     <div class="row row-btn-canva">
-                        <div class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</div>
-                        <div class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</div>
+                    <a href="perfil.php?type=conta&user='.$_COOKIE['user'].'" class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</a>
+                    <a href="logout.php" class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</a>
                     </div>
             </div>
         </div>';
@@ -68,7 +68,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/xhc2seb.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="styles/style-padrao.css">
     <link rel="stylesheet" href="styles/style-ideia.css">
     <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">

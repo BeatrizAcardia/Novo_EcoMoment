@@ -16,8 +16,8 @@ else{
                 <img src="midias/icones-perfil/perfil.png" alt="Silhueta de busto">
                 <p class="my-3 fw-bold">'.$_COOKIE['user'].'</p>
                 <div class="row row-btn-canva">
-                    <div class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</div>
-                    <div class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</div>
+                    <a href="perfil.php?type=conta&user='.$_COOKIE['user'].'" class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</a>
+                    <a href="logout.php" class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</a>
                 </div>
         </div>
     </div>';
@@ -185,12 +185,13 @@ else{
                         </div>
                         <div class="center erro"><?=$msgNome?></div>
                         <div class="row container center3 mt-3">
+                            <label for="foto" class="form-label d-flex d-sm-none">Escolha uma foto: <span class="obrigatorio">*</span></label>
                             <div class="col-12 col-md-6 center2 mb-3">
                                 <input class="form-control d-block d-sm-none" type="file" name="arquivo" id="foto" required>
                                 <label for="foto" class="d-none d-sm-flex" id="lbl-ft">
                                     <div id="foto-sqr"><img src="midias/icones-form-publicar/foto.png" alt="Ícone de imagem em preto e branco"></div>
                                     <div id="nome-ft" class="center">Nenhum arquivo selecionado</div>
-                                    <div type="button" class="button" id="btn-ft">ESCOLHA UMA IMAGEM</div>
+                                    <div type="button" class="button" id="btn-ft">ESCOLHA UMA IMAGEM <span class="obrigatorio">*</span></div>
                                 </label>
                                 <div class="invalid-feedback"><span class="center">Insira pelo menos uma foto ou vídeo da ideia</span></div>
                                 <div class="center erro"><?=$msgFoto?></div>

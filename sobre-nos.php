@@ -4,7 +4,7 @@
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasConta" aria-labelledby="offcanvasContaLabel">
         <div class="offcanvas-header">
             <div class="center">
-                <h1 class="offcanvas-title" id="offcanvasContaLabel">CONTA</h1>
+                <h1 class="offcanvas-title circeB" id="offcanvasContaLabel">CONTA</h1>
             </div>
             <div class="end"><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
         </div>
@@ -12,9 +12,9 @@
             <div class="center nunito canvasBody">
                 <img src="midias/icones-perfil/perfil.png" alt="Silhueta de busto">
                 <p class="my-3 fw-bold">'.$_COOKIE['user'].'</p>
-                <div class="row row-btn-canva">
-                    <div class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</div>
-                    <div class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</div>
+                <div class="row-btn-canva">
+                    <a href="perfil.php?type=conta&user='.$_COOKIE['user'].'" class="col-6 btn btn-success"><i class="bi bi-person-fill"></i> Minha conta</a>
+                    <a href="logout.php" class="col-6 btn btn-danger"><i class="bi bi-box-arrow-left"></i> Sair</a>
                 </div>
         </div>
     </div>';
@@ -39,17 +39,6 @@
     <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
     <title>Sobre Nós</title>
     <style>
-      .circeR{
-        font-family: "circe", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-      }
-
-      .circeB{
-        font-family: "circe", sans-serif;
-        font-weight: 700;
-        font-style: normal;
-      } 
 
       .mp-0{
         padding: 0;
@@ -63,11 +52,6 @@
       .reverse{
         display: flex;
         flex-direction: row-reverse;
-      }
-
-      main{
-        margin: 0;
-        padding: 0;
       }
     </style>
 </head>
@@ -176,10 +160,10 @@
               Lorena Silva
             </div>
             <div class="row perfis">
-              <img class="perfil img-fluid" src="imagens/Lórena.png" alt="">
+              <img class="perfil mb-4" src="imagens/Lórena.png" alt="">
             </div>
             <div class="centrar">
-              <div class="row icons">
+              <div class="row icons mb-4 mb-lg-0">
                 <div class="col-4 mp-0">
                   <img class="icon" src="imagens/github-sobre.png" alt="">
                 </div>
@@ -211,10 +195,10 @@
             Vitor Nascimento
           </div>
           <div class="row perfis">
-            <img class="perfil img-fluid" src="imagens/Vitinho.png" alt="">
+            <img class="perfil mb-4" src="imagens/Vitinho.png" alt="">
           </div>
           <div class="centrar">
-            <div class="row icons">
+            <div class="row icons mb-4 mb-lg-0">
               <div class="col-4 mp-0">
                 <img class="icon" src="imagens/github-sobre.png" alt="">
               </div>
@@ -246,10 +230,10 @@
             Enzo Pazian
           </div>
           <div class="row perfis">
-            <img class="perfil img-fluid" src="imagens/enzo.png" alt="">
+            <img class="perfil mb-4" src="imagens/enzo.png" alt="">
           </div>
           <div class="centrar">
-            <div class="row icons">
+            <div class="row icons mb-4 mb-lg-0">
               <div class="col-4 mp-0">
                 <img class="icon" src="imagens/github-sobre.png" alt="">
               </div>
@@ -281,10 +265,10 @@
             Beatriz A. Cardia
           </div>
           <div class="row perfis">
-            <img class="perfil img-fluid" src="imagens/beatriz.png" alt="">
+            <img class="perfil mb-4" src="imagens/beatriz.png" alt="">
           </div>
           <div class="centrar">
-            <div class="row icons">
+            <div class="row icons mb-4 mb-lg-0">
               <div class="col-4 mp-0">
                 <img class="icon" src="imagens/github-sobre.png" alt="">
               </div>

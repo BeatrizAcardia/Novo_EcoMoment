@@ -110,6 +110,7 @@ body{
   }
 
   .messageBox {
+    width: -moz-fit-content;
     width: fit-content;
     height: 40px;
     display: flex;
@@ -125,6 +126,7 @@ body{
     border: 1px solid rgb(110, 110, 110);
   }
   .fileUploadWrapper {
+    width: -moz-fit-content;
     width: fit-content;
     height: 100%;
     display: flex;
@@ -138,6 +140,7 @@ body{
   }
   .fileUploadWrapper label {
     cursor: pointer;
+    width: -moz-fit-content;
     width: fit-content;
     height: fit-content;
     display: flex;
@@ -196,6 +199,7 @@ body{
   }
   
   #sendButton {
+    width: -moz-fit-content;
     width: fit-content;
     height: 100%;
     background-color: transparent;

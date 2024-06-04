@@ -1,12 +1,22 @@
 @charset "UTF-8";
 
+@media screen and (min-width: 999px) {
+  .row>* .perfil{
+    width: 60%;
+  }
+}
 
 @media screen and (max-width: 988px){
   #tituloPrincipal, #tituloSecundario{
     font-size: 2em;
   } 
+  
   #texto{
     width: 80%;
+  }
+  
+  .row>* .perfil{
+    width: 75%;
   }
 }
 
@@ -26,15 +36,25 @@
 }
 
 
-@media screen and (max-width: 670px){
-  #tituloPrincipal, #tituloSecundario, .nome{
+@media screen and (max-width: 767px){
+  #tituloPrincipal, #tituloSecundario{
     font-size: 30px;
   }  
+
+  .nome{
+    font-size: 26px;
+  }
+
   .conteudo{
     font-size: 1.2em;
   }
+  
   #texto{
     width: 80%;
+  }
+  
+  .row>* .perfil{
+    width: 40%;
   }
 }
 
@@ -43,12 +63,24 @@
   .conteudo{
     font-size: 1.2em;
   }
+  
+  .row>* .perfil{
+    width: 40%;
+  }
 }
 
 
 @media screen and (max-width: 380px){
-  #tituloPrincipal, #tituloSecundario, .nome{
-    font-size: 25px;
+  #tituloPrincipal, #tituloSecundario{
+    font-size: 28px;
+  }
+
+  .nome{
+    font-size: 24px;
+  }
+  
+  .row>* .perfil{
+    width: 40%;
   }
 }
 
@@ -77,5 +109,9 @@
 
   .descricao{
     padding: 5px;
-    }
+  }
+  
+  .row>* .perfil{
+    width: 45%;
+  }
 }
