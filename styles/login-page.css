@@ -334,4 +334,18 @@ body{
     scale: 1;
   }
   
+.voltar{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+.voltar a{
+  text-decoration: none;
+  position: fixed;
+  bottom: 10px;
+  color: #7AC143;
+  font-size: 18px;
+}
   

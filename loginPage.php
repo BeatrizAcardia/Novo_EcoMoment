@@ -191,7 +191,11 @@ else{
                 <div class="footer-image">
                     <img class="logo" src="" alt="">
                 </div>
+                <div class="voltar circeB">
+                    <a href="index.php">Voltar</a>
+                </div>
         </div>
+
 
 <!---------------------------------------------- Fim da form dos inputs --------------------------------------------->
     

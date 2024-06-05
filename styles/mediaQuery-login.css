@@ -417,6 +417,15 @@ Grandes telas: acima 12000px
       }
 }
 
+@media screen and (max-width: 420px) {
+    .input-box{
+        margin-bottom: 0;
+    }
+    .voltar a{
+        font-size: 14px;
+    }
+}
+
 @media screen and (max-width: 281px) {
     .form-header{
         display: flex;

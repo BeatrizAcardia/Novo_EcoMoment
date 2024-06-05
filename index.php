@@ -204,31 +204,31 @@
   <div class="row" id="linhaLixeiras" style="border: 0; margin: 0 auto; padding: 0; display: flex;flex-direction: row;justify-content: center;
   align-items: center;  margin-top: 4%;">
     <div class="col lixeiras"  style=" width: 10vw !important;">
-    <a href="#">
+    <a href="materiais.php?material=1">
       <img src="midias/imagens-tela-inicial/lixeiraPlástico.png" style="width: 100%;" alt="">
       <h6 class="descLixeiras">Plástico</h6>
     </a>
   </div>
   <div class="col lixeiras">
-    <a href="#">
-      <img src="midias/imagens-tela-inicial/lixeiraVidro.png" style="width: 100%;" alt="">
-      <h6 class="descLixeiras">Vidro</h6>
-    </a>
-  </div>
-  <div class="col lixeiras">
-    <a href="#">
+    <a href="materiais.php?material=2">
       <img src="midias/imagens-tela-inicial/lixeiraMetal.png" style="width: 100%;" alt="">
       <h6 class="descLixeiras">Metal</h6>
     </a>
   </div>
   <div class="col lixeiras">
-    <a href="#">
+    <a href="materiais.php?material=3">
       <img src="midias/imagens-tela-inicial/lixeiraPapel.png" style="width: 100%;" alt="">
       <h6 class="descLixeiras">Papel</h6>
     </a>
   </div>
   <div class="col lixeiras">
-    <a href="#">
+    <a href="materiais.php?material=4">
+      <img src="midias/imagens-tela-inicial/lixeiraVidro.png" style="width: 100%;" alt="">
+      <h6 class="descLixeiras">Vidro</h6>
+    </a>
+  </div>
+  <div class="col lixeiras">
+    <a href="materiais.php?material=6">
       <img src="midias/imagens-tela-inicial/lixeiraOrganico.png" style="width: 100%;" alt="">
       <h6 class="descLixeiras">Orgânico</h6>
     </a>

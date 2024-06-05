@@ -32,7 +32,7 @@ else{
                 if($stmt->execute()){
                     setcookie('user', $username, time()+604800, '/');
                     setcookie('senha', $password, time()+604800, '/');
-                    header('Location: logado.php');
+                    header('Location: sucesso.php?id=cadastro');
                 }else{
                     echo '<script>alert("ERRO")</script>';
                 }

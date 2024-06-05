@@ -165,7 +165,7 @@ else{
                                     Editar
                                 </button> -->
                                 <?=$btn1?>
-                                <button class="button btn-share my-2 d-none d-md-block"><a href="logout.php">Compartilhar</a></button>
+                                <button class="button btn-share my-2 d-none d-md-block">Compartilhar</button>
                             </div>
                             <!-- Dados -->
                             <div class="col-12 col-md-6 col-dados">
