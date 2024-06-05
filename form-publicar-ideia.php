@@ -41,7 +41,7 @@ else{
 
         $nome = trim($_REQUEST['nomeIdeia']);
         // $user = $_REQUEST['user']; /* Pega a informação do login */
-        $user = '@enzoop1402';
+        $user = $_COOKIE['user'];
         $descricao = trim($_REQUEST['descricaoIdeia']);
         $materiaisNec = trim($_REQUEST['materiaisNecessariosIdeia']);
         $instrucoes = trim($_REQUEST['instrucoesIdeia']);

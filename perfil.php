@@ -131,6 +131,13 @@ else{
     <link rel="stylesheet" href="styles/style-publicar-ideia.css">
     <link rel="stylesheet" href="styles/style-conta.css">
     <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
+    <style>
+        #btn-modal{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -246,10 +253,6 @@ else{
         ?>
     </footer>
 
-    <?php
-        echo $offcanvas;
-    ?>
-
     <!-- Modal -->
     <div class="modal fade" id="modal-editar" tabindex="-1" aria-labelledby="modal-editarLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -282,14 +285,19 @@ else{
                         </div>
                     </div>
                     <div class="center footer nunito mt-3">
-                        <button type="submit" class="button btn-follow">Salvar</button>
-                        <button type="button" class="button btn-share" data-bs-dismiss="modal">Cancelar</button>
+                        <button id="btn-modal" type="submit" class="button btn-follow"><div class="center">Salvar</div></button>
+                        <button id="btn-modal" type="button" class="button btn-share" data-bs-dismiss="modal"><div class="center">Cancelar</div></button>
                     </div>
                 </form>
             </div>
             </div>
         </div>
     </div>
+
+    <?php
+        echo $offcanvas;
+    ?>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>

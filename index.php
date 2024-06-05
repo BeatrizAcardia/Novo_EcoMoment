@@ -109,7 +109,7 @@
           </div>
       </div>
 
-      <div class="container ondaAzul" style="margin: 0; padding: 0;border: 0; margin-top: -5%;">
+      <div class="container ondaAzul" style="margin: 0; padding: 0;border: 0;">
         <div class="row" style="border: 0; width: 100vw; margin: 0 auto; padding: 0;">
           <div class="col texto1" style="padding: 0;">
             <img src="midias/imagens-tela-inicial/ondaAzul1.png" alt="" style="width: 100%;">
@@ -238,7 +238,7 @@
   <div class="row rowPadrao" id="separador"></div>
 
   <!-- Footer -->
-<footer class="bg-900 text-center" style="width: 100%; color: azure; background-color:#3B5364 ;">
+<footer class="bg-900 text-center" id="footer" style="width: 100%; color: azure; background-color:#3B5364 ;">
   <!-- Grid container -->
   <div class="container p-4">
 

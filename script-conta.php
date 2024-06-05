@@ -14,6 +14,8 @@
     $rep = '';
     $biog = '';
 
+    $melhorPost = '';
+
     include 'connection.php';
 
     $existe = false;

@@ -192,7 +192,7 @@ else{
                     <img class="logo" src="" alt="">
                 </div>
                 <div class="voltar circeB">
-                    <a href="index.php">Voltar</a>
+                    <a href="index.php">Continuar sem login</a>
                 </div>
         </div>
 
