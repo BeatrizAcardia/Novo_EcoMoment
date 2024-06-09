@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles/style-padrao.css">
     <link rel="stylesheet" href="styles/style-tela-inicial.css">
     <link rel="stylesheet" href="styles/media-query-tela-inicial.css">
@@ -123,66 +124,73 @@
           <img src="midias/imagens-tela-inicial/detalheVerde.png" alt="" style="width: 5%; margin-top: -1.8%;"><h3>Curiosidades</h3>
         </div>
       </div>
-      <div class="row" style="border: 0; width: 100vw; margin: 0 auto; padding: 0; margin-top: 1%; margin-bottom: 2%;">
+      <div class="row" style="border: 0; width: 80vw; margin: 0 auto; padding: 0; margin-top: 1%; margin-bottom: 2%;">
         <div class="col" style="padding: 0;">
-          <div class="cards-wrapper">
-            <div id="carouselExampleControls" class="carousel slide carousel-dark" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="cards-wrapper">
-                    <div id="card1" class="card">
-                      <img class="card-img-top" src="midias/imagens-tela-inicial/curi1.webp" alt="Imagem de capa do card">
-                      <div class="card-body">
-                        <h5 class="card-title">O Brasil é o 4º maior produtor de lixo plástico do mundo</h5>
+          <div class="center row">
+            <div class="swiper" id="carrosselCuriosidades">
+              <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img class="card-img-top" src="midias/imagens-tela-inicial/curi1.webp" alt="Imagem de capa do card">
+                        <div class="card-body">
+                          <h5 class="card-title">O Brasil é o 4º maior produtor de lixo plástico do mundo</h5>
+                        </div>
                       </div>
                     </div>
-                    <div id="card2" class="card">
-                      <img class="card-img-top" src="midias/imagens-tela-inicial/curi2.webp" alt="Imagem de capa do card">
-                      <div class="card-body">
-                        <h5 class="card-title">O Brasil recicla 97,4% de latas de alumínio</h5>
+
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img class="card-img-top" src="midias/imagens-tela-inicial/curi2.webp" alt="Imagem de capa do card">
+                        <div class="card-body">
+                          <h5 class="card-title">O Brasil recicla 97,4% de latas de alumínio</h5>
+                        </div>
                       </div>
                     </div>
-                    <div id="card3" class="card">
-                      <img class="card-img-top" src="midias/imagens-tela-inicial/curi3.webp" alt="Imagem de capa do card">
-                      <div class="card-body">
-                        <h5 class="card-title">O símbolo da reciclagem foi criado em um concurso</h5>
+
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img class="card-img-top" src="midias/imagens-tela-inicial/curi3.webp" alt="Imagem de capa do card">
+                        <div class="card-body">
+                          <h5 class="card-title">O símbolo da reciclagem foi criado em um concurso</h5>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="cards-wrapper">
-                    <div id="card1" class="card">
-                      <img class="card-img-top" src="midias/imagens-tela-inicial/curi4.jpg" alt="Imagem de capa do card">
-                      <div class="card-body">
-                        <h5 class="card-title">É possível ter desconto na conta de luz em SP reciclando</h5>
+
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img class="card-img-top" src="midias/imagens-tela-inicial/curi4.jpg" alt="Imagem de capa do card">
+                        <div class="card-body">
+                          <h5 class="card-title">É possível ter desconto na conta de luz em SP reciclando</h5>
+                        </div>
                       </div>
                     </div>
-                    <div id="card2" class="card">
-                      <img class="card-img-top" src="midias/imagens-tela-inicial/curi5.jpg" alt="Imagem de capa do card">
-                      <div class="card-body">
-                        <h5 class="card-title"> O Brasil recicla menos de 3% de resíduos produzidos</h5>
+
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img class="card-img-top" src="midias/imagens-tela-inicial/curi5.jpg" alt="Imagem de capa do card">
+                        <div class="card-body">
+                          <h5 class="card-title"> O Brasil recicla menos de 3% de resíduos produzidos</h5>
+                        </div>
                       </div>
                     </div>
-                    <div id="card3" class="card">
-                      <img class="card-img-top" src="midias/imagens-tela-inicial/curi6.png" alt="Imagem de capa do card">
-                      <div class="card-body">
-                        <h5 class="card-title">A reciclagem do alumínio economiza 95% do custo de energia para produzir um novo</h5>
+
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img class="card-img-top" src="midias/imagens-tela-inicial/curi6.png" alt="Imagem de capa do card">
+                        <div class="card-body">
+                          <h5 class="card-title">A reciclagem do alumínio economiza 95% do custo de energia para produzir um novo</h5>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
               </div>
-              <a class="carousel-control-prev" style="background: url(midias/imagens-tela-inicial/divisa-esquerda.png) no-repeat right center;"  href="#carouselExampleControls" role="button" data-slide="prev">
-                <span  aria-hidden="true"></span>
-                <span class="sr-only">Anterior</span>
-              </a>
-              <a class="carousel-control-next" style="background: url(midias/imagens-tela-inicial/divisa-direita.png) no-repeat left center;" href="#carouselExampleControls" role="button" data-slide="next">
-                <span aria-hidden="true"></span>
-                <span class="sr-only">Próximo</span>
-              </a>
+              <!-- Pagination -->
+              <div class="swiper-pagination" id="pag-curiosidades"></div>
+              <!-- Navigation buttons -->
+              <div class="swiper-button-prev d-none d-md-block" id="prev-curiosidades"><img src="midias/imagens-tela-inicial/divisa-esquerda.png" alt="Seta para a esquerda"></div>
+              <div class="swiper-button-next d-none d-md-block" id="next-curiosidades"><img src="midias/imagens-tela-inicial/divisa-direita.png" alt="Seta para a direita"></div>
+
             </div>
-            </div>
+          </div>
         </div>
       </div>
   </div>
@@ -267,7 +275,7 @@
             <li>
               <a class="text-light" href="#!">beatrizcardia53@gmail.com</a>
             </li>
-            <li>
+            <li class="mt-1">
               <a class="text-light" href="#!"><img src="midias/imagens-tela-inicial/instagram.png" alt=""> <img src="imagens/github.png" alt=""></a>
             </li>
           </ul>
@@ -288,7 +296,7 @@
             <li>
               <a class="text-light" href="#!">enzopazian1402@gmail.com</a>
             </li>
-            <li>
+            <li class="mt-1">
               <a class="text-body" href="#!"><img src="midias/imagens-tela-inicial/instagram.png" alt=""> <img src="imagens/github.png" alt=""></a>
             </li>
           </ul>
@@ -309,7 +317,7 @@
             <li>
               <a class="text-light" href="#!">lorenasilva.dev@gmail.com</a>
             </li>
-            <li>
+            <li class="mt-1">
               <a class="text-light" href="#!"><img src="midias/imagens-tela-inicial/instagram.png" alt=""> <img src="imagens/github.png" alt=""></a>
             </li>
           </ul>
@@ -330,7 +338,7 @@
             <li>
               <a class="text-light" href="#!">vitorhsnascimento.dev@gmail.com</a>
             </li>
-            <li>
+            <li class="mt-1">
               <a class="text-light" href="#!"><img src="midias/imagens-tela-inicial/instagram.png" alt=""> <img src="imagens/github.png" alt=""></a>
             </li>
           </ul>
@@ -404,5 +412,49 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Carrossel -->
+     <script>
+        //Notícias
+        const swiperBest = new Swiper('#carrosselCuriosidades', {
+            speed: 400,
+            spaceBetween: 10,
+            slidesPerView: 1,
+            
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            grabCursor: true,
+            autoplay: {
+                delay: 2000,
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '#next-curiosidades',
+                prevEl: '#prev-curiosidades',
+            },
+            keyboard: {
+                enabled: true,
+            },
+            pagination: {
+                el: "#pag-curiosidades",
+                clickable: true,
+                dynamicBullets: true
+            },
+            breakpoints:{
+              600:{
+                slidesPerView: 2
+              },
+              1130:{
+                slidesPerView: 3
+              },
+              1600:{
+                slidesPerView: 4
+              },
+              2000:{
+                slidesPerView: 5
+              }
+            }
+          });
+     </script>
 </body>
 </html>

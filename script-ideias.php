@@ -65,7 +65,7 @@
             $res = false;
             include 'connection.php';
             // echo'<script>alert("Usuário: '.$userFuncao.'\nId postagem: '.$idPostFuncao.'")</script>';
-            $sqlx = 'SELECT idCurtida FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' AND idPostagem = '.$idPostFuncao;
+            $sqlx = 'SELECT * FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' AND idPostagem = '.$idPostFuncao;
             $resultx = $con->query($sqlx);
 
             if ($resultx->num_rows > 0){
@@ -105,7 +105,7 @@
             $res = false;
 
             //Verifica se a publicação já foi curtida
-            $sql2 = 'SELECT idCurtida FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
+            $sql2 = 'SELECT * FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
             $result2 = $con->query($sql2);
             if ($result2->num_rows > 0){
                 $foiCurtida = true;
@@ -114,7 +114,7 @@
                 $foiCurtida = false;
             }
 
-            //Curtindo
+            //Desurtindo
             if($foiCurtida){
                 $sql3 = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = numeroCurtidas - 1 WHERE idPostagem = '.$idPostFuncao;
                 $stmt = $con->prepare($sql3);
@@ -122,10 +122,17 @@
                     $sql4 = 'DELETE FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao;
                     $stmt2 = $con->prepare($sql4);
                     if($stmt2->execute()){
+                        $sql5 = 'UPDATE EcoMomentBD_UsuarioWeb SET qtdeCurtidas = qtdeCurtidas - 1 WHERE idUsuarioWeb = '.$userFuncao;
+                        $stmt3 = $con->prepare($sql5);
+                        if($stmt3->execute()){
+                            $con->close();
+                            $res = 'descurtiu';
+                            echo $res;
+                        }
+                    }
+                    else{
                         $con->close();
-                        $res = 'descurtiu';
-                        // $res[1] = $numCurtidas-1;
-                        echo $res;
+                        echo $res;  
                     }
                 }
                 else{
@@ -133,18 +140,25 @@
                     echo $res;  
                 }
             }
-            //Caso a publicação não tenha sido curtida
+            //Caso a publicação não tenha sido curtida -> curtindo
             else{
                 $sql3 = 'INSERT INTO prototipo_Curtidas_EcoMoment (idPostagem, idUsuarioWeb) VALUES ('.$idPostFuncao.', '.$userFuncao.')';
                 $stmt = $con->prepare($sql3);
                 if($stmt->execute()){
-                    $sql4 = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = numeroCurtidas+1 WHERE idPostagem = '.$idPostFuncao;
+                    $sql4 = 'UPDATE prototipo_Postagem_EcoMoment SET numeroCurtidas = numeroCurtidas + 1 WHERE idPostagem = '.$idPostFuncao;
                     $stmt2 = $con->prepare($sql4);
                     if($stmt2->execute()){
-                        $con->close();
-                        $res = 'curtiu';
-                        // $res[1] = $numCurtidas+1;
-                        echo $res;
+                        $sql5 = 'UPDATE EcoMomentBD_UsuarioWeb SET qtdeCurtidas = qtdeCurtidas + 1 WHERE idUsuarioWeb = '.$userFuncao;
+                        $stmt3 = $con->prepare($sql5);
+                        if($stmt3->execute()){
+                            $con->close();
+                            $res = 'curtiu';
+                            echo $res;
+                        }
+                        else{
+                            $con->close();
+                            echo $res; 
+                        }
                     }
                     else{
                         $con->close();
@@ -180,7 +194,7 @@
                 $valor = $_GET['valor'];
 
                 //Verifica se a publicação já foi avaliada
-                $sqlX = 'SELECT idAvaliacao FROM prototipo_Avaliacao_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
+                $sqlX = 'SELECT * FROM prototipo_Avaliacao_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
                 $resultX = $con->query($sqlX);
                 if ($resultX->num_rows > 0){
                     $foiAvaliado = true;
@@ -196,7 +210,7 @@
             
                     $stmt = $con->prepare($sql);
                     if($stmt->execute()){
-                        $sql2 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$idPostFuncao;
+                        $sql2 = 'SELECT count(idUsuarioWeb) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$idPostFuncao;
                         $result2 = $con->query($sql2);
                         if ($result2->num_rows > 0){
                             while ($row = $result2->fetch_assoc()){
@@ -232,7 +246,7 @@
                         $sql2 = 'UPDATE prototipo_Postagem_EcoMoment SET qtdeAvaliacoesPostagem = qtdeAvaliacoesPostagem + 1 WHERE idPostagem = '.$idPostFuncao;
                         $stmt2 = $con->prepare($sql2);
                         if($stmt2->execute()){
-                            $sql3 = 'SELECT count(idAvaliacao) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$idPostFuncao;
+                            $sql3 = 'SELECT count(idUsuarioWeb) AS numero FROM prototipo_Avaliacao_EcoMoment WHERE idPostagem = '.$idPostFuncao;
                             $result3 = $con->query($sql3);
                             if ($result3->num_rows > 0){
                                 while ($row = $result3->fetch_assoc()){

@@ -6,7 +6,7 @@
     $usuario = new Usuarios();
 
     //Dados da conta
-    $id = '';
+    $id = 0;
     $qtdeS1 = '';
     $qtdeS2 = '';
     $qtdeC = '';
