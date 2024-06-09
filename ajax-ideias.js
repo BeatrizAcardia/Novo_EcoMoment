@@ -126,7 +126,6 @@ function numeroCurtidas(user, idPost){
 
 function avaliar(user, idPost, valor){
     if(user != 0){
-        alert(`${valor} estrela(s)`);
         let ajax = new XMLHttpRequest();
     
         ajax.open('GET', 'script-ideias.php?user='+user+'&idPostagem='+idPost+'&funcao=avaliar&valor='+valor, true);
@@ -188,8 +187,6 @@ function carregarAvaliacao(user, idPost){
         ajax.send(null);
     }
 }
-
-//select no bd de av e chama a func de carregar ideia -> a func js retorna o resultado do carregamento
 
 function compartilhar(){
     alert('Compartilhou')

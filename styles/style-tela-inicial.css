@@ -93,11 +93,11 @@ main{
 }
 
 #botão {
-  color: #FAFAFA;
+  color: #F4F4F4;
   padding: 0.5vw 1.5vw;
-  border: 2px solid #FAFAFA;
+  border: 2px solid #F4F4F4;
   background: #004852;
-  box-shadow: .4vw .4vw #fafafa;
+  box-shadow: -0.3vw 0.3vw #F4F4F4;
   cursor: pointer;
 }
 #botão > p{
@@ -216,41 +216,14 @@ main{
   margin-left: -2.5%;
 }
 
-.cards-wrapper{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cards-wrapper > .card{
-  height: 18em;
-  text-align: center;
-  box-shadow: none;
+#pag-curiosidades .swiper-pagination-bullet-active{
   background-color: #263237;
 }
 
-.cards-wrapper > .card > .card-body{
-  height: 5em;
-}
-
-
-#carouselExampleControls, #carouselExampleControlsVidro, #carouselExampleControlsPapel, #carouselExampleControlsMetal, #carouselExampleControlsOrganico, #carouselExampleControlsMadeira{
-  width: 100vw;
-}
-
 /*Início dos Cards*/
-
-div#card1.card{
-  border: 50px 50px 50px 50px #004852;
-}
-
 .cards{
   display: flex;
   justify-content: center;
-}
-
-.card{
-  margin: 1%;
 }
 
 a:link{
@@ -269,6 +242,11 @@ a:link{
 }
 
 .card {
+  margin: 1%;
+  height: 16em;
+  text-align: center;
+  box-shadow: none;
+  background-color: #263237;
   width: 14rem;
   margin-bottom: 20px;
   box-shadow: 2px 2px 25px 1px rgba(0, 0, 0, 0.241);

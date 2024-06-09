@@ -31,8 +31,8 @@ else{
     require_once('script-conta.php');
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if(! isset($_FILES['ft-perfil']) and $_POST['nome'] == '' and $_POST['bio'] == ''){
-            echo '<script>alert("Nenhum campo alterado")</script>';
+        if((! isset($_FILES['ft-perfil']) and $_POST['nome'] == '' and $_POST['bio'] == '') or (! isset($_FILES['ft-perfil']) and $_POST['nome'] == $user and $_POST['bio'] == $biog)){
+            // echo '<script>alert("Nenhum campo alterado")</script>';
         }
         else{
             $nome = $_POST['nome'];
@@ -92,7 +92,7 @@ else{
 
             $stmt = $con->prepare($sql);
             if($stmt->execute()){
-                $msg = '<script>document.alert("Sua conta foi atualizada com sucesso!");</script>';
+                // echo '<script>alert("Sua conta foi atualizada com sucesso!");</script>';
 
                 $sql2 = 'SELECT * FROM EcoMomentBD_UsuarioWeb WHERE idUsuarioWeb = '.$id;
                 $result2 = $con->query($sql2);
@@ -105,14 +105,19 @@ else{
                     }
     }
             }else{
-                $msg = '<script>document.alert("ERRO \n Não foi possível atualizar sua conta. Verifique se há algum erro ou tente novamente.");</script>';
+                // echo '<script>alert("ERRO \n Não foi possível atualizar sua conta. Verifique se há algum erro ou tente novamente.");</script>';
             }
-
-            echo $msg;
             $con->close();
 
         }
     }
+}
+
+if($_GET['type'] == 'conta' && $_GET['user'] == $_COOKIE['user']){
+    $titulo = 'Minha conta';
+}
+else{
+    $titulo = $_GET['user'];
 }
 ?>
 
@@ -121,7 +126,7 @@ else{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha conta</title>
+    <title><?=$titulo?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -310,7 +315,6 @@ else{
         var bio = document.getElementById('bio');
         var biog = bio.innerText;
         var biog2 = '';
-        console.log(biog)
         if(biog.length > 50){
             for (let index = 0; index < 50; index++) {
                 biog2 += `${biog.charAt(index)}`;
@@ -321,12 +325,10 @@ else{
 
         function ver(){
             if (bio.innerHTML.toString() == biog2.toString()){
-                console.log(biog);
                 bio.innerHTML = `${biog}... <span id="ver-mais" onclick="ver()">Ver menos</span>`;
             }
             else {
                 bio.innerHTML = biog2;
-                console.log(biog2);
             }
         }
     </script>
@@ -338,6 +340,9 @@ else{
             document.getElementById('area-ft').innerHTML = '<img id="ft" src="midias/icones-form-publicar/certo.png" alt="Ícone de verificação correta">';
         });
     </script>
+
+    <!-- Ajax modal -->
+    <!-- <script src="ajax-perfil.js"></script> -->
 
 </body>
 </html>
