@@ -192,6 +192,13 @@
 
             if(isset($_GET['valor'])){
                 $valor = $_GET['valor'];
+                $queryNome = "SELECT nomeUsuario FROM prototipo_Postagem_EcoMoment WHERE idPostagem = $idPostFuncao";
+                $resultNome = $con->query($queryNome);
+                if($resultNome->num_rows > 0){
+                    while ($row = $resultNome->fetch_assoc()){
+                        $userPost = $row['nomeUsuario'];
+                    }
+                }
 
                 //Verifica se a publicação já foi avaliada
                 $sqlX = 'SELECT * FROM prototipo_Avaliacao_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
@@ -225,11 +232,53 @@
                                 $sql4 = 'UPDATE prototipo_Postagem_EcoMoment SET avaliacaoPostagem = '.($somaValor/$qtdeAv).' WHERE idPostagem = '.$idPostFuncao;
                                 $stmt4 = $con->prepare($sql4);
                                 if($stmt4->execute()){
+                                    $sql5 = 'SELECT count(idPostagem) AS numero FROM prototipo_Postagem_EcoMoment WHERE nomeUsuario = "'.$userPost.'" and avaliacaoPostagem != 0';
+                                    $result5 = $con->query($sql5);
+                                    if ($result5->num_rows > 0){
+                                        while ($row = $result5->fetch_assoc()){
+                                            $qtdeAv2 = $row['numero'];
+                                        }
+                                        $sql6 = 'SELECT sum(avaliacaoPostagem) AS soma FROM prototipo_Postagem_EcoMoment WHERE nomeUsuario = "'.$userPost.'"';
+                                        $result6 = $con->query($sql6);
+                                        if ($result6->num_rows > 0){
+                                            while ($row = $result6->fetch_assoc()){
+                                                $somaValor2 = $row['soma'];
+                                            }
+                                            $sql7 = 'UPDATE EcoMomentBD_UsuarioWeb SET Reputacao = '.($somaValor2/$qtdeAv2).' WHERE NomeWeb = "'.$userPost.'"';
+                                            $stmt7 = $con->prepare($sql7);
+                                            if($stmt7->execute()){
+                                                $con->close();
+                                                $res = true;
+                                                echo $res;
+                                            }
+                                            else{
+                                                $con->close();
+                                                echo $res; 
+                                            }
+                                        }
+                                        else{
+                                            $con->close();
+                                            echo $res; 
+                                        }
+                                    }
+                                    else{
+                                        $con->close();
+                                        echo $res; 
+                                    }
+                                }
+                                else{
                                     $con->close();
-                                    $res = true;
-                                    echo $res;
+                                    echo $res;  
                                 }
                             }
+                            else{
+                                $con->close();
+                                echo $res;  
+                            }
+                        }
+                        else{
+                            $con->close();
+                            echo $res;  
                         }
                     }
                     else{
@@ -261,9 +310,39 @@
                                     $sql5 = 'UPDATE prototipo_Postagem_EcoMoment SET avaliacaoPostagem = '.($somaValor/$qtdeAv).' WHERE idPostagem = '.$idPostFuncao;
                                     $stmt5 = $con->prepare($sql5);
                                     if($stmt5->execute()){
-                                        $con->close();
-                                        $res = true;
-                                        echo $res;
+                                        $sql6 = 'SELECT count(idPostagem) AS numero FROM prototipo_Postagem_EcoMoment WHERE nomeUsuario = "'.$userPost.'" AND avaliacaoPostagem != 0';
+                                        $result6 = $con->query($sql6);
+                                        if ($result6->num_rows > 0){
+                                            while ($row = $result6->fetch_assoc()){
+                                                $qtdeAv2 = $row['numero'];
+                                            }
+                                            $sql7 = 'SELECT sum(avaliacaoPostagem) AS soma FROM prototipo_Postagem_EcoMoment WHERE nomeUsuario = "'.$userPost.'"';
+                                            $result7 = $con->query($sql7);
+                                            if ($result7->num_rows > 0){
+                                                while ($row = $result7->fetch_assoc()){
+                                                    $somaValor2 = $row['soma'];
+                                                }
+                                                $sql8 = 'UPDATE EcoMomentBD_UsuarioWeb SET Reputacao = '.($somaValor2/$qtdeAv2).' WHERE NomeWeb = "'.$userPost.'"';
+                                                $stmt8 = $con->prepare($sql8);
+                                                if($stmt8->execute()){
+                                                    $con->close();
+                                                    $res = true;
+                                                    echo $res;
+                                                }
+                                                else{
+                                                    $con->close();
+                                                    echo $res; 
+                                                }
+                                            }
+                                            else{
+                                                $con->close();
+                                                echo $res; 
+                                            }
+                                        }
+                                        else{
+                                            $con->close();
+                                            echo $res; 
+                                        }
                                     }
                                 }
                             }

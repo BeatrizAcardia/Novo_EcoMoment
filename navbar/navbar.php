@@ -77,7 +77,7 @@ else{
                 <ul class="navbar-nav" id="ul-navbar">
                     <li class="nav-item">
                         <a class="nav-item navbar-link padding-navbar" href="index.php">
-                            <button class="cta" onclick="cliquei()">
+                            <button class="cta">
                                 <span class="ideias">Início</span>
                                 <path
                                     id="Path_10"
@@ -89,7 +89,7 @@ else{
                     </li>
                     <li class="nav-item">
                         <a class="nav-item navbar-link padding-navbar" href="ideias-momento.php">
-                            <button type="button" class="cta" onclick="cliquei()">
+                            <button type="button" class="cta">
                                 <span class="ideias">Ideias</span>
                                 <path
                                     id="Path_10"
@@ -100,8 +100,27 @@ else{
                         </a>
                     </li>
                     <li class="nav-item">
+                    <div class="collapse navbar-collapse nav-item navbar-link padding-navbar" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                            <button class="cta" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="sobreNos">Materiais</span>
+                            </button>
+                            <ul class="nunito dropdown-menu dropdown-menu" id="dropdown-navbar">
+                                <li><a class="dropdown-item" href="materiais.php?material=1" id="plastico">Plástico</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=2" id="metal">Metal</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=3" id="papel">Papel</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=4" id="vidro">Vidro</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=5" id="madeira">Madeira</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=6" id="organico">Orgânico</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-item navbar-link padding-navbar" href="sobre-nos.php">
-                            <button type="button" class="cta" onclick="cliquei()">
+                            <button type="button" class="cta">
                                 <span class="sobreNos">Sobre nós</span>
                                 <path
                                     id="Path_10"
@@ -113,7 +132,7 @@ else{
                     </li>
                     <li class="nav-item">
                         <a class="nav-item navbar-link padding-navbar" href="index.php#footer">
-                            <button type="button" class="cta" onclick="cliquei()">
+                            <button type="button" class="cta">
                                 <span class="contato">Contato</span>
                                 <path
                                     id="Path_10"

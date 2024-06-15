@@ -100,7 +100,7 @@ else{
                                 if ($row = $result2->fetch_assoc()){
                                     $idPost = $row['idPostagem'];
                                     $con->close();
-                                    header('Location: sucesso.php?id=ideia');
+                                    header('Location: sucesso.php?id=postagem');
                                 }
                             }
                         }else{

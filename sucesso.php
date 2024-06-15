@@ -9,8 +9,8 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     else if($_GET['id'] == 'postagem'){
         $imgBanner = '<img src="midias/icones-banners/ideia.png" alt="Garota segurando uma lata e apontando para uma lâmpada">';
         $msg = '<h2>Sua ideia foi publicada com sucesso!</h2>Agradecemos imensamente por sua contribuição.<br>E aí? O que quer fazer agora?';
-        $btn2 = '<button class="button" id="btnVoltar">VOLTAR</button>';
-        $btn1 = '<button class="button" id="btnVoltar">VOLTAR PARA O PERFIL</button>';
+        $btn2 = '<a href="form-publicar-ideia.php"><button class="button">CONTINUAR POSTANDO</button></a>';
+        $btn1 = '<a href="perfil.php?type=conta&user='.$_COOKIE['user'].'"><button class="button">VOLTAR PARA O PERFIL</button></a>';
     }
 }
 

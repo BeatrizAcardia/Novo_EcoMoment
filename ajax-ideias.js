@@ -128,19 +128,12 @@ function avaliar(user, idPost, valor){
     if(user != 0){
         let ajax = new XMLHttpRequest();
     
-        ajax.open('GET', 'script-ideias.php?user='+user+'&idPostagem='+idPost+'&funcao=avaliar&valor='+valor, true);
+        ajax.open('GET', `script-ideias.php?user=${user}&idPostagem=${idPost}&funcao=avaliar&valor=${valor}`, true);
         ajax.onreadystatechange = function(){
             if(ajax.readyState == 4){
                 if(ajax.status == 200){
                     let avaliou = ajax.responseText;
-                    if(avaliou == true){
-                        document.getElementById('x-star5').disabled = 'true';
-                        document.getElementById('x-star4').disabled = 'true';
-                        document.getElementById('x-star3').disabled = 'true';
-                        document.getElementById('x-star2').disabled = 'true';
-                        document.getElementById('x-star1').disabled = 'true';
-                    }
-                    else{
+                    if(avaliou != true){
                         alert('false - Houve um ao processar a avaliação. Tente atualizar a página.\navaliou: '+avaliou);
                         document.getElementById('x-star5').checked = false;
                         document.getElementById('x-star4').checked = false;
@@ -188,6 +181,13 @@ function carregarAvaliacao(user, idPost){
     }
 }
 
-function compartilhar(){
-    alert('Compartilhou')
+function compartilhar(link){
+    const linkToCopy = link;
+    navigator.clipboard.writeText(linkToCopy)
+    .then(() => {
+    alert('Link copiado para a área de transferência!');
+    })
+    .catch((error) => {
+    console.error('Erro ao copiar o link:', error);
+    });
 }

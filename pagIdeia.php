@@ -117,32 +117,32 @@
                         <div class="rating rating-x" id="avaliacao">  
                             <?php
                             if($idUserWeb != 0){
-                                echo '
-                                <input value="5" name="rating-x" id="x-star5" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',5)">
-                                <label for="x-star5"></label>
-                                <input value="4" name="rating-x" id="x-star4" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',4)">
-                                <label for="x-star4"></label>
-                                <input value="3" name="rating-x" id="x-star3" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',3)">
-                                <label for="x-star3"></label>
-                                <input value="2" name="rating-x" id="x-star2" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',2)">
-                                <label for="x-star2"></label>
-                                <input value="1" name="rating-x" id="x-star1" type="radio" onclick="avaliar('.$idUserWeb.','.$idPostagem.',1)">
-                                <label for="x-star1"></label>
-                                ';
+                                echo "
+                                <input value='5' name='rating-x' id='x-star5' type='radio' onclick='avaliar($idUserWeb,$idPostagem,5)'>
+                                <label for='x-star5'></label>
+                                <input value='4' name='rating-x' id='x-star4' type='radio' onclick='avaliar($idUserWeb,$idPostagem,4)'>
+                                <label for='x-star4'></label>
+                                <input value='3' name='rating-x' id='x-star3' type='radio' onclick='avaliar($idUserWeb,$idPostagem,3)'>
+                                <label for='x-star3'></label>
+                                <input value='2' name='rating-x' id='x-star2' type='radio' onclick='avaliar($idUserWeb,$idPostagem,2)'>
+                                <label for='x-star2'></label>
+                                <input value='1' name='rating-x' id='x-star1' type='radio' onclick='avaliar($idUserWeb,$idPostagem,1)'>
+                                <label for='x-star1'></label>
+                                ";
                             }
                             else{
-                                echo '
-                                <input value="0" name="rating-x" id="x-star5" type="radio" disabled>
-                                <label for="x-star5" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
-                                <input value="0" name="rating-x" id="x-star4" type="radio" disabled>
-                                <label for="x-star4" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
-                                <input value="0" name="rating-x" id="x-star3" type="radio" disabled>
-                                <label for="x-star3" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
-                                <input value="0" name="rating-x" id="x-star2" type="radio" disabled>
-                                <label for="x-star2" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
-                                <input value="0" name="rating-x" id="x-star1" type="radio" disabled>
-                                <label for="x-star1" onclick="avaliar('.$idUserWeb.','.$idPostagem.',0)"></label>
-                                ';
+                                echo "
+                                <input value='0' name='rating-x' id='x-star5' type='radio' disabled>
+                                <label for='x-star5' onclick='avaliar($idUserWeb,$idPostagem,0)'></label>
+                                <input value='0' name='rating-x' id='x-star4' type='radio' disabled>
+                                <label for='x-star4' onclick='avaliar($idUserWeb,$idPostagem,0)'></label>
+                                <input value='0' name='rating-x' id='x-star3' type='radio' disabled>
+                                <label for='x-star3' onclick='avaliar($idUserWeb,$idPostagem,0)'></label>
+                                <input value='0' name='rating-x' id='x-star2' type='radio' disabled>
+                                <label for='x-star2' onclick='avaliar($idUserWeb,$idPostagem,0)'></label>
+                                <input value='0' name='rating-x' id='x-star1' type='radio' disabled>
+                                <label for='x-star1' onclick='avaliar($idUserWeb,$idPostagem,0)'></label>
+                                ";
                             }
                             ?>
                         </div>
@@ -170,7 +170,7 @@
                     <?=$btnEditar?>
                     <div class="col-<?=$col1?> col-sm-<?=$col2?> topico">
                         <div>
-                            <img src="midias/icones-pagIdeia/compartilhar.png" alt="ícone de seta para compartilhamento" class="btnInteraction" onclick="compartilhar()">
+                            <img src="midias/icones-pagIdeia/compartilhar.png" alt="ícone de seta para compartilhamento" class="btnInteraction" onclick="compartilhar('pagIdeia.php?idPostagem=<?=$idPostagem?>')">
                         </div>
                     </div>
                 </div>
