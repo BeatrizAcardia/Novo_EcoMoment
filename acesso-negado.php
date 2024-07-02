@@ -4,7 +4,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
         $imgBanner = '<img src="midias/icones-banners/negado.png" alt="Garoto segurando uma lata de lixo apontando para um sinal de exclamação">';
         $msg = '<h2>Opa! Parece que você não está logado em nosso site!</h2>Para ter acesso a essa e outras funcionalidades da página, realize seu login ou cadastre-se!';
         $btn1 = '<button class="button" id="btnVoltar">VOLTAR</button>';
-        $btn2 = '<a href="loginPage.php"><button class="button">ENTRAR</button></a>';
+        $btn2 = '<a href="login.php"><button class="button">ENTRAR</button></a>';
     }
     else if($_GET['id'] == 'acesso-negado'){
         $imgBanner = '<img src="midias/icones-banners/aviso.png" alt="Garoto segurando uma lata e um megafone">';

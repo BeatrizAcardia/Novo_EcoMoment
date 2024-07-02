@@ -1,3 +1,64 @@
+<?php 
+if(isset($_COOKIE['user']) and isset($_COOKIE['senha'])){
+    header('location: perfil.php?type=conta&user='.$_COOKIE['user']);
+}
+else{
+    if($_SERVER['REQUEST_METHOD'] === 'GET'){
+        $msgErro = '';
+    }
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if((!empty(trim($_POST['email_username'])) and !empty(trim($_POST['password']))) or (trim($_POST['email_username']) != '' and trim($_POST['password']) != '')){
+            $user = $_POST['email_username'];
+            $senha = $_POST['password'];
+    
+            //Consulta ao BD
+            include 'connection.php';
+    
+            $sql1 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE NomeWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 1"; //nome de usuario ativo
+            $sql2 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 1";//email ativo
+    
+            $sql3 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE NomeWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 0"; //nome de usuario banido
+            $sql4 = "SELECT idUsuarioWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha' AND ativo = 0";//email banido
+    
+            $result1 = $con->query($sql1);
+            $result2 = $con->query($sql2);
+            $result3 = $con->query($sql3);
+            $result4 = $con->query($sql4);
+    
+            if(mysqli_num_rows($result1) == 1){
+                setcookie('user', $user, time()+604800, '/');
+                setcookie('senha', $senha, time()+604800, '/');
+                $con->close();
+                header('Location: logado.php');
+            }
+            else if(mysqli_num_rows($result2) == 1){
+                $sql3 = "SELECT NomeWeb FROM EcoMomentBD_UsuarioWeb WHERE EmailWeb = '$user' AND SenhaWeb = '$senha'";
+                $result3 = $con->query($sql3);
+                if ($result3->num_rows > 0){
+                    if ($row = $result->fetch_assoc()){
+                        $nomeUser = $row['idPostagem'];
+                        setcookie('user', $nomeUser, time()+604800, '/');
+                        setcookie('senha', $senha, time()+604800, '/');
+                        $con->close();
+                        header('Location: logado.php');
+                    }
+                }
+            }
+            else if(mysqli_num_rows($result3) == 1 || mysqli_num_rows($result4) == 1){
+                header('location: acesso-negado.php?id=banido');
+            }
+            else{
+                $msgErro = 'Usuário ou senha incorretos';
+            }
+            
+            $con->close();
+        }
+        else{
+            $msgErro = 'Um ou mais campos vazios. Preencha todos para continuar.';
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,150 +68,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles/style-padrao.css">
+    <link rel="stylesheet" href="styles/style-login.css">
     <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
-    <style>
-        body{
-            background-color: #3A7D44;
-            font-family: Circe, sans-serif;
-            font-size: 18px;
-        }
-        /* div imagem */
-        .div-img{
-            height: 100vh;
-            width: 50%;
-            background-color: #3A7D44;
-            flex-direction: column;
-        }
-        #titulo-img{
-            color: #F4F4F4;
-            text-shadow: 2px 2px #7ac143;
-            font-size: 48px;
-            margin-top: 6%;
-            margin-bottom: 2%;
-            text-align: center;
-        }
-        #img-login{
-            width: 72%;
-        }
-        #logo{
-            width: 40%;
-        }
-
-        /* div  formulário*/
-        .div-form{
-            background-color: #F4F4F4;
-            width: 50%;
-            height: 100vh;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        form{
-            flex-direction: column;
-            width: 100%;
-        }
-        #borda{
-            width: 100%;
-            flex-direction: column;
-            padding: 8px;
-            border-left: 1px solid black;
-            border-right: 1px solid black;
-        }
-        .bt{
-            border-top: 1px solid black;
-        }
-        .bb{
-            border-bottom: 1px solid black;
-        }
-        .ext-borda{
-            width: 100%;
-        }
-        #img-rdp{
-            width: 35px;
-        }
-        #titulo-form{
-            text-shadow: 2px 2px rgb(5, 68, 15, 0.5);
-            font-size: 48px;
-            margin-top: 6%;
-            margin-bottom: 2%;
-            text-align: center;
-        }
-        .button{
-            border: 2px solid #7ac143;
-            font-size: 18px;
-        }
-        .button::before{
-            background-color: #7ac143;
-        }
-        #google:before{
-            width: 90px;
-        }
-        .button:hover{
-            color: #f4f4f4;
-        }
-        svg{
-            width: 24px;
-            margin-right: 8px;
-        }
-        .input-box{
-            background-color: white;
-            border-radius: 10px;
-            padding: 6px 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: row;
-            width: 80%;
-        }
-        input, input:focus{
-            outline: 0;
-            border: none;
-            width: 100%;
-            padding: 2px 5px;
-        }
-        .just-label{
-            display: flex;
-            justify-content: left;
-            width: 80%;
-        }
-        .img-label{
-            width: 18px;
-        }
-        #link-cadastrar, #link-sem-login{
-            text-decoration: none;
-            color: #7ac143;
-            font-weight: bold;
-        }
-        #link-cadastrar:hover, #link-sem-login:hover{
-            text-decoration: underline;
-        }
-        /* Media querys */
-        @media screen and (max-width: 768px) {
-            .div-form{
-                width: 100%;
-            }
-        }
-        @media screen and (min-width: 765px) and (max-width: 980px){
-            #titulo-img{
-                font-size: 36px;
-                margin-top: 10%;
-            }
-            #img-login{
-                width: 85%;
-            }
-            #logo{
-                width: 45%;
-            }
-        }
-        @media screen and (max-height: 512px){
-            .div-img{
-                height: 100%;
-            }
-            .div-form{
-                height: 100%;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="container-fluid">
@@ -163,11 +82,9 @@
             </div>
 
             <div class="col-12 col-md-6 center div-form">
-                <img src="imagens/folhinha2.png" alt="" style="position: absolute; top: 0; right: 0; width: 12%;">
-                <h1 id="titulo-form">LOGIN</h1>
                 <div class="row ext-borda">
                     <div class="col-4 bb"></div>
-                    <div class="col-4"></div>
+                    <div class="col-4 center"><h1 id="titulo-form">LOGIN</h1></div>
                     <div class="col-4 bb"></div>
                 </div>
                 <div id="borda" class="center">
@@ -203,14 +120,13 @@
                         </button>
                     </form>
                     <p>Não tem uma conta? <a href="cadastroPage.php" id="link-cadastrar">Cadastre-se</a></p>
-                    <p class="mt-2"><a href="index.php" id="link-sem-login">Continuar sem login</a></p>
+                    <p><a href="index.php" id="link-sem-login">Continuar sem login</a></p>
                 </div>
                 <div class="row ext-borda">
                     <div class="col-5 bt"></div>
-                    <div class="col-2 mb-2 center"><img src="imagens/reciclagem-icone.png" id="img-rdp" alt=""></div>
+                    <div class="col-2 center"><img src="imagens/reciclagem-icone.png" id="img-rdp" class="pb-2" alt=""></div>
                     <div class="col-5 bt"></div>
                 </div>
-                <img src="imagens/folhinha1.png" alt="" style="position: absolute; bottom: 0; left: 50%; width: 12%;">
             </div>
         </div>
     </div>

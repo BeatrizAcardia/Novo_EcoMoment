@@ -32,7 +32,7 @@ if((isset($_COOKIE['user'])) and (isset($_COOKIE['senha']))){
 }
 else{
     $campoLogin = '<li class="nav-item" id="li-login">
-                        <a class="nav-item navbar-link padding-navbar" href="loginPage.php">
+                        <a class="nav-item navbar-link padding-navbar" href="login.php">
                             <button type="button" class="cta" onclick="cliquei()">
                                 <span class="login">Login</span>
                                 <path
