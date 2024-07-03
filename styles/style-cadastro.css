@@ -1,0 +1,75 @@
+#titulo-img{
+    font-size: 38px;
+}
+#img-login{
+    width: 62%;
+}
+#titulo-form{
+    font-size: 42px;
+}
+#logo{
+    width: 35%;
+}
+p{
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 1200px){
+    #titulo-form{
+        font-size: 38px;
+    }
+}
+@media screen and (max-width: 1030px){
+    #titulo-form{
+        font-size: 32px;
+    }
+    #titulo-img{
+        font-size: 36px;
+    }
+    body{
+        font-size: 16px;
+    }
+    .button{
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 900px){
+    #titulo-form{
+        font-size: 28px;
+    }
+}
+@media screen and (max-width: 800px){
+    #titulo-form{
+        font-size: 26px;
+    }
+}
+@media screen and (max-width: 767px){
+    #titulo-form{
+        font-size: 42px;
+    }
+}
+@media screen and (max-width: 562px){
+    #titulo-form{
+        font-size: 34px;
+    }
+}
+@media screen and (max-width: 440px){
+    #titulo-form{
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 380px){
+    #titulo-form{
+        font-size: 28px;
+    }
+}
+@media screen and (max-width: 360px){
+    #titulo-form{
+        font-size: 26px;
+    }
+}
+@media screen and (max-height: 512px){
+    .div-form{
+        padding: 15px 0px;
+    }
+}

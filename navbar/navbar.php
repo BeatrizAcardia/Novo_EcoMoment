@@ -44,7 +44,7 @@ else{
                         </a>
                     </li>
                     <li class="nav-item" id="li-cadastro">
-                        <a class="nav-item navbar-link padding-navbar" href="cadastroPage.php">
+                        <a class="nav-item navbar-link padding-navbar" href="signup.php">
                             <button type="button" class="cta" onclick="cliquei()">
                                 <span class="cadastro">Cadastro</span>
                                 <path
