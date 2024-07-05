@@ -104,7 +104,7 @@ else{
                                 }
                             }
                         }else{
-                            echo '<script>document.alert("ERRO \n Não foi possível publicar sua ideia. Verifique se há algum erro ou tente novamente.");</script>';
+                            echo '<script>document.alertaErro("Não foi possível publicar sua ideia. Verifique se há algum erro ou tente novamente.");</script>';
                         }
 
                         $con->close();
@@ -115,7 +115,7 @@ else{
                         $msgInst = '';
                         $msgFoto = '';
                     }
-                    else '<script>alert("Falha ao realizar o upload")</script>';
+                    else '<script>alertaErro("Falha ao realizar o upload")</script>';
                 }
 
 
@@ -308,6 +308,8 @@ else{
     ?>
 
 
+
+    <script src="alerts.js"></script>
     <!--Scripts Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

@@ -45,6 +45,10 @@ a:hover{
     flex-direction: column;
 }
 
+.circeAlert{
+    font-family: Circe, sans-serif;
+}
+
 #navbarMargin{
     margin-top: 90px;
 }

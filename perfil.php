@@ -342,6 +342,7 @@ else{
     </script>
 
     <!-- Ajax modal -->
+    <script src="alerts.js"></script>
     <!-- <script src="ajax-perfil.js"></script> -->
 
 </body>

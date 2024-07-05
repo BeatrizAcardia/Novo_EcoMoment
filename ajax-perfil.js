@@ -15,7 +15,7 @@ function salvar(user){
                 }
             }
             else{
-                alert('Houve um ao salvar as alterações. Tente atualizar a página.');
+                alertaErro('Houve um erro ao salvar as alterações. Tente atualizar a página.');
             }
         }
     }

@@ -92,7 +92,7 @@ function selecionaFiltro(n, mat){
             
             break;
         default:
-            alert('ERRO! Houve um problema ao selecionar o filtro. Tente novamente ou recarregue a página.');
+            alertaErro('ERRO! Houve um problema ao selecionar o filtro. Tente novamente ou recarregue a página.');
             break;
     }
     
@@ -210,7 +210,7 @@ function selecionaFiltro2(n, mat){
 
             break;
         default:
-            alert('ERRO! Houve um problema ao selecionar o filtro. Tente novamente ou recarregue a página.');
+            alertaErro('ERRO! Houve um problema ao selecionar o filtro. Tente novamente ou recarregue a página.');
             break;
     }
     

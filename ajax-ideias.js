@@ -18,7 +18,7 @@ function estaCurtido(user, idPost){
                     }
                 }
                 else{
-                    alert('Houve um ao carregar a curtida. Tente atualizar a página.');
+                    alertaErro('Houve um ao carregar a curtida. Tente atualizar a página.');
                 }
             }
         }
@@ -41,7 +41,7 @@ function estaAvaliado(user, idPost){
                     }
                 }
                 else{
-                    alert('Houve um ao carregar a avaliação. Tente atualizar a página.');
+                    alertaErro('Houve um ao carregar a avaliação. Tente atualizar a página.');
                 }
             }
         }
@@ -65,11 +65,11 @@ function curtir(user, idPost){
                             curtido = false;
                         }
                         else{
-                            alert('1 - Erro ao descurtir. Tente novamente ou, se o problema persistir, atualize a página.');
+                            alertaErro('1 - Erro ao descurtir. Tente novamente ou, se o problema persistir, atualize a página.');
                         }
                     }
                     else{
-                        alert('2 - Erro ao descurtir. Tente novamente ou, se o problema persistir, atualize a página.');
+                        alertaErro('2 - Erro ao descurtir. Tente novamente ou, se o problema persistir, atualize a página.');
                     }
                 }
             }
@@ -86,11 +86,11 @@ function curtir(user, idPost){
                             curtido = true;
                         }
                         else{
-                            alert('1 - Erro ao curtir. Tente novamente ou, se o problema persistir, atualize a página.');
+                            alertaErro('1 - Erro ao curtir. Tente novamente ou, se o problema persistir, atualize a página.');
                         }
                     }
                     else{
-                        alert('2 - Erro ao curtir. Tente novamente ou, se o problema persistir, atualize a página.');
+                        alertaErro('2 - Erro ao curtir. Tente novamente ou, se o problema persistir, atualize a página.');
                     }
                 }
             }
@@ -99,7 +99,7 @@ function curtir(user, idPost){
         ajax.send(null);
     }
     else{
-        alert('Para ter acesso a essa funcionalidade você precisa estar logado.');
+        alertaAviso('Para ter acesso a essa funcionalidade você precisa estar logado.');
     }
 }
 
@@ -115,7 +115,7 @@ function numeroCurtidas(user, idPost){
                     document.getElementById('numCurtidas').innerHTML = numero;
                 }
                 else{
-                    alert('Houve um ao carregar o número de curtidas. Tente atualizar a página.');
+                    alertaErro('Houve um ao carregar o número de curtidas. Tente atualizar a página.');
                 }
             }
         }
@@ -134,7 +134,7 @@ function avaliar(user, idPost, valor){
                 if(ajax.status == 200){
                     let avaliou = ajax.responseText;
                     if(avaliou != true){
-                        alert('false - Houve um ao processar a avaliação. Tente atualizar a página.\navaliou: '+avaliou);
+                        alertaErro('false - Houve um ao processar a avaliação. Tente atualizar a página.\navaliou: '+avaliou);
                         document.getElementById('x-star5').checked = false;
                         document.getElementById('x-star4').checked = false;
                         document.getElementById('x-star3').checked = false;
@@ -143,7 +143,7 @@ function avaliar(user, idPost, valor){
                     }
                 }
                 else{
-                    alert('200 - Houve um ao processar a avaliação. Tente atualizar a página.');
+                    alertaErro('200 - Houve um ao processar a avaliação. Tente atualizar a página.');
                 }
             }
         }
@@ -151,7 +151,7 @@ function avaliar(user, idPost, valor){
         ajax.send(null);
     }
     else{
-        alert('Para ter acesso a essa funcionalidade você precisa estar logado.');
+        alertaAviso('Para ter acesso a essa funcionalidade você precisa estar logado.');
     }
 }
 
@@ -172,7 +172,7 @@ function carregarAvaliacao(user, idPost){
                     }
                 }
                 else{
-                    alert('Houve um ao carregar o número de curtidas. Tente atualizar a página.');
+                    alertaErro('Não foi possível carregar o número de curtidas. Tente atualizar a página.');
                 }
             }
         }
@@ -185,9 +185,10 @@ function compartilhar(link){
     const linkToCopy = link;
     navigator.clipboard.writeText(linkToCopy)
     .then(() => {
-    alert('Link copiado para a área de transferência!');
+    alertaSucesso('Link copiado para a área de transferência!');
     })
     .catch((error) => {
     console.error('Erro ao copiar o link:', error);
+    alertaErro('Não foi possível copiar o link para a área de transferência. Tente novamente.');
     });
 }

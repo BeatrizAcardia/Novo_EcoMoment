@@ -230,7 +230,7 @@
                 }
             }
             else{
-                echo '<script>alert("ERRO! Houve um problema ao carregar o filtro.\nTente novamente, recarregue a página ou verifique sua conexão com a internet.");</script>';
+                echo '<script>alertaErro("ERRO! Houve um problema ao carregar o filtro.\nTente novamente, recarregue a página ou verifique sua conexão com a internet.");</script>';
             }
         }
         else if($tipo == 2){
@@ -370,7 +370,7 @@
                 }
             }
             else{
-                echo '<script>alert("ERRO! Houve um problema ao carregar o filtro.\nTente novamente, recarregue a página ou verifique sua conexão com a internet.");</script>';
+                echo '<script>alertaErro("ERRO! Houve um problema ao carregar o filtro.\nTente novamente, recarregue a página ou verifique sua conexão com a internet.");</script>';
             }
         }
     }
