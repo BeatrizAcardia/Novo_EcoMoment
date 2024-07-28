@@ -41,7 +41,7 @@
     }
   
     #botão > p{
-      font-size: 1.5vw;
+      font-size: 2vw;
     }
   
     .ondaVerde{
@@ -81,6 +81,25 @@
     }
   }
   
+  @media screen and (max-width: 1200px){          
+    #titulo-mapa{
+      font-weight: bold;
+      font-size: 3vw;
+    }
+
+    #subtitulo-mapa{
+      font-size: 1.8vw;
+    }
+
+    .input-group, #endereco, .input-group-text{
+      font-size: 1.8vw;
+    }
+
+    #area-local, button.button{
+      font-size: 1.8vw;
+    }
+  }
+
   @media screen and (max-width: 988px){
   
       .cards {
@@ -118,7 +137,7 @@
         height: 100%;
       }
       h3{
-        font-size: 3vw !important;
+        font-size: 3.4vw !important;
       }
   
       #tituloMateriais > img{
@@ -175,6 +194,23 @@
       #rodape-2{
           font-size: 1.1rem;
       }
+                
+    #titulo-mapa{
+      font-weight: bold;
+      font-size: 3vw;
+    }
+
+    #subtitulo-mapa{
+      font-size: 2vw;
+    }
+
+    .input-group, #endereco, .input-group-text{
+      font-size: 2vw;
+    }
+
+    #area-local, button.button{
+      font-size: 2vw;
+    }
   }
   
   @media screen and (max-width: 470px){
@@ -224,7 +260,11 @@
   
   }
   
-  @media screen and (max-width: 568px){
+  @media screen and (max-width: 576px){
+
+    .titulo > .subTitulo{
+      font-size: 2vw;
+    }
     
       .cards {
         display: flex; 
@@ -277,88 +317,141 @@
       #disponivel{
         border:none;
       }
+          
+    #titulo-mapa{
+      font-size: 3vw;
+    }
+
+    #subtitulo-mapa{
+      font-size: 2vw;
+    }
+
+    .input-group, #endereco, .input-group-text{
+      font-size: 2vw;
+      height: 22px;
+    }
+
+    #area-local{
+      font-size: 2vw;
+    }
+
+    button.button{
+      padding: 7px 18px;
+      font-size: 2vw;
+    }
+
+    #mapa-coleta{
+      height: 280px;
+    }
   }
   
   @media screen and (max-width: 380px){
   
-      .cards {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      
-      .card {
-        height: 12rem;
-        width: 65%; 
-        margin-bottom: 20px; 
-      }
-  
-      .card-body {
-        padding: 6px;
-      }
-      
-      .card-img-top {
-        height: 100px; 
-        object-fit: cover;
-      }
-      
-      .card-title {
-        font-size: 0.8rem;
-      }
-  
-      .cards-wrapper > .card {
-        height: 12em;
-        width: 9em;
-      }
-  
-      .cards-wrapper > .card > .card-body{
-        height: 5em;
-      }
-  
-      #tituloMateriais > img{
-        width: 5% !important;
-        margin-top: -6% !important;
-      }
-  
-      #tituloCuri > img{
-        width: 9% !important;
-        margin-top: -2.5% !important;
-        margin-right: -1.5%;
-      }
-  
-      #linhaLixeiras{
-        width: 90vw !important;
-      }
-  
-      .lixeiras > a > h6{
-        font-size: 3vw;
-      }
-  
-      .descricao {
-        font-size: 2vw !important;
-      }
-  
-      .descricao > ul > li > a >img {
-        height: 5vw;
-      }
-  
-      #tituloEquipe{
-        font-size: 1vw !important;
-        margin-left: 10%;
-      }
-  
-      #tituloEquipe > h5{
-        font-size: 3vw !important;
-      }
-  
-      .separador{
-        height: 10vw !important;
-      }
-      #disponivel{
-        border:none;
-      }
-      #rodapeImagem{
-        width: 20%;
-      }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .card {
+      height: 12rem;
+      width: 65%; 
+      margin-bottom: 20px; 
+    }
+
+    .card-body {
+      padding: 6px;
+    }
+    
+    .card-img-top {
+      height: 100px; 
+      object-fit: cover;
+    }
+    
+    .card-title {
+      font-size: 0.8rem;
+    }
+
+    .cards-wrapper > .card {
+      height: 12em;
+      width: 9em;
+    }
+
+    .cards-wrapper > .card > .card-body{
+      height: 5em;
+    }
+
+    #tituloMateriais > img{
+      width: 5% !important;
+      margin-top: -6% !important;
+    }
+
+    #tituloCuri > img{
+      width: 9% !important;
+      margin-top: -2.5% !important;
+      margin-right: -1.5%;
+    }
+
+    #linhaLixeiras{
+      width: 90vw !important;
+    }
+
+    .lixeiras > a > h6{
+      font-size: 3vw;
+    }
+
+    .descricao {
+      font-size: 2vw !important;
+    }
+
+    .descricao > ul > li > a >img {
+      height: 5vw;
+    }
+
+    #tituloEquipe{
+      font-size: 1vw !important;
+      margin-left: 10%;
+    }
+
+    #tituloEquipe > h5{
+      font-size: 3vw !important;
+    }
+
+    .separador{
+      height: 10vw !important;
+    }
+
+    #disponivel{
+      border:none;
+    }
+
+    #rodapeImagem{
+      width: 20%;
+    }
+          
+    #titulo-mapa{
+      font-size: 5vw;
+    }
+
+    #subtitulo-mapa{
+      font-size: 3vw;
+    }
+
+    .input-group, #endereco, .input-group-text{
+      font-size: 3vw;
+      height: 22px;
+    }
+
+    #area-local, button.button{
+      font-size: 3vw;
+    }
+
+    button.button{
+      padding: 7px 18px;
+    }
+
+    #mapa-coleta{
+      height: 280px;
+    }
   }
   
   @media screen and (max-width: 768px) {

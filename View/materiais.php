@@ -1,5 +1,5 @@
 <?php
-    require_once ('../Controller/script-materiais.php');
+    require_once '../Controller/script-materiais.php';
 
     if(isset($_COOKIE['user']) and isset($_COOKIE['senha'])){
       $offcanvas = '    

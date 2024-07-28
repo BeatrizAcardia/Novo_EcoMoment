@@ -124,7 +124,34 @@ main{
 /*fim tela inicial*/
 
 /*tela mapa*/
-.container > .mapa {
+#mapa{
+  padding: 0 7%;
+  margin-top: 5%;
+}
+
+#titulo-mapa{
+  font-weight: bold;
+  font-size: 38px
+}
+
+#subtitulo-mapa{
+  font-size: 24px;
+}
+
+#dica-endereco{
+  cursor: pointer;
+  color: #409d4e;
+}
+
+.input-group-text{
+  cursor: pointer;
+}
+
+#mapa-coleta{
+  height: 380px;
+  border-radius: 10px;
+}
+/* .container > #mapa {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,11 +208,11 @@ main{
 .input-group{
     width: 80%;
 }
-
+*/
 
 .ondaVerde{
   display: none;
-}
+} 
 
 /*tela curiosidades*/
 .curiosidades {
