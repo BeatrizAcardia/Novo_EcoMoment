@@ -12,7 +12,7 @@
     $descartar = '';
     $alternativas = '';
 
-    include 'connection.php';
+    include '../database/connection.php';
 
     $sql = 'SELECT * FROM prototipo_info_materiais WHERE idMaterial = '.$idMaterial;
     $result = $con->query($sql);
@@ -98,8 +98,8 @@
     //---------------------------------------------------------------------------------------------------------------------
 
     //Ideias
-    include 'connection.php';
-    include 'ideias.php';
+    include '../database/connection.php';
+    include '../Model/ideias.php';
 
     $postagens = array();
     $existe = false;
@@ -131,7 +131,7 @@
         if($tipo == 1){
             if($filtro == 2){
                 //Filtro 2 - avaliação
-                include 'connection.php';
+                include '../database/connection.php';
 
                 $postagens4 = array();
                 $existe = false;
@@ -166,7 +166,7 @@
             }
             else if($filtro == 3){
                 //Filtro 3 - curtidas
-                include 'connection.php';
+                include '../database/connection.php';
 
                 $postagens5 = array();
                 $existe = false;
@@ -201,7 +201,7 @@
             }
             else if($filtro == -1){
                 //Limpando a seleção
-                include 'connection.php';
+                include '../database/connection.php';
 
                 $sql = 'SELECT * FROM prototipo_info_materiais WHERE idMaterial = '.$idMaterial;
                 $result = $con->query($sql);
@@ -236,7 +236,7 @@
         else if($tipo == 2){
             if($filtro == 1){
                 //Dificuldade - fácil
-                include 'connection.php';
+                include '../database/connection.php';
 
                 $postagens1 = array();
                 $existe = false;
@@ -271,7 +271,7 @@
             }
             else if($filtro == 2){
                 //Dificuldade - média
-                include 'connection.php';
+                include '../database/connection.php';
 
                 $postagens2 = array();
                 $existe = false;
@@ -306,7 +306,7 @@
             }
             else if($filtro == 3){
                 //Dificuldade - difícil
-                include 'connection.php';
+                include '../database/connection.php';
 
                 $postagens3 = array();
                 $existe = false;
@@ -341,7 +341,7 @@
             }
             else if($filtro == -1){
                 //Limpando a seleção
-                include 'connection.php';
+                include '../database/connection.php';
 
                 $sql = 'SELECT * FROM prototipo_info_materiais WHERE idMaterial = '.$idMaterial;
                 $result = $con->query($sql);
@@ -378,7 +378,7 @@
         //Pesquisa de ideias
         $txt = $_GET['pesquisa'];
 
-        include 'connection.php';
+        include '../database/connection.php';
     
         $postagens6 = array();
         $existe = false;

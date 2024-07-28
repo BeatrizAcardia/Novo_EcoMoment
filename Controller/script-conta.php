@@ -1,6 +1,6 @@
 <?php
-    require_once('usuarios.php');
-    require_once('ideias.php');
+    require_once('../Model/Usuarios.php');
+    require_once('../Model/Ideias.php');
     $type = $_GET['type'];
     $user = $_GET['user'];
     $usuario = new Usuarios();
@@ -16,7 +16,7 @@
 
     $melhorPost = '';
 
-    include 'connection.php';
+    include '../database/connection.php';
 
     $existe = false;
 
@@ -40,7 +40,7 @@
 
     //Postagens do usuário
 
-    include 'connection.php';
+    include '../database/connection.php';
 
     $existe = false;
 
@@ -63,7 +63,7 @@
     $con->close();
 
 
-    include 'connection.php';
+    include '../database/connection.php';
 
     $postagens = array();
     $existe = false;

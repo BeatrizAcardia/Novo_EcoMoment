@@ -1,5 +1,5 @@
 <?php
-    require_once ('script-materiais.php');
+    require_once ('../Controller/script-materiais.php');
 
     if(isset($_COOKIE['user']) and isset($_COOKIE['senha'])){
       $offcanvas = '    
@@ -247,8 +247,8 @@
     ?>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="alerts.js"></script>
-    <script src="ajax-materiais.js"></script>
+    <script src="../Controller/alerts.js"></script>
+    <script src="../Controller/ajax-materiais.js"></script>
 
 </body>
 </html>

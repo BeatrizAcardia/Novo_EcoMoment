@@ -87,7 +87,7 @@ else{
                     $novo_nome = md5(time().rand(0,999)).'.'.$extensao;
                     if(move_uploaded_file($nomeTemp, $caminho.$novo_nome)){
                         
-                        include 'connection.php';
+                        include '../database/connection.php';
 
                         $sql = 'INSERT INTO prototipo_Postagem_EcoMoment (nomePostagem, nomeUsuario, descricaoPostagem, materiaisNecessariosPostagem, instrucoesPostagem, materialPostagem, dificuldadePostagem) values ("'.$nome.'", "'.$user.'", "'.$descricao.'", "'.$materiaisNec.'", "'.$instrucoes.'", "'.$material.'", "'.$dificuldade.'")';
 
@@ -309,7 +309,7 @@ else{
 
 
 
-    <script src="alerts.js"></script>
+    <script src="../Controller/alerts.js"></script>
     <!--Scripts Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

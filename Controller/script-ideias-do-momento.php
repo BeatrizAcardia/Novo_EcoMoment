@@ -1,8 +1,8 @@
 <?php
-    require_once('ideias.php');
+    require_once('../Model/Ideias.php');
 
     //Ideias do momento
-    include 'connection.php';
+    include '../database/connection.php';
 
     $postagens = array();
     $postagensCarrossel = array();
@@ -28,7 +28,7 @@
 
     function carregaPlastico(){
         //Ideias com plástico
-        include 'connection.php';
+        include '../database/connection.php';
         
         $postagens2 = array();
         $existe = false;
@@ -63,7 +63,7 @@
   
     function carregaMetal(){
         //Ideias com metal
-        include 'connection.php';
+        include '../database/connection.php';
         
         $postagens3 = array();
         $existe = false;
@@ -99,7 +99,7 @@
     //NECESSITA DE REPARO (verificação do número de rows alterada para a apresentação)
     function carregaPapel(){
         //Ideias com papel
-        include 'connection.php';
+        include '../database/connection.php';
         
         $postagens4 = array();
         $existe = false;
@@ -135,7 +135,7 @@
     //NECESSITA DE REPARO (verificação do número de rows alterada para a apresentação)
     function carregaVidro(){
         //Ideias com vidro
-        include 'connection.php';
+        include '../database/connection.php';
     
         $postagens5 = array();
         $existe = false;
@@ -170,7 +170,7 @@
 
     function carregaMadeira(){
         //Ideias com madeira
-        include 'connection.php';
+        include '../database/connection.php';
     
         $postagens6 = array();
         $existe = false;
@@ -205,7 +205,7 @@
 
     function carregaOrganico(){
         //Ideias com orgânico
-        include 'connection.php';
+        include '../database/connection.php';
     
         $postagens7 = array();
         $existe = false;

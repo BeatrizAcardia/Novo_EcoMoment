@@ -1,7 +1,7 @@
 <?php
 
-    include 'connection.php';
-    include_once 'ideias.php';
+    include '../database/connection.php';
+    include_once '../Model/Ideias.php';
 
     $idPostagem = $_REQUEST['idPostagem'];
     $ideia;
@@ -33,7 +33,7 @@
     //---------------------------------------------------------------------------------------------------------------------
 
     //Ideias semelhantes
-    include 'connection.php';
+    include '../database/connection.php';
 
     $postagens = array();
 
@@ -63,7 +63,7 @@
         //Verifica se a publicação já foi curtida
         if($funcao == 'curtida'){
             $res = false;
-            include 'connection.php';
+            include '../database/connection.php';
             // echo'<script>alert("Usuário: '.$userFuncao.'\nId postagem: '.$idPostFuncao.'")</script>';
             $sqlx = 'SELECT * FROM prototipo_Curtidas_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' AND idPostagem = '.$idPostFuncao;
             $resultx = $con->query($sqlx);
@@ -82,7 +82,7 @@
         }
         else if($funcao == 'avaliado'){
             $res = false;
-            include 'connection.php';
+            include '../database/connection.php';
             // echo'<script>alert("Usuário: '.$userFuncao.'\nId postagem: '.$idPostFuncao.'")</script>';
             $sql = 'SELECT * FROM prototipo_Avaliacao_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;
             $result = $con->query($sql);
@@ -100,7 +100,7 @@
             }
         }
         else if($funcao == 'curtir'){
-            include 'connection.php';
+            include '../database/connection.php';
 
             $res = false;
 
@@ -173,7 +173,7 @@
 
         }
         else if($funcao == 'numeroCurtidas'){
-            include 'connection.php';
+            include '../database/connection.php';
             //Obtem o número atual de curtidas
             $sql = 'SELECT numeroCurtidas FROM prototipo_Postagem_EcoMoment WHERE idPostagem = '.$idPostFuncao;
             $result = $con->query($sql);
@@ -186,7 +186,7 @@
             $con->close();            
         }
         else if($funcao == 'avaliar'){
-            include 'connection.php';
+            include '../database/connection.php';
 
             $res = false;
 
@@ -363,7 +363,7 @@
             }
         }
         else if($funcao == 'carregarAvaliacao'){
-            include 'connection.php';
+            include '../database/connection.php';
             $resultado;
             //Verifica se a publicação já foi avaliada
             $sqlX = 'SELECT valor FROM prototipo_Avaliacao_EcoMoment WHERE idUsuarioWeb = '.$userFuncao.' and idPostagem = '.$idPostFuncao;

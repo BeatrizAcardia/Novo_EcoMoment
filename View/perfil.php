@@ -28,7 +28,7 @@ if($_GET['type'] == 'conta' and ($_GET['user'] != $_COOKIE['user'])){
     header('location: acesso-negado.php?id=acesso-negado');
 }
 else{
-    require_once('script-conta.php');
+    require_once('../Controller/script-conta.php');
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if((! isset($_FILES['ft-perfil']) and $_POST['nome'] == '' and $_POST['bio'] == '') or (! isset($_FILES['ft-perfil']) and $_POST['nome'] == $user and $_POST['bio'] == $biog)){
@@ -86,7 +86,7 @@ else{
                     }
                 */
             }
-            include 'connection.php';
+            include '../database/connection.php';
 
             $sql = 'UPDATE EcoMomentBD_UsuarioWeb SET NomeWeb = "'.$nome.'", Biografia = "'.$bio.'" WHERE idUsuarioWeb = '.$id;
 
@@ -342,8 +342,8 @@ else{
     </script>
 
     <!-- Ajax modal -->
-    <script src="alerts.js"></script>
-    <!-- <script src="ajax-perfil.js"></script> -->
+    <script src="../Controller/alerts.js"></script>
+    <!-- <script src="../Controller/ajax-perfil.js"></script> -->
 
 </body>
 </html>

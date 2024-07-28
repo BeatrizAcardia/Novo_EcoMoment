@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'database/config.php';
+    require_once '../database/connection.php';
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
