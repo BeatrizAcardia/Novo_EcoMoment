@@ -113,6 +113,7 @@ input, input:focus{
 #link-cadastrar:hover, #link-sem-login:hover{
     text-decoration: underline;
 }
+
 /* Media querys */
 @media screen and (max-width: 767px) {
     body{

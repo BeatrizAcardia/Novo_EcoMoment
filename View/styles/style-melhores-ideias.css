@@ -39,9 +39,16 @@ body{
   margin-bottom: 3%;
 }
 
-#folha{
+#folha1{
   margin-top: -3px;
   margin-right: 5px;
+  width: 2.5em;
+  height: 2.5em;
+}
+
+#folha2{
+  margin-top: -3px;
+  margin-left: 5px;
   width: 2.5em;
   height: 2.5em;
 }

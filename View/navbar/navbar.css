@@ -218,22 +218,22 @@
     font-weight: bold;
   }
 
-  #plastico:hover{
+  #nav-plastico:hover{
     color: #cf1212;
   }
-  #metal:hover{
+  #nav-metal:hover{
     color: #FFC30F;
   }
-  #papel:hover{
+  #nav-papel:hover{
     color: #55A4DD;
   }
-  #vidro:hover{
+  #nav-vidro:hover{
     color: #4E9E5A;
   }
-  #madeira:hover{
+  #nav-madeira:hover{
     color: #423023;
   }
-  #organico:hover{
+  #nav-organico:hover{
     color: #A8642B;
   }
   

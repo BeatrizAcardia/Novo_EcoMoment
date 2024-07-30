@@ -107,12 +107,12 @@ else{
                                 <span class="sobreNos">Materiais</span>
                             </button>
                             <ul class="nunito dropdown-menu dropdown-menu" id="dropdown-navbar">
-                                <li><a class="dropdown-item" href="materiais.php?material=1" id="plastico">Plástico</a></li>
-                                <li><a class="dropdown-item" href="materiais.php?material=2" id="metal">Metal</a></li>
-                                <li><a class="dropdown-item" href="materiais.php?material=3" id="papel">Papel</a></li>
-                                <li><a class="dropdown-item" href="materiais.php?material=4" id="vidro">Vidro</a></li>
-                                <li><a class="dropdown-item" href="materiais.php?material=5" id="madeira">Madeira</a></li>
-                                <li><a class="dropdown-item" href="materiais.php?material=6" id="organico">Orgânico</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=1" id="nav-plastico">Plástico</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=2" id="nav-metal">Metal</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=3" id="nav-papel">Papel</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=4" id="nav-vidro">Vidro</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=5" id="nav-madeira">Madeira</a></li>
+                                <li><a class="dropdown-item" href="materiais.php?material=6" id="nav-organico">Orgânico</a></li>
                             </ul>
                             </li>
                         </ul>

@@ -249,7 +249,7 @@
         <div class="col-md-9 col-12 descricao">
           <div>
             <span class="funcao circeB">Desenvolvedor Back-Ending e Database Administrator</span>
-            <p>Olá! Meu nome é Enzo e sou baseado na cidade de Americana, em São Paulo. Desde muito cedo, desenvolvi um profundo interesse pela tecnologia e sua capacidade de transformar o mundo ao nosso redor. Sonho em utilizar minha paixão pela tecnologia para fazer a diferença, contribuindo para criar um impacto positivo na sociedade e na vida das pessoas.</p>
+            <p>Olá! Meu nome é Enzo e sou baseado na cidade de Americana, em São Paulo. Desde muito cedo, desenvolvi um profundo interesse pela tecnologia e sua capacidade de transformar o mundo ao nosso redor. Sonho em utilizar minha paixão por ela para fazer a diferença, contribuindo para criar um impacto positivo na sociedade e na vida das pessoas.</p>
             <p>Busco constantemente a felicidade em tudo o que faço. Acredito que a vida é uma jornada para ser vivida com entusiasmo, gratidão e em busca do bem-estar pessoal e coletivo. Procuro encontrar alegria nas pequenas coisas e cultivar relacionamentos significativos com as pessoas ao meu redor.</p>
             <p>Em resumo, sou um indivíduo apaixonado pela tecnologia, pelo desenho e pela busca da felicidade. Estou determinado a utilizar minhas habilidades e paixões para deixar minha marca no mundo e fazer a diferença, sempre com um sorriso no rosto e o coração cheio de esperança.</p>
           </div>

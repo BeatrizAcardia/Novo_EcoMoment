@@ -1,5 +1,5 @@
 <?php 
-  include('../Controller/script-ideias-do-momento.php');
+  include '../Controller/script-ideias-do-momento.php';
   if(isset($_COOKIE['user']) and isset($_COOKIE['senha'])){
     $offcanvas = '    
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasConta" aria-labelledby="offcanvasContaLabel">
@@ -45,14 +45,14 @@
 <body>
 <main id="navbarMargin">
     <?php
-      include('navbar/navbar.php');
+      include 'navbar/navbar.php';
     ?>
 
     <!--Início Título Principal-->
     <section id="tituloPrincipal">
-        <img class="d-none d-sm-inline" src="imagens/folhas-de-galho.png" alt="Folha" id="folha">
+        <img class="d-none d-sm-inline" src="imagens/folhas-de-galho.png" alt="Folha" id="folha1">
         <h1 id="escritaPrincipal" class="circeB mr-1">As Ideias do Momento </h1>
-        <img class="d-none d-sm-inline" src="imagens/folhas-de-galho (4).png" alt="Folha" id="folha">
+        <img class="d-none d-sm-inline" src="imagens/folhas-de-galho (4).png" alt="Folha" id="folha2">
     </section>
     <!--Fim Título Principal-->
 
@@ -372,7 +372,7 @@
     <script src="../Controller/alerts.js"></script>
 
     <!-- Carrosséis -->
-    <script src="carrosseis-ideias.js"></script>
+    <script src="../Controller/carrosseis-ideias.js"></script>
 
 </body>
 </html>

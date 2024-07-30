@@ -66,56 +66,37 @@
     include 'navbar/navbar.php';
   ?>
     <main>
-      <div class="container inicial" id="navbarMargin" style="margin: 0; padding: 90px 0 0 0; border: 0;">
-        <div class="row" style="border: 0; width: 100vw; margin: 0 auto; padding: 0;">
-          <div class="col circulo" style="padding: 0;">
-            <img src="midias/imagens-tela-inicial/circulo.png" alt="" class="imagemCirculo" style="width: 100%; z-index: auto;">
+      <div class="container inicial" id="container-inicial">
+        <div class="row row-style">
+          <div class="col circulo">
+            <img src="midias/imagens-tela-inicial/circulo.png" alt="" class="imagemCirculo">
             <div class="titulo">
-              <p class="principal" style="margin-bottom: 3%;">Reciclar e<br> reutilizar, não<br> deixe o<br> momento<br> passar!</p>
-              <p class="subTitulo" style="margin-bottom: 3%;">Aqui as suas ideias são salvadoras</p>
-              <a href="ideias-momento.php"><button id="botão" style="border-radius: 10vw;"><p>Veja mais</p></button></a>
+              <p class="principal">Reciclar e<br> reutilizar, não<br> deixe o<br> momento<br> passar!</p>
+              <p class="subTitulo">Aqui as suas ideias são salvadoras</p>
+              <a href="ideias-momento.php"><button id="botão"><p>Veja mais</p></button></a>
             </div>
           </div>
-          <div class="col crianca" style="padding: 0;">
-            <img src="midias/imagens-tela-inicial/criancas-mesa.png" alt="" class="imagemCriancas" style="width: 70%;">
+          <div class="col crianca">
+            <img src="midias/imagens-tela-inicial/criancas-mesa.png" alt="" id="imagemCriancas">
           </div>
         </div>
       </div>
 
-      <div class="container ondaVerde" style="margin: 0;padding: 0;border: 0; margin-top: -1%;">
-        <div class="row" style="border: 0; width: 100vw; margin: 0 auto; padding: 0;">
-          <div class="col texto1" style="padding: 0;">
-            <img src="midias/imagens-tela-inicial/ondaVerde.png" alt="" style="width: 100%;">
+      <div class="container ondaVerde">
+        <div class="row row-style">
+          <div class="col texto1">
+            <img src="midias/imagens-tela-inicial/ondaVerde.png" class="w100">
           </div>
         </div>
     </div>
 
-        <!-- <div class="container" style="margin: 0;padding: 0;border: 0; margin-top: 5%; " id="mapa">
-          <div class="row" style="border: 0; width: 100vw; margin: 0 auto; padding: 0;">
-            <div class="col texto1" style="padding: 0;">
-              <div class="textoMapa" style="width: 70%;">
-                <p class="principal2">Conheça nosso mapa de<br> pontos de coleta mais<br> próximos da sua casa!</p>
-                <p class="subTitulo2" style="margin-bottom: 3%;">Para descobrir os pontos de coletas<br> próximos de sua casa é simples!<br>
-                Digite o seu CEP abaixo e confira.</p>
-                  <form class="search-container">
-                    <div class="input-group" style="width: 80%;">
-                      <input type="text" class="form-control" placeholder="Buscar">
-                      <div class="input-group-text"><i class="bi bi-search"></i></div>
-                    </div>
-                  </form>
-              </div>
-            </div>
-            <div class="col incorpMapa" style="padding: 0;">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.2002736446557!2d-47.396336524922376!3d-22.571611679492396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c880e6f2dd07d3%3A0x9a5417cb77a025c4!2sEcoponto%20-%20Marginal%20Tatu!5e0!3m2!1spt-BR!2sbr!4v1716932303085!5m2!1spt-BR!2sbr" width="90%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
-      </div> -->
+    <!-- Início Mapa -->
       <div class="container-fluid center nunito" id="mapa">
         <div class="row">
           <div class="col-12 col-sm-6">
             <div id="titulo-mapa">Conheça nosso mapa de pontos de coleta seletiva!</div>
             <div id="subtitulo-mapa">Informe seu CEP ou seu endereço e confira as opções cadastradas mais próximas a você! 
-              <span id="dica-endereco" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-title="Instruções" data-bs-content="Ao informar um CEP, certifique-se de seguir a formatação '12345-678'. Caso deseje informar um endereço, utilize a formatação 'rua, cidade, estado',">*</span>
+              <span id="dica-endereco" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-title="Instruções" data-bs-content="Ao informar um CEP, certifique-se de seguir a formatação '12345-678'. Caso deseje informar um endereço, utilize a formatação 'rua, cidade, estado'.">*</span>
             </div>
             <div class="input-group mt-3">
               <input type="text" class="form-control" id="endereco" placeholder="Buscar">
@@ -123,7 +104,7 @@
             </div>
             <div class="center2" id="area-local">
               <p class="mt-3">ou</p>
-              <button class="button" type="button" onclick="localizar()" id="btn-localizar">Me localize</button>
+              <button class="button" type="button" onclick="localizar()" id="btn-localizar">Me localize <i class="bi bi-geo-alt-fill"></i></button>
             </div>
           </div>
           <div class="col-12 col-sm-6 mt-4 mt-sm-0">
@@ -131,23 +112,24 @@
           </div>
         </div>
       </div>
+      <!-- Fim Mapa -->
 
-      <div class="container ondaAzul" style="margin: 0; padding: 0;border: 0;">
-        <div class="row" style="border: 0; width: 100vw; margin: 0 auto; padding: 0;">
-          <div class="col texto1" style="padding: 0;">
-            <img src="midias/imagens-tela-inicial/ondaAzul1.png" alt="" style="width: 100%;">
+      <div class="container ondaAzul">
+        <div class="row row-style">
+          <div class="col texto1">
+            <img src="midias/imagens-tela-inicial/ondaAzul1.png" alt="" class="w100">
           </div>
         </div>
     </div>
 
-    <div class="container-fluid curiosidades" style="margin: 0; padding: 0; border: 0; margin-top: -6%;">
-      <div class="row" style="border: 0; width: 100vw; margin: 0 auto; padding: 0;">
-        <div class="col" id="tituloCuri" style="padding: 0;">
-          <img src="midias/imagens-tela-inicial/detalheVerde.png" alt="" style="width: 5%; margin-top: -1.8%;"><h3>Curiosidades</h3>
+    <div class="container-fluid curiosidades">
+      <div class="row row-style">
+        <div class="col" id="tituloCuri">
+          <img src="midias/imagens-tela-inicial/detalheVerde.png" alt=""><h3>Curiosidades</h3>
         </div>
       </div>
-      <div class="row" style="border: 0; width: 80vw; margin: 0 auto; padding: 0; margin-top: 1%; margin-bottom: 2%;">
-        <div class="col" style="padding: 0;">
+      <div class="row row-style" id="row-curiosidades-carrossel">
+        <div class="col">
           <div class="center row">
             <div class="swiper" id="carrosselCuriosidades">
               <div class="swiper-wrapper">
@@ -217,22 +199,21 @@
       </div>
   </div>
   
-  <div class="container ondaAzul" style="margin: 0; padding: 0;border: 0;">
-    <div class="row" style="border: 0; width: 100vw; margin: 0 auto; padding: 0;">
-      <div class="col" style="padding: 0;">
-        <img src="midias/imagens-tela-inicial/ondaAzul2.png" alt="" style="width: 100%;">
+  <div class="container ondaAzul">
+    <div class="row row-style">
+      <div class="col">
+        <img src="midias/imagens-tela-inicial/ondaAzul2.png" alt="" class="w100">
       </div>
     </div>
 </div>
 
-<div class="container-fluid materiais" style="margin: 0; padding: 0; border: 0;">
-  <div class="row" style="border: 0; width: 100vw; margin: 0 auto; padding: 0;">
-    <div class="col" id="tituloMateriais" style="padding: 0;">
-      <img src="midias/imagens-tela-inicial/detalheAzulEsquerda.png" alt="" style="width: 3%; margin-top: -3%;"><h3>Principais Materiais</h3><img src="midias/imagens-tela-inicial/detlaheAzulDireira.png" alt="" style="width: 3%; margin-top: -3%;margin-left: -1.5%;">
+<div class="container-fluid materiais mpb0">
+  <div class="row row-style">
+    <div class="col" id="tituloMateriais">
+      <img src="midias/imagens-tela-inicial/detalheAzulEsquerda.png" alt="" id="detalheAzul1"><h3>Principais Materiais</h3><img src="midias/imagens-tela-inicial/detlaheAzulDireira.png" alt="" id="detalheAzul2">
     </div>
   </div>
-  <div class="row" id="linhaLixeiras" style="border: 0; margin: 0 auto; padding: 0; display: flex;flex-direction: row;justify-content: center;
-  align-items: center;  margin-top: 4%;">
+  <div class="row row-style center" id="linhaLixeiras">
     <div class="col lixeiras"  style=" width: 10vw !important;">
     <a href="materiais.php?material=1">
       <img src="midias/imagens-tela-inicial/lixeiraPlástico.png" style="width: 100%;" alt="">
@@ -268,7 +249,7 @@
   <div class="row rowPadrao" id="separador"></div>
 
   <!-- Footer -->
-<footer class="bg-900 text-center" id="footer" style="width: 100%; color: azure; background-color:#3B5364 ;">
+<footer class="bg-900 text-center" id="footer">
   <!-- Grid container -->
   <div class="container p-4">
 
@@ -391,7 +372,7 @@
           <!--Grid column-->
           <div class="col-md-5 col-12">
             <!-- Email input -->
-            <div data-mdb-input-init class="mb-4">
+            <div class="mb-4">
               <textarea id="form5Example24" class="form-control" placeholder="O que houve?"></textarea>
             </div>
           </div>
@@ -400,7 +381,7 @@
           <!--Grid column-->
           <div class="col-auto center">
             <!-- Submit button -->
-            <button data-mdb-ripple-init type="submit" class="btn mb-4" style="background-color: white;">
+            <button type="submit" class="mb-4" id="btn-rodape">
               Enviar
             </button>
           </div>

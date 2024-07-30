@@ -17,8 +17,8 @@ else{
         $password = $_POST['password'];
         if (trim($username) != "" && trim($email) != "" && trim($password) != "") {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            $verifica1 = $conn->query("SELECT * FROM cl202247.EcoMomentBD_UsuarioWeb where NomeWeb = '$username'");
-            $verifica2 = $conn->query("SELECT * FROM cl202247.EcoMomentBD_UsuarioWeb where EmailWeb = '$email'");
+            $verifica1 = $con->query("SELECT * FROM cl202247.EcoMomentBD_UsuarioWeb where NomeWeb = '$username'");
+            $verifica2 = $con->query("SELECT * FROM cl202247.EcoMomentBD_UsuarioWeb where EmailWeb = '$email'");
             if(mysqli_num_rows($verifica1) == 1){
                 $invalid_msg = "Nome de usuário já existente!";
             }else if (mysqli_num_rows($verifica2)>= 1){
@@ -26,7 +26,7 @@ else{
             }else{
                 $sql = 'INSERT INTO cl202247.EcoMomentBD_UsuarioWeb (nomeWeb, emailWeb, senhaWeb) values (?, ?, ?)';
 
-                $stmt = $conn->prepare($sql);
+                $stmt = $con->prepare($sql);
                 $stmt->bind_param('sss', $username, $email, $password);  // Bind the parameters to the parameter markers
 
                 if($stmt->execute()){
@@ -44,7 +44,7 @@ else{
         }    
     }
 
-    $conn->close();
+    $con->close();
 }
 ?>
 <!DOCTYPE html>
@@ -84,7 +84,7 @@ else{
                             <img src="imagens/usuario.png" alt="" class="img-label">
                             </label>
                             <input type="text" name="username" id="username" required>
-                            <span data-bs-toggle="tooltip" data-bs-placement="right" title="Insira o nome que aparecerá em suas postagens e em seu perfil"><i class="bi bi-question-circle"></i></span>
+                            <span tabindex="0" data-bs-toggle="popover" data-bs-placement="left" data-bs-trigger="hover focus" data-bs-title="Instruções" data-bs-content="Insira o nome que aparecerá em suas postagens e em seu perfil"><i class="bi bi-question-circle"></i></span>
                         </div>
                         <div class="just-label"><label class="mt-3" for="email">E-mail:</label></div>
                         <div class="input-box">
@@ -92,7 +92,7 @@ else{
                             <img src="imagens/email.png" alt="" class="img-label">
                             </label>
                             <input type="email" name="email" id="email" required>
-                            <span data-bs-toggle="tooltip" data-bs-placement="right" title="Insira seu e-mail"><i class="bi bi-question-circle"></i></span>
+                            <span tabindex="0" data-bs-toggle="popover" data-bs-placement="left" data-bs-trigger="hover focus" data-bs-title="Instruções" data-bs-content="Insira seu e-mail"><i class="bi bi-question-circle"></i></span>
                         </div>
                         <div class="just-label"><label class="mt-3" for="password">Senha:</label></div>
                         <div class="input-box">
@@ -100,7 +100,7 @@ else{
                             <img src="imagens/padlock.png" alt="" class="img-label">
                             </label>
                             <input type="password" name="password" id="password" required>
-                            <span data-bs-toggle="tooltip" data-bs-placement="right" title="Crie uma senha com no mínimo 6 caracteres"><i class="bi bi-question-circle"></i></span>
+                            <span tabindex="0" data-bs-toggle="popover" data-bs-placement="left" data-bs-trigger="hover focus" data-bs-title="Instruções" data-bs-content="Crie uma senha com no mínimo 6 caracteres"><i class="bi bi-question-circle"></i></span>
                         </div>
                         <span id="invalid_msg" style="color: red; font-size: 14px;"><?=$invalid_msg;?></span>
                         <button type="submit" class="button mt-4 mb-1">
@@ -133,14 +133,14 @@ else{
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Utilizado para habilitar as tooltips/popovers -->
+    <script>
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="../Controller/alerts.js"></script>
-    <!-- Utilizado para habilitar as tooltips-->
-    <script> 
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-    </script>
 </body>
 </html>
