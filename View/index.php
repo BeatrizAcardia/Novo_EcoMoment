@@ -214,33 +214,33 @@
     </div>
   </div>
   <div class="row row-style center" id="linhaLixeiras">
-    <div class="col lixeiras"  style=" width: 10vw !important;">
+    <div class="col lixeiras" id="col-lixeiras">
     <a href="materiais.php?material=1">
-      <img src="midias/imagens-tela-inicial/lixeiraPlástico.png" style="width: 100%;" alt="">
+      <img src="midias/imagens-tela-inicial/lixeiraPlástico.png" class="w100" alt="">
       <h6 class="descLixeiras">Plástico</h6>
     </a>
   </div>
   <div class="col lixeiras">
     <a href="materiais.php?material=2">
-      <img src="midias/imagens-tela-inicial/lixeiraMetal.png" style="width: 100%;" alt="">
+      <img src="midias/imagens-tela-inicial/lixeiraMetal.png" class="w100" alt="">
       <h6 class="descLixeiras">Metal</h6>
     </a>
   </div>
   <div class="col lixeiras">
     <a href="materiais.php?material=3">
-      <img src="midias/imagens-tela-inicial/lixeiraPapel.png" style="width: 100%;" alt="">
+      <img src="midias/imagens-tela-inicial/lixeiraPapel.png" class="w100" alt="">
       <h6 class="descLixeiras">Papel</h6>
     </a>
   </div>
   <div class="col lixeiras">
     <a href="materiais.php?material=4">
-      <img src="midias/imagens-tela-inicial/lixeiraVidro.png" style="width: 100%;" alt="">
+      <img src="midias/imagens-tela-inicial/lixeiraVidro.png" class="w100" alt="">
       <h6 class="descLixeiras">Vidro</h6>
     </a>
   </div>
   <div class="col lixeiras">
     <a href="materiais.php?material=6">
-      <img src="midias/imagens-tela-inicial/lixeiraOrganico.png" style="width: 100%;" alt="">
+      <img src="midias/imagens-tela-inicial/lixeiraOrganico.png" class="w100" alt="">
       <h6 class="descLixeiras">Orgânico</h6>
     </a>
   </div>
@@ -266,7 +266,7 @@
       <div class="row">
         <!--Grid column-->
         <div class="devs col-lg-3 col-sm-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase"><img src="midias/imagens-tela-inicial/beatriz.png" alt="" style="width: 25%; border-radius: 50%;"></h5>
+          <h5 class="text-uppercase"><img src="midias/imagens-tela-inicial/beatriz.png" alt="" class="img-rodape-perfil"></h5>
 
           <ul class="list-unstyled mb-2">
             <li>
@@ -287,7 +287,7 @@
 
         <!--Grid column-->
         <div class="devs col-lg-3 col-sm-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase"><img src="midias/imagens-tela-inicial/enzo.png" alt="" style="width: 25%; border-radius: 50%;"></h5>
+          <h5 class="text-uppercase"><img src="midias/imagens-tela-inicial/enzo.png" alt="" class="img-rodape-perfil"></h5>
 
           <ul class="list-unstyled mb-0">
             <li>
@@ -308,7 +308,7 @@
 
         <!--Grid column-->
         <div class="devs col-lg-3 col-sm-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase"><img src="midias/imagens-tela-inicial/lorena.png" alt="" style="width: 23%; border-radius: 50%;"></h5>
+          <h5 class="text-uppercase"><img src="midias/imagens-tela-inicial/lorena.png" alt="" class="img-rodape-perfil"></h5>
 
           <ul class="list-unstyled mb-0">
             <li>
@@ -329,7 +329,7 @@
 
         <!--Grid column-->
         <div class="devs col-lg-3 col-sm-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase"><img src="midias/imagens-tela-inicial/vitor.jpg" alt="" style="width: 25%; border-radius: 50%;"></h5>
+          <h5 class="text-uppercase"><img src="midias/imagens-tela-inicial/vitor.jpg" alt="" class="img-rodape-perfil"></h5>
 
           <ul class="list-unstyled mb-0">
             <li>
@@ -347,7 +347,7 @@
           </ul>
         </div>
         <!--Grid column-->
-        <div class="col-lg-1 col-md-12 mb-12 mb-md-0" style="margin: 0 !important;">
+        <div class="col-lg-1 col-md-12 mb-12 mb-md-0" class="mpb0">
         </div>
       <!--Grid column-->
       </div>

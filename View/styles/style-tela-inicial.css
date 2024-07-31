@@ -351,7 +351,7 @@ a:link{
 }
 
 #linhaLixeiras{
-  width: 50vw !important;
+  width: 55vw !important;
   margin-top: 4%;
 }
 
@@ -359,6 +359,10 @@ a:link{
   height: 20vh;
   width: 10vw;
   padding: 0;
+}
+
+#col-lixeiras{
+  width: 10vw !important;
 }
 
 .descLixeiras{
@@ -408,6 +412,10 @@ a:link{
 
 #footer{
   width: 100%; color: azure; background-color:#3B5364 ;
+}
+
+.img-rodape-perfil{
+  width: 25%; border-radius: 50%;
 }
 
 .titulo-rodape{
