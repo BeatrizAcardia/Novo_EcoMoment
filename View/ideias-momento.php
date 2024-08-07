@@ -38,7 +38,6 @@
     <link rel="stylesheet" href="styles/style-padrao.css">
     <link rel="stylesheet" href="styles/style-melhores-ideias.css">
     <link rel="stylesheet" href="styles/style-ideia.css">
-    <link rel="stylesheet" href="../Controller/javascript/script-melhoresIdeias.js">
     <link rel="shortcut icon" href="midias/favicon.png" type="image/x-icon">
     <title>Ideias do Momento</title>
 </head>

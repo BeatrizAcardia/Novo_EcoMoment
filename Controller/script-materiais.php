@@ -12,13 +12,15 @@
     $descartar = '';
     $alternativas = '';
 
-    include '../database/connection.php';
+    include_once '../database/connection.php';
+    $con = Connection::getConexao();
 
-    $sql = 'SELECT * FROM prototipo_info_materiais WHERE idMaterial = '.$idMaterial;
-    $result = $con->query($sql);
+    $stmt = $con->prepare('SELECT * FROM prototipo_info_materiais WHERE idMaterial = :idMaterial');
+    $stmt->bindParam(':idMaterial', $idMaterial);
+    $stmt->execute();
 
-    if ($result->num_rows > 0){
-        while ($row = $result->fetch_assoc()){
+    if ($stmt->rowCount() > 0){
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $material = $row['nome'];
             $cor = $row['cor'];
             $descricao = $row['descricao'];
@@ -31,7 +33,7 @@
         echo 'Material não identificado.';
     }
 
-    $con->close();
+    $con = null;
 
     switch ($idMaterial){
         case 1:
@@ -100,16 +102,18 @@
     //Ideias
     include '../database/connection.php';
     include '../Model/ideias.php';
+    $con = Connection::getConexao();
 
     $postagens = array();
     $existe = false;
 
-    $sql2 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = '.$idMaterial.' ORDER BY idPostagem DESC';
-    $result2 = $con->query($sql2);
+    $stmt2 = $con->prepare('SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = :idMaterial ORDER BY idPostagem DESC');
+    $stmt2->bindParam(':idMaterial', $idMaterial);
+    $stmt2->execute();
 
-    if ($result2->num_rows > 0){
+    if ($stmt2->rowCount() > 0){
         $existe = true;
-        while ($row = $result2->fetch_assoc()){
+        while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)){
             $idIdeia = $row['idPostagem'];
             $nomeIdeia = $row['nomePostagem'];
             $userIdeia = $row['nomeUsuario'];
@@ -120,7 +124,7 @@
         }
     }
     
-    $con->close();
+    $con = null;
 
 
     //Filtros
@@ -132,16 +136,18 @@
             if($filtro == 2){
                 //Filtro 2 - avaliação
                 include '../database/connection.php';
+                $con = Connection::getConexao();
 
                 $postagens4 = array();
                 $existe = false;
 
-                $sql6 = 'SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = '.$idMaterial.' ORDER BY avaliacaoPostagem DESC';
-                $result6 = $con->query($sql6);
+                $stmt6 = $con->prepare('SELECT * FROM prototipo_Postagem_EcoMoment WHERE materialPostagem = :idMaterial ORDER BY avaliacaoPostagem DESC');
+                $stmt6->bindParam(':idMaterial', $idMaterial);
+                $stmt6->execute();
 
-                if ($result6->num_rows > 0){
+                if ($stmt6->rowCount() > 0){
                     $existe = true;
-                    while ($row = $result6->fetch_assoc()){
+                    while ($row = $stmt6->fetch(PDO::FETCH_ASSOC)){
                         $idIdeia = $row['idPostagem'];
                         $nomeIdeia = $row['nomePostagem'];
                         $userIdeia = $row['nomeUsuario'];
@@ -152,7 +158,7 @@
                     }
                 }
 
-                $con->close();
+                $con = null;
 
                 //Carregamento das ideias de reutilização
                 if ($existe){       
